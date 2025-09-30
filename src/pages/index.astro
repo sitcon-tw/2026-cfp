@@ -1,3 +1,18 @@
 ---
-
+import Description from "@components/page/Description.astro";
+import Layout from "src/layout/index.astro";
 ---
+
+<Layout>
+	<div id="index">
+		<Description />
+	</div>
+</Layout>
+
+<style>
+	#index {
+		background-color: #707070;
+		color: #ffffff;
+		padding: 2rem;
+	}
+</style>
