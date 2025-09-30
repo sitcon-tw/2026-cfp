@@ -1,0 +1,16 @@
+{
+	"extends": "astro/tsconfigs/strict",
+	"include": [".astro/types.d.ts", "**/*"],
+	"exclude": ["dist"],
+	"compilerOptions": {
+		"checkJs": false,
+		"target": "es2022",
+		"module": "nodenext",
+		"moduleResolution": "nodenext",
+		"baseUrl": ".",
+		"paths": {
+			"@components/*": ["src/components/*"],
+			"@assets/*": ["src/assets/*"],
+		}
+	}
+}
