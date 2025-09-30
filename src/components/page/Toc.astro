@@ -10,7 +10,7 @@ const { data } = Astro.props;
 	{
 		data.map((item: { text: string; link: string }) => (
 			<div class="toc-item">
-				<a class="toc-item-text" href={item.link}>
+				<a class="toc-item-text" href={item.link} aria-label={item.text}>
 					{item.text}
 				</a>
 			</div>
@@ -20,7 +20,7 @@ const { data } = Astro.props;
 
 <style>
 	#toc {
-		width: 8.5rem;
+		max-width: 8.5rem;
 		letter-spacing: 0.08rem;
 		color: #ccc;
 		text-align: center;
