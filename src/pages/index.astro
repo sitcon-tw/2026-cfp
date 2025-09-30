@@ -1,11 +1,23 @@
 ---
-import Description from "@components/page/Description.astro";
 import Layout from "@layout/index.astro";
+import Toc from "@components/page/Toc.astro";
+import Description from "@components/page/Description.astro";
+import Format from "@assets/doc/format.md";
+
+const toc_data = [
+	{ text: "活動簡介", link: "#description" },
+	{ text: "重要日期", link: "#dates" },
+	{ text: "投稿須知", link: "#submission" },
+	{ text: "評審標準", link: "#criteria" },
+	{ text: "聯絡我們", link: "#contact" }
+];
 ---
 
 <Layout>
 	<div id="index">
+		<Toc data={toc_data} />
 		<Description />
+		<Format />
 	</div>
 </Layout>
 
