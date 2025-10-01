@@ -38,24 +38,20 @@ const content = [
 ---
 
 <Layout>
-	<div id="index">
-		<Countdown />
-		<Toc data={toc_data} />
-		<Description />
-		<Format />
-		<Schedule schedule={schedule} />
-		<Field
-			title="聯絡我們"
-			description="若有任何問題，請寄信至若有任何問題，請寄信至"
-			content={content}
-		/>
-	</div>
+	<Countdown />
+	<Toc data={toc_data} />
+	<Description />
+	<Format />
+	<Schedule schedule={schedule} />
+	<Field
+		title="聯絡我們"
+		description="若有任何問題，請寄信至若有任何問題，請寄信至"
+		content={content}
+	/>
 </Layout>
 
 <style>
-	#index {
-		background-color: #707070;
-		color: #ffffff;
-		padding: 2rem;
+	main {
+		height: 100vh;
 	}
 </style>
