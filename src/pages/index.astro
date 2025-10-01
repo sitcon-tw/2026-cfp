@@ -1,5 +1,5 @@
 ---
-import Layout from "@layout/index.astro";
+import Layout from "@layouts/Layout.astro";
 import Toc from "@components/page/Toc.astro";
 import Description from "@components/page/Description.astro";
 import Format from "@assets/doc/format.md";
@@ -33,7 +33,7 @@ const content = [
 		detail: "能讓大會聯絡的電子信箱。（注意：請您在大會的聯絡過程中，維持使用相同信箱）能讓大會聯絡的電子信箱。",
 		optional: false,
 		publish: true
-	},	
+	}
 ];
 ---
 
@@ -43,11 +43,7 @@ const content = [
 	<Description />
 	<Format />
 	<Schedule schedule={schedule} />
-	<Field
-		title="聯絡我們"
-		description="若有任何問題，請寄信至若有任何問題，請寄信至"
-		content={content}
-	/>
+	<Field title="聯絡我們" description="若有任何問題，請寄信至若有任何問題，請寄信至" content={content} />
 </Layout>
 
 <style>
