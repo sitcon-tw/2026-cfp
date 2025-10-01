@@ -43,6 +43,6 @@ jobs:
               with:
                   deploy_key: ${{ secrets.DEPLOY_KEY_2026 }}
                   external_repository: sitcon-tw/2026
-                  publish_branch: gh-pages
+                  publish_branch: build
                   publish_dir: ./dist
                   destination_dir: cfp
