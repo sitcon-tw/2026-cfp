@@ -27,7 +27,23 @@ import Footer from "@components/Footer.astro";
 	</head>
 	<body>
 		<Nav />
-		<slug />
+		<slot />
 		<Footer />
+		<style is:global>
+			@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Orbitron:wght@400..900&display=swap");
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				background-color: #010121;
+				color: #ffffff;
+				font-family: "Noto Sans TC", sans-serif;
+				font-optical-sizing: auto;
+			}
+		</style>
 	</body>
 </html>
