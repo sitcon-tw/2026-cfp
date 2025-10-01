@@ -5,6 +5,7 @@ import Description from "@components/page/Description.astro";
 import Format from "@assets/doc/format.md";
 import Schedule from "@components/page/Schedule.astro";
 import Field from "@components/page/Field.astro";
+import Countdown from "@components/page/Countdown.astro";
 
 const toc_data = [
 	{ text: "活動簡介", link: "#description" },
@@ -38,6 +39,7 @@ const content = [
 
 <Layout>
 	<div id="index">
+		<Countdown />
 		<Toc data={toc_data} />
 		<Description />
 		<Format />

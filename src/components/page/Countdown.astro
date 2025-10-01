@@ -1,0 +1,120 @@
+---
+import ArrowRight from "@assets/icon/arrow_right.svg";
+---
+
+<div class="countdown">
+	<div class="title-bar">
+		<h2 class="title">投稿截止</h2>
+		<div class="progress-bar">
+			<div class="progress" style="width: 99%;"></div>
+		</div>
+		<span class="progress-number">99%</span>
+	</div>
+	<div class="timer">
+		<div>
+			<div class="timer-number">00</div>
+			<div class="timer-text">DAYS</div>
+		</div>
+
+		<div>
+			<div class="timer-number">00</div>
+			<div class="timer-text">HOURS</div>
+		</div>
+
+		<div>
+			<div class="timer-number">00</div>
+			<div class="timer-text">MINUTES</div>
+		</div>
+
+		<div>
+			<div class="timer-number">00</div>
+			<div class="timer-text">SECONDS</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="deadline">截止日期<br />2025/10/20（一）23:59</div>
+		<a class="link">
+			立即投稿
+			<ArrowRight width="2rem" />
+		</a>
+	</div>
+</div>
+
+<style>
+	.countdown {
+		border-radius: 2rem;
+		background: #566d8d;
+		max-width: 30rem;
+		max-height: 25rem;
+		padding: 2rem;
+	}
+	.footer {
+		display: flex;
+		justify-content: space-between;
+	}
+	.link {
+		display: flex;
+		color: #566d8d;
+		font-size: 1.5rem;
+		font-weight: bold;
+		min-height: 3rem;
+		min-width: 10rem;
+		justify-content: center;
+		line-height: 2rem;
+		letter-spacing: 0.2rem;
+		border-radius: 1.5rem;
+		padding: 1rem;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		background-color: rgba(255, 255, 255, 0.8);
+		align-items: center;
+		gap: 0.5rem;
+	}
+	.deadline {
+		min-height: 3rem;
+		min-width: 4rem;
+		text-align: center;
+		line-height: 2rem;
+		letter-spacing: 0.2rem;
+		border-radius: 1.5rem;
+		padding: 1rem;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+	}
+	.timer {
+		display: flex;
+		justify-content: space-around;
+		margin: 2rem 0;
+		text-align: center;
+	}
+	.timer-number {
+		font-size: 4rem;
+	}
+	.timer-text {
+		font-size: 1rem;
+	}
+	.title {
+		letter-spacing: 1rem;
+	}
+	.title-bar {
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+	}
+	.progress-bar {
+		flex-grow: 1;
+		height: 1rem;
+		background: #ffffff;
+		border-radius: 1rem;
+		margin: 0 1rem;
+		overflow: hidden;
+	}
+	.progress-number {
+		font-size: larger;
+		letter-spacing: 0.4rem;
+	}
+	.progress {
+		height: 100%;
+		background: #86aee5;
+		border-radius: 1rem 0 0 1rem;
+		transition: width 0.5s ease-in-out;
+	}
+</style>
