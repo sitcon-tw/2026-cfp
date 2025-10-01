@@ -1,0 +1,83 @@
+---
+const { title, description = "", content } = Astro.props;
+import IconOptional from "@assets/icon/field_optional.svg";
+import IconRequired from "@assets/icon/field_required.svg";
+import IconPublish from "@assets/icon/field_publish.svg";
+---
+
+<div class="field">
+	<div class="field-head">
+		<h3 class="field-title">
+			{title}
+		</h3>
+		<span class="field-description">
+			{description}
+		</span>
+	</div>
+	{
+		content.map((ctx: { title: string; detail: string; optional: boolean; publish: boolean }) => (
+			<div class="field-item">
+				<div>
+					<h3 class="field-item-title">{ctx.title}</h3>
+					<p class="field-item-description">{ctx.detail}</p>
+				</div>
+				<div class="field-icon-bar">
+					{ctx.optional ? <IconOptional width="3rem" /> : <IconRequired width="3rem" />}
+					{ctx.publish ? <IconPublish width="3rem" /> : null}
+				</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.field {
+		padding: 1rem 0;
+		max-width: 55rem;
+		text-align: left;
+	}
+	.field-head {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		line-height: 1.5rem;
+		border-radius: 1.5rem 1.5rem 0.5rem 0.5rem;
+		background: #566d8d;
+		margin-bottom: 0.4rem;
+	}
+	.field-description {
+		max-width: 40rem;
+		font-size: small;
+		line-height: 1.8rem;
+		padding: 0 1.5rem;
+	}
+	.field-title {
+		padding: 0 1.5rem;
+	}
+	.field-item {
+		padding: 1rem 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.5rem;
+		background: #ffffff;
+		margin-bottom: 0.4rem;
+	}
+	.field-item-title {
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		color: black;
+	}
+	.field-item-description {
+		margin: 0;
+		word-break: break-word;
+		overflow-wrap: break-word;
+		max-width: 40rem;
+		line-height: 1.8rem;
+		color: black;
+	}
+	.field-icon-bar {
+		display: flex;
+		gap: 0.5rem;
+	}
+</style>
