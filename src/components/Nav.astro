@@ -1,9 +1,11 @@
 ---
 // Navbar.astro
+import sitcon from "@assets/img/sitcon.svg";
+
 
 const navLinks = [
   { name: '首頁', href: '/' },
-  { name: '年會主題', href: '/' },
+  { name: '年會主題', href: '/theme' },
   { name: '一般議程徵稿', href: '/' },
   { name: '開放式議程徵稿', href: '/' },
   { name: 'Demo 徵稿', href: '/'}
@@ -12,21 +14,20 @@ const navLinks = [
 
 <nav class="navbar">
   <div class="navbar-container">
-    <!-- Logo 區域 -->
-    <a href="/" class="logo">
-      <img src="/2026/cfp/sitcon.svg" alt="Logo" class="logo-image" />
+    <a href={import.meta.env.BASE_URL} class="logo">
+      <img src={sitcon.src} alt="SITCON" />
     </a>
 
-    <!-- 導航連結 -->
+    <!-- Links -->
     <ul class="nav-links">
       {navLinks.map((link) => (
         <li>
-          <a href={link.href}>{link.name}</a>
+          <a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
         </li>
       ))}
     </ul>
 
-    <!-- 手機版選單按鈕 -->
+    <!-- mobile hamburger menu -->
     <button class="menu-toggle" aria-label="Toggle menu">
       <span></span>
       <span></span>
@@ -100,7 +101,7 @@ const navLinks = [
     transition: 0.3s;
   }
 
-  /* 響應式設計 */
+  /* mobile */
   @media (max-width: 768px) {
     .menu-toggle {
       display: flex;
@@ -129,7 +130,6 @@ const navLinks = [
 </style>
 
 <script>
-  // 手機版選單切換功能
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
 
