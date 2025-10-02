@@ -47,11 +47,10 @@ const deadline = new Date(date);
 
 <style>
 	.countdown {
+		margin: 2rem 0;
 		border-radius: 2rem;
 		background: #566d8d;
-		max-width: 50rem;
-		max-height: 25rem;
-		padding: 2rem;
+		padding: 3rem;
 	}
 	.footer {
 		/* TODO: @media */
@@ -61,7 +60,7 @@ const deadline = new Date(date);
 	.link {
 		display: flex;
 		color: #566d8d;
-		font-size: 1.5rem;
+		font-size: 2rem;
 		font-weight: bold;
 		min-height: 3rem;
 		justify-content: center;
@@ -73,15 +72,18 @@ const deadline = new Date(date);
 		background-color: rgba(255, 255, 255, 0.8);
 		align-items: center;
 		gap: 0.5rem;
+		flex-grow: 0.4;
 	}
 	.deadline {
 		min-height: 3rem;
 		min-width: 4rem;
 		text-align: center;
-		line-height: 2rem;
+		font-size: larger;
+		line-height: 2.5rem;
 		letter-spacing: 0.2rem;
 		border-radius: 1.5rem;
-		padding: 1rem;
+		align-content: center;
+		flex-grow: 0.4;
 		border: 2px solid rgba(255, 255, 255, 0.8);
 	}
 	.timer {
@@ -98,6 +100,7 @@ const deadline = new Date(date);
 	}
 	.title {
 		letter-spacing: 1rem;
+		font-size: 2rem;
 	}
 	.title-bar {
 		display: flex;
