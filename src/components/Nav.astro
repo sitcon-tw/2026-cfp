@@ -1,0 +1,139 @@
+---
+// Navbar.astro
+
+const navLinks = [
+  { name: '首頁', href: '/' },
+  { name: '年會主題', href: '/' },
+  { name: '一般議程徵稿', href: '/' },
+  { name: '開放式議程徵稿', href: '/' },
+  { name: 'Demo 徵稿', href: '/'}
+];
+---
+
+<nav class="navbar">
+  <div class="navbar-container">
+    <!-- Logo 區域 -->
+    <a href="/" class="logo">
+      <img src="/2026/cfp/sitcon.svg" alt="Logo" class="logo-image" />
+    </a>
+
+    <!-- 導航連結 -->
+    <ul class="nav-links">
+      {navLinks.map((link) => (
+        <li>
+          <a href={link.href}>{link.name}</a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- 手機版選單按鈕 -->
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<style>
+  .navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo-image {
+    height: 30px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    color: #007bff;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+
+  /* 響應式設計 */
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #ffffff;
+      flex-direction: column;
+      padding: 1rem 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+    }
+
+    .nav-links.active {
+      display: flex;
+    }
+
+    .nav-links li {
+      padding: 0.5rem 0;
+    }
+  }
+</style>
+
+<script>
+  // 手機版選單切換功能
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  menuToggle?.addEventListener('click', () => {
+    navLinks?.classList.toggle('active');
+  });
+</script>
