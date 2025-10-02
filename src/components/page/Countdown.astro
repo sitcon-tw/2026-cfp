@@ -1,5 +1,10 @@
 ---
 import ArrowRight from "@assets/icon/arrow_right.svg";
+const { date } = Astro.props;
+
+const now = new Date();
+const deadline = new Date(date);
+// 10/12 start
 ---
 
 <div class="countdown">
@@ -44,13 +49,14 @@ import ArrowRight from "@assets/icon/arrow_right.svg";
 	.countdown {
 		border-radius: 2rem;
 		background: #566d8d;
-		max-width: 30rem;
+		max-width: 50rem;
 		max-height: 25rem;
 		padding: 2rem;
 	}
 	.footer {
+		/* TODO: @media */
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-around;
 	}
 	.link {
 		display: flex;
@@ -58,7 +64,6 @@ import ArrowRight from "@assets/icon/arrow_right.svg";
 		font-size: 1.5rem;
 		font-weight: bold;
 		min-height: 3rem;
-		min-width: 10rem;
 		justify-content: center;
 		line-height: 2rem;
 		letter-spacing: 0.2rem;
