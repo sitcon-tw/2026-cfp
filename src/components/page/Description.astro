@@ -1,21 +1,25 @@
 <div class="description">
-	<h2>海報投稿說明</h2>
-	<div class="divider"></div>
-	<p class="content">
-		海報投稿以靜態海報展出學生個人或團隊專案研究作品，作品以資訊相關領域為主，不限語言，不接受一稿多投，若為延伸作品需於投稿時載明。期望透過此方式使更多學生能有展現自我的機會，同時為會眾帶來不同形式的學習與交流。
+	<h2>議程說明</h2>
+	<p class="description-text">
+		<slot />
 	</p>
 </div>
 
 <style>
-	.divider {
-		height: 0.25rem;
-		width: 100%;
-		background: #ffffff;
-		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
+	.description {
+		text-align: center;
+		border-radius: 2rem;
+		border: 0.2rem solid;
+		border-color: #ffffff;
+		background: rgba(255, 255, 255, 0.18);
+		max-height: 25rem;
+		padding: 2rem;
 	}
 
-	.content {
+	.description-text {
+		font-size: larger;
+		margin-top: 1rem;
+		text-align: start;
 		line-height: 2;
 		letter-spacing: 0.1rem;
 		color: #c4c4c4;
