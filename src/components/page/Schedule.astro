@@ -1,7 +1,5 @@
 ---
 const { schedule } = Astro.props;
-
-const diffDate = (a: Date) => a.getTime() - new Date().getTime();
 ---
 
 <div class="schedule">
@@ -9,7 +7,7 @@ const diffDate = (a: Date) => a.getTime() - new Date().getTime();
 	<div class="divider"></div>
 	{
 		schedule.map((item: { date: Date; event: string }) => (
-			<div class={`event ${diffDate(item.date) > 0 ? "event-before" : ""}`}>
+			<div class="event" data-date={item.date.toISOString()}>
 				<div class="event-col">{item.date.toLocaleDateString("zh-Hant")}</div>
 				<div class="event-col">{item.event}</div>
 			</div>
@@ -33,7 +31,8 @@ const diffDate = (a: Date) => a.getTime() - new Date().getTime();
 	.event {
 		display: flex;
 		border-radius: 1rem;
-		background: #8d5657;
+		background: #ffffff;
+		color: #000000;
 		font-size: larger;
 		width: 100%;
 		align-content: center;
@@ -43,11 +42,21 @@ const diffDate = (a: Date) => a.getTime() - new Date().getTime();
 	}
 
 	.event-before {
-		background: #ffffff;
-		color: #000000;
+		background: #8d5657;
+		color: #ffffff;
 	}
 
 	.event-col {
 		flex: 1;
 	}
 </style>
+
+<script>
+	const diffDate = (a: Date) => a.getTime() - new Date().getTime();
+	document.querySelectorAll(".event").forEach(el => {
+		const date = new Date(el.getAttribute("data-date") || "");
+		if (diffDate(date) < 0) {
+			el.classList.add("event-before");
+		}
+	});
+</script>
