@@ -1,13 +1,9 @@
 ---
 import ArrowRight from "@assets/icon/arrow_right.svg";
-const { date } = Astro.props;
-
-const now = new Date();
-const deadline = new Date(date);
-// 10/12 start
+const { end, start, form_url } = Astro.props;
 ---
 
-<div class="countdown">
+<div class="countdown" data-date-end={end} data-date-start={start}>
 	<div class="title-bar">
 		<h2 class="title">投稿截止</h2>
 		<div class="progress-bar">
@@ -17,28 +13,41 @@ const deadline = new Date(date);
 	</div>
 	<div class="timer">
 		<div>
-			<div class="timer-number">00</div>
+			<div class="timer-number countdown-days">00</div>
 			<div class="timer-text">DAYS</div>
 		</div>
 
 		<div>
-			<div class="timer-number">00</div>
+			<div class="timer-number countdown-hours">00</div>
 			<div class="timer-text">HOURS</div>
 		</div>
 
 		<div>
-			<div class="timer-number">00</div>
+			<div class="timer-number countdown-minutes">00</div>
 			<div class="timer-text">MINUTES</div>
 		</div>
 
 		<div>
-			<div class="timer-number">00</div>
+			<div class="timer-number countdown-seconds">00</div>
 			<div class="timer-text">SECONDS</div>
 		</div>
 	</div>
 	<div class="footer">
-		<div class="deadline">截止日期<br />2025/10/20（一）23:59</div>
-		<a class="link">
+		<div class="deadline">
+			截止時間<br />
+			{
+				new Date(end).toLocaleString("zh-TW", {
+					year: "numeric",
+					month: "numeric",
+					day: "numeric",
+					weekday: "narrow",
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: false
+				})
+			}
+		</div>
+		<a class="link" href={form_url} target="_blank">
 			立即投稿
 			<ArrowRight width="2rem" />
 		</a>
@@ -47,7 +56,6 @@ const deadline = new Date(date);
 
 <style>
 	.countdown {
-		margin: 2rem 0;
 		border-radius: 2rem;
 		background: #566d8d;
 		padding: 3rem;
@@ -62,6 +70,7 @@ const deadline = new Date(date);
 		color: #566d8d;
 		font-size: 2rem;
 		font-weight: bold;
+		text-decoration: none;
 		min-height: 3rem;
 		justify-content: center;
 		line-height: 2rem;
@@ -126,3 +135,54 @@ const deadline = new Date(date);
 		transition: width 0.5s ease-in-out;
 	}
 </style>
+
+<script>
+	const dateToCountdownNumber = (date: string) => {
+		const now = new Date();
+		const deadline = new Date(date);
+		if (deadline <= now) {
+			return {
+				days: "00",
+				hours: "00",
+				minutes: "00",
+				seconds: "00"
+			};
+		}
+		const diff = deadline.getTime() - now.getTime();
+		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		const minutes = Math.floor((diff / (1000 * 60)) % 60);
+		const seconds = Math.floor((diff / 1000) % 60);
+		return {
+			days: String(days).padStart(2, "0"),
+			hours: String(hours).padStart(2, "0"),
+			minutes: String(minutes).padStart(2, "0"),
+			seconds: String(seconds).padStart(2, "0")
+		};
+	};
+
+	const updateCountdown = () => {
+		document.querySelectorAll(".countdown").forEach(el => {
+			// Update countdown numbers
+			const end_string = el.getAttribute("data-date-end") || "";
+			const countdown = dateToCountdownNumber(end_string);
+			el.querySelector(".countdown-days")!.textContent = countdown.days;
+			el.querySelector(".countdown-hours")!.textContent = countdown.hours;
+			el.querySelector(".countdown-minutes")!.textContent = countdown.minutes;
+			el.querySelector(".countdown-seconds")!.textContent = countdown.seconds;
+
+			// Update progress bar
+			const start_string = el.getAttribute("data-date-start") || "";
+			const now = new Date();
+			const deadline = new Date(end_string);
+			const start = new Date(start_string);
+			const total = deadline.getTime() - start.getTime();
+			const elapsed = now.getTime() - start.getTime();
+			const progress = Math.min(Math.max((elapsed / total) * 100, 0), 100);
+			el.querySelector(".progress")!.setAttribute("style", `width: ${progress}%`);
+			el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
+		});
+	};
+	setInterval(updateCountdown, 1000);
+	updateCountdown();
+</script>
