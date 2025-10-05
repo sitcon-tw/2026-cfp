@@ -6,9 +6,10 @@ import Content from "@components/page/Content.astro";
 import Format from "@assets/doc/normal_regulation.md";
 import Schedule from "@components/page/Schedule.astro";
 import Countdown from "@components/page/Countdown.astro";
+import MarkdownFormat from "@components/page/MarkdownFormat.astro";
+import Field from "@components/page/Field.astro";
 
 const toc_data = [
-	// TODO
 	{ text: "活動簡介", link: "#description" },
 	{ text: "重要日期", link: "#dates" },
 	{ text: "投稿須知", link: "#submission" },
@@ -26,6 +27,56 @@ const schedule = [
 	{ date: new Date("2025-10-15"), event: "YY公布" },
 	{ date: new Date("2025-10-15"), event: "ZZ發表" }
 ];
+
+const field_content = [
+	{
+		title: "中文題目 Chinese Project Title",
+		detail: "長度請自行斟酌。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "英文題目 English Project Title",
+		detail: "長度請自行斟酌。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "摘要 Abstract",
+		detail: "建議約 350 字，使用於宣傳與網站公告。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "關鍵詞 Keywords",
+		detail: "至多三個。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "研究說明 Project Content",
+		detail: `請以 pdf 檔案上傳，需簡要說明
+						（一）研究動機與目的 Research Question or Problem；（二）研究方法與過程 Methodology；
+						（三）研究結果與討論 Results and Interpretation of these 
+								results；
+						（四）結論應用及展望 Conclusions 等，以 1500 字為限。可
+								參考 臺灣國際科學展覽會實施要點 第 17 頁說明。`,
+		optional: false,
+		publish: false
+	},
+	{
+		title: "海報內容 Poster Content",
+		description: `錄取後上傳。以呈現研究結果為主，除題目與摘要之外，建議依序可包含前言、研究方法、結論及參考文獻等，內容請投稿作者自行斟酌，以不超過海報尺寸為限。請以直版寬 xx 公分、高 xx 公分規格製作為 pdf 檔案，一篇投稿一面看板，請於收到錄取通知後依據郵件說明上傳最終版海報檔案，統一由大會進行印製與佈展。`,
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他說明 Additional Instructions",
+		description: `其他以上未提及之說明，若為延續性研究作品也請在此標明。`,
+		optional: true,
+		publish: false
+	}
+];
 ---
 
 <Layout>
@@ -38,7 +89,7 @@ const schedule = [
 			</Description>
 
 			<!-- TODO: real form url, date -->
-			<Countdown end="2025-10-20T23:59:00" start="2025-09-12T00:00:00" form_url="https://sitcon.org/" />
+			<Countdown end="2025-10-20T21:59:00" start="2025-09-12T00:00:00" form_url="https://sitcon.org/" />
 
 			<Schedule schedule={schedule} />
 
@@ -47,29 +98,34 @@ const schedule = [
 				作為學生展現自己的舞台，我們期待以學生為主體的投稿，可以是從學生角度出發的經驗分享、技術分享，或是一同探討學生相關議題等。
 			</Content>
 
+			<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+
+			<Field title="稿件資訊" content={field_content} />
 			<!-- TODO: Table -->
 
-			<Format />
+			<MarkdownFormat>
+				<Format />
+			</MarkdownFormat>
 
 			<!-- TODO: Q&A -->
 
 			<!-- TODO: Banner -->
 		</div>
+
+		<style>
+			main {
+				height: 100vh;
+				display: grid;
+				grid-template-columns: 1fr 6fr;
+				margin: 2.5rem;
+			}
+
+			.container {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				padding-bottom: 3rem;
+			}
+		</style>
 	</main>
-
-	<style>
-		main {
-			height: 100vh;
-			display: grid;
-			grid-template-columns: 1fr 6fr;
-			margin: 2.5rem;
-		}
-
-		.container {
-			display: flex;
-			flex-direction: column;
-			gap: 2rem;
-			padding-bottom: 3rem;
-		}
-	</style>
 </Layout>
