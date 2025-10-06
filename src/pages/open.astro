@@ -10,6 +10,7 @@ import MarkdownFormat from "@components/page/MarkdownFormat.astro";
 import FieldDescription from "@components/page/FieldDescription.astro";
 import PersonalInfo from "@components/page/PersonalInfo.astro";
 import Banner from "@components/page/Banner.astro";
+import Table from "@components/page/Table.astro";
 
 const toc_data = [
 	{ text: "活動簡介", link: "#description" },
@@ -79,6 +80,25 @@ const field_content = [
 		publish: false
 	}
 ];
+
+const table = [
+	{
+		header: "1.實作工作坊",
+		content: `111實作是學習一項新技能最直接項新技能最直項新技能最直項新技能最直的方式，期`
+	},
+	{
+		header: "2.實作工作坊",
+		content: `222實作是學習一項新技學習一項新技能學習一項新技能實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技學習一項新技能能最直接的方式，期`
+	},
+	{
+		header: "3.實作工作坊",
+		content: `333實作是學習一項新技能最直接的項新技能最直項新技能最直項新技能最直項新技能最直方式，期`
+	},
+	{
+		header: "4.實作工作坊",
+		content: `444實作是學習一項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直接的方式，期`
+	}
+];
 ---
 
 <Layout>
@@ -107,7 +127,8 @@ const field_content = [
 				<FieldDescription title="投稿欄位說明" content={field_content} />
 				<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
 			</div>
-			<!-- TODO: Table -->
+
+			<Table table={table} />
 
 			<MarkdownFormat>
 				<Format />
@@ -124,6 +145,7 @@ const field_content = [
 
 <style>
 	main {
+		margin: 2rem 0;
 		height: 100vh;
 		display: grid;
 		grid-template-columns: 1fr 6fr;
@@ -135,10 +157,14 @@ const field_content = [
 	}
 
 	.container {
-		margin-right: 2.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
+		padding-right: 2rem;
 		padding-bottom: 3rem;
+	}
+
+	.toc {
+		padding: 0 2rem;
 	}
 </style>
