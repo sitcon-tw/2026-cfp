@@ -1,153 +1,235 @@
 ---
-// Navbar.astro
 import sitcon from "@assets/img/sitcon.svg";
 
 const navLinks = [
-  { name: '首頁', href: '/' },
-  { name: '年會主題', href: '/theme' },
-  { name: '一般議程徵稿', href: '/' },
-  { name: '開放式議程徵稿', href: '/' },
-  { name: 'Demo 徵稿', href: '/'}
+	{ name: "首頁", href: "/" },
+	{ name: "年會主題", href: "/theme" },
+	{ name: "一般議程徵稿", href: "/" },
+	{ name: "開放式議程徵稿", href: "/" },
+	{ name: "Demo 徵稿", href: "/" }
 ];
 ---
 
 <nav class="navbar">
-  <div class="navbar-container">
-    <a href={import.meta.env.BASE_URL} class="logo">
-      <img src={sitcon.src} alt="SITCON" />
-    </a>
-
-    <!-- Links -->
-    <ul class="nav-links">
-      {navLinks.map((link) => (
-        <li>
-          <a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
-        </li>
-      ))}
-    </ul>
-
-    <!-- mobile hamburger menu -->
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+	<div class="navbar-container">
+		<a href={import.meta.env.BASE_URL} class="logo">
+			<img src={sitcon.src} alt="SITCON" />
+		</a>
+		<ul class="nav-links">
+			{
+				navLinks.map((link, index) => (
+					<li style={`--index: ${index}; --open-delay: ${index * 80}ms; --close-delay: ${(navLinks.length - index - 1) * 60}ms;`}>
+						<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
+					</li>
+				))
+			}
+		</ul>
+		<button class="menu-toggle" aria-label="Toggle menu">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</div>
 </nav>
 
 <style>
-  .navbar {
-    background-color: #ffffff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+	.navbar {
+		background-color: #ffffff;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+		position: sticky;
+		top: 0;
+		z-index: 1000;
+	}
 
-  .navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+	.navbar-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 1rem 2rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 
-  .logo {
-    display: flex;
-    align-items: center;
-  }
+	.logo {
+		display: flex;
+		align-items: center;
+	}
 
-  .logo-image {
-    height: 30px;
-    width: auto;
-    object-fit: contain;
-  }
+	.logo-image {
+		height: 30px;
+		width: auto;
+		object-fit: contain;
+	}
 
-  .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
+	.nav-links {
+		display: flex;
+		list-style: none;
+		gap: 2rem;
+		margin: 0;
+		padding: 0;
+	}
 
-  .nav-links a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
+	.nav-links a {
+		text-decoration: none;
+		color: #333;
+		font-weight: 500;
+		transition: color 0.3s ease;
+	}
 
-  .nav-links a:hover {
-    color: #007bff;
-  }
+	.nav-links a:hover {
+		color: #007bff;
+	}
 
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    gap: 5px;
-  }
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		background: none;
+		border: none;
+		cursor: pointer;
+		padding: 0.5rem;
+		gap: 5px;
+	}
 
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background-color: #333;
-    transition: all 0.3s ease;
-    transform-origin: center;
-  }
+	.menu-toggle span {
+		width: 25px;
+		height: 3px;
+		background-color: #333;
+		transition: all 0.3s ease;
+		transform-origin: center;
+	}
 
-  .menu-toggle.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
+	.menu-toggle.active span:nth-child(1) {
+		transform: translateY(8px) rotate(45deg);
+	}
 
-  .menu-toggle.active span:nth-child(2) {
-    opacity: 0;
-    transform: translateX(-10px);
-  }
+	.menu-toggle.active span:nth-child(2) {
+		opacity: 0;
+		transform: translateX(-10px);
+	}
 
-  .menu-toggle.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+	.menu-toggle.active span:nth-child(3) {
+		transform: translateY(-8px) rotate(-45deg);
+	}
 
-  /* mobile */
-  @media (max-width: 768px) {
-    .menu-toggle {
-      display: flex;
-    }
+	/* mobile */
+	@media (max-width: 768px) {
+		.menu-toggle {
+			display: flex;
+		}
 
-    .nav-links {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background-color: #ffffff;
-      flex-direction: column;
-      padding: 1rem 2rem;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: none;
-    }
+		.navbar-container {
+			position: relative;
+		}
 
-    .nav-links.active {
-      display: flex;
-    }
+		.nav-links {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			background-color: #ffffff;
+			flex-direction: column;
+			padding: 0 2rem;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			display: flex;
+			max-height: 0;
+			opacity: 0;
+			transform: translateY(-12px);
+			overflow: hidden;
+			pointer-events: none;
+			visibility: hidden;
+			transition:
+				max-height 0.4s ease,
+				opacity 0.3s ease,
+				transform 0.4s ease,
+				padding 0.4s ease;
+		}
 
-    .nav-links li {
-      padding: 0.5rem 0;
-    }
-  }
+		.nav-links.active {
+			max-height: 400px;
+			opacity: 1;
+			transform: translateY(0);
+			padding: 1rem 2rem 2rem;
+			pointer-events: auto;
+			visibility: visible;
+		}
+
+		.nav-links.closing {
+			pointer-events: none;
+			visibility: visible;
+		}
+
+		.nav-links li {
+			padding: 0.5rem 0;
+			opacity: 0;
+			transform: translateY(-8px);
+			transition:
+				opacity 0.35s ease,
+				transform 0.35s ease;
+			transition-delay: 0ms;
+		}
+
+		.nav-links.active li {
+			opacity: 1;
+			transform: translateY(0);
+			transition-delay: var(--open-delay, 0ms);
+		}
+
+		.nav-links.closing li {
+			transition-delay: var(--close-delay, 0ms);
+		}
+	}
 </style>
 
 <script>
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+	const menuToggle = document.querySelector(".menu-toggle");
+	const menu = document.querySelector(".nav-links");
 
-  menuToggle?.addEventListener('click', () => {
-    navLinks?.classList.toggle('active');
-    menuToggle?.classList.toggle('active');
-  });
+	if (menuToggle instanceof HTMLButtonElement && menu instanceof HTMLUListElement) {
+		const toggle = menuToggle;
+		const navMenu = menu;
+
+		toggle.setAttribute("aria-expanded", "false");
+		navMenu.setAttribute("aria-hidden", "true");
+
+		const closeMenu = () => {
+			if (!navMenu.classList.contains("active") || navMenu.classList.contains("closing")) {
+				return;
+			}
+
+			navMenu.classList.add("closing");
+			navMenu.classList.remove("active");
+			toggle.classList.remove("active");
+			toggle.setAttribute("aria-expanded", "false");
+			navMenu.setAttribute("aria-hidden", "true");
+
+			function handleTransitionEnd(event: Event) {
+				const transitionEvent = event as TransitionEvent;
+
+				if (transitionEvent.target !== navMenu || transitionEvent.propertyName !== "max-height") {
+					return;
+				}
+
+				navMenu.classList.remove("closing");
+				navMenu.removeEventListener("transitionend", handleTransitionEnd);
+			}
+
+			navMenu.addEventListener("transitionend", handleTransitionEnd);
+		};
+
+		const openMenu = () => {
+			navMenu.classList.remove("closing");
+			navMenu.classList.add("active");
+			toggle.classList.add("active");
+			navMenu.setAttribute("aria-hidden", "false");
+			toggle.setAttribute("aria-expanded", "true");
+		};
+
+		toggle.addEventListener("click", () => {
+			if (navMenu.classList.contains("active")) {
+				closeMenu();
+			} else {
+				openMenu();
+			}
+		});
+	}
 </script>
