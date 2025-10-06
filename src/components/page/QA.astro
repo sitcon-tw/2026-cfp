@@ -1,0 +1,65 @@
+---
+const { content } = Astro.props;
+---
+
+<div class="qa">
+	<h2>Q&A</h2>
+	<div class="qa-list">
+		{
+			content.map((item: { question: string; answer: string }, index: number) => (
+				<>
+					<div class="qa-item" data-open="false" data-index={index}>
+						<h3>{item.question}</h3>
+						<div class="qa-toggle">＞</div>
+					</div>
+					<p style="display: none;">{item.answer}</p>
+				</>
+			))
+		}
+	</div>
+</div>
+
+<script>
+	const qaItems = document.querySelectorAll(".qa-item");
+	qaItems.forEach(item => {
+		item.addEventListener("click", () => {
+			const isOpen = item.getAttribute("data-open") === "true";
+			item.setAttribute("data-open", !isOpen ? "true" : "false");
+			item.querySelector(".qa-toggle")?.setAttribute("style", !isOpen ? "rotate: 270deg;" : "rotate: 90deg;");
+			const answer = item.nextElementSibling;
+			if (answer) {
+				answer.setAttribute("style", !isOpen ? "display: block;" : "display: none;");
+			}
+		});
+	});
+</script>
+
+<style>
+	h2 {
+		text-align: center;
+		font-size: 2rem;
+		margin: 1.5rem 0;
+	}
+
+	.qa-list {
+		margin: 0 1rem;
+	}
+
+	.qa-item {
+		cursor: pointer;
+		display: flex;
+		justify-content: space-between;
+		border-radius: 3.6875rem;
+		background: #566d8d;
+		padding: 0.75rem 1.5rem;
+        margin: 1rem 0;
+	}
+
+	.qa-toggle {
+		rotate: 90deg;
+	}
+
+	p {
+		margin: 0 1.5rem;
+	}
+</style>
