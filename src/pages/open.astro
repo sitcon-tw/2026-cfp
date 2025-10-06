@@ -116,8 +116,10 @@ const field_content = [
 			<!-- TODO: Q&A -->
 		</div>
 		<!-- TODO: Grid -->
+		<div class="banner">
+			<Banner />
+		</div>
 	</main>
-	<!-- <Banner /> -->
 </Layout>
 
 <style>
@@ -125,10 +127,15 @@ const field_content = [
 		height: 100vh;
 		display: grid;
 		grid-template-columns: 1fr 6fr;
-		margin: 2.5rem;
+		grid-template-rows: auto auto;
+	}
+
+	.banner {
+		grid-column: 1 / -1;
 	}
 
 	.container {
+		margin-right: 2.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: 2rem;
