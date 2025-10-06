@@ -1,23 +1,23 @@
 ---
-const { table } = Astro.props;
+const { content } = Astro.props;
 ---
 
 <div class="table">
-	<div id="table-head-1" class="table-header">{table[0].header}</div>
+	<div id="table-head-1" class="table-header">{content[0].header}</div>
 	<div id="table-content-1" class="table-content">
-		{table[0].content}
+		{content[0].content}
 	</div>
-	<div id="table-head-2" class="table-header">{table[1].header}</div>
+	<div id="table-head-2" class="table-header">{content[1].header}</div>
 	<div id="table-content-2" class="table-content">
-		{table[1].content}
+		{content[1].content}
 	</div>
-	<div id="table-head-3" class="table-header">{table[2].header}</div>
+	<div id="table-head-3" class="table-header">{content[2].header}</div>
 	<div id="table-content-3" class="table-content">
-		{table[2].content}
+		{content[2].content}
 	</div>
-	<div id="table-head-4" class="table-header">{table[3].header}</div>
+	<div id="table-head-4" class="table-header">{content[3].header}</div>
 	<div id="table-content-4" class="table-content">
-		{table[3].content}
+		{content[3].content}
 	</div>
 </div>
 
