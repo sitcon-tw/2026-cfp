@@ -2,7 +2,6 @@
 // Navbar.astro
 import sitcon from "@assets/img/sitcon.svg";
 
-
 const navLinks = [
   { name: '首頁', href: '/' },
   { name: '年會主題', href: '/theme' },
@@ -91,14 +90,28 @@ const navLinks = [
     border: none;
     cursor: pointer;
     padding: 0.5rem;
+    gap: 5px;
   }
 
   .menu-toggle span {
     width: 25px;
     height: 3px;
     background-color: #333;
-    margin: 3px 0;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   /* mobile */
@@ -135,5 +148,6 @@ const navLinks = [
 
   menuToggle?.addEventListener('click', () => {
     navLinks?.classList.toggle('active');
+    menuToggle?.classList.toggle('active');
   });
 </script>
