@@ -1,0 +1,95 @@
+---
+const { title, description = "", content } = Astro.props;
+import IconOptional from "@assets/desc_page/field_optional.svg";
+import IconRequired from "@assets/desc_page/field_required.svg";
+import IconPublish from "@assets/desc_page/field_publish.svg";
+---
+
+<div class="field">
+	<div class="field-head">
+		<h3 class="field-title">
+			{title}
+		</h3>
+		<div class="field-description">
+			<IconRequired width="1rem" /> 必填 &nbsp; &nbsp;
+			<IconOptional width="1rem" /> 選填 &nbsp; &nbsp;
+			<IconPublish width="1rem" /> 公開
+		</div>
+	</div>
+	{
+		content.map((ctx: { title: string; detail: string; optional: boolean; publish: boolean }) => (
+			<div class="field-item">
+				<div>
+					<h3 class="field-item-title">{ctx.title}</h3>
+					<p class="field-item-description">{ctx.detail}</p>
+				</div>
+				<div class="field-icon-bar">
+					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
+					{ctx.publish ? <IconPublish width="2.5rem" /> : null}
+				</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.field {
+		margin: 1rem 0;
+		text-align: left;
+	}
+	.field-head {
+		display: flex;
+		min-height: 3rem;
+		align-items: center;
+		justify-content: space-between;
+		line-height: 1.5rem;
+		border-radius: 1.5rem 1.5rem 0.5rem 0.5rem;
+		background: #566d8d;
+		margin-bottom: 0.4rem;
+	}
+	.field-description {
+		display: flex;
+		gap: 0.5rem;
+		border-radius: 0.75rem;
+		align-items: center;
+		color: #000000;
+		background-color: #ffffff;
+		max-height: 1.5rem;
+		justify-items: center;
+		padding: 0 1rem;
+		max-width: 40rem;
+		font-size: small;
+		line-height: 1.8rem;
+		margin: 0 1.5rem;
+	}
+	.field-title {
+		padding: 0 1.5rem;
+	}
+	.field-item {
+		padding: 1rem 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.5rem;
+		background: #ffffff;
+		margin-bottom: 0.4rem;
+	}
+	.field-item-title {
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		color: black;
+	}
+	.field-item-description {
+		word-break: break-word;
+		text-align: justify;
+		max-width: 40rem;
+		line-height: 1.8rem;
+		color: black;
+	}
+	.field-icon-bar {
+		/* TODO: @media */
+		margin-left: 0.8rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+</style>

@@ -7,7 +7,8 @@ import Format from "@assets/doc/normal_regulation.md";
 import Schedule from "@components/page/Schedule.astro";
 import Countdown from "@components/page/Countdown.astro";
 import MarkdownFormat from "@components/page/MarkdownFormat.astro";
-import Field from "@components/page/Field.astro";
+import FieldDescription from "@components/page/FieldDescription.astro";
+import PersonalInfo from "@components/page/PersonalInfo.astro";
 import Banner from "@components/page/Banner.astro";
 
 const toc_data = [
@@ -103,8 +104,8 @@ const field_content = [
 
 			<div>
 				<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
-
-				<Field title="稿件資訊" content={field_content} />
+				<FieldDescription title="投稿欄位說明" content={field_content} />
+				<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
 			</div>
 			<!-- TODO: Table -->
 
