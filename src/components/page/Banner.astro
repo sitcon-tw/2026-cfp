@@ -1,0 +1,53 @@
+---
+import StarIcon from "@assets/desc_page/star.svg";
+import H3Text from "@assets/desc_page/banner_text_h3.svg";
+import H2Text from "@assets/desc_page/banner_text_h2.svg";
+---
+
+<div class="banner">
+	<div class="banner-text">
+		<H3Text width="100%" />
+	</div>
+	<div class="banner-title">
+		<H2Text width="100%" />
+	</div>
+
+	<div class="banner-button">
+		<!-- TODO: icon enable-->
+		<!-- <StarIcon height="3rem" /> -->
+		<span> 立即投稿 </span>
+		<!-- <StarIcon height="3rem" /> -->
+	</div>
+</div>
+
+<style>
+	.banner {
+		background: #ffffff;
+		padding: 8rem 4rem;
+		width: 100%;
+	}
+
+	.banner-text {
+		max-width: 60rem;
+		padding: 2rem 0;
+	}
+
+	.banner-title {
+		max-width: 75rem;
+		padding: 2rem 0;
+	}
+
+	.banner-button {
+		display: flex;
+		flex-wrap: wrap;
+		border-radius: 6.25rem;
+		background: #010121;
+		width: 100%;
+		font-size: 2rem;
+		line-height: 4.5rem;
+		font-weight: bold;
+		align-items: center;
+		justify-content: center;
+		margin: 4.5rem 0;
+	}
+</style>
