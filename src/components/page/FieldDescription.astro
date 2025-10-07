@@ -11,9 +11,9 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 			{title}
 		</h3>
 		<div class="field-description">
-			<IconRequired width="1rem" /> 必填 &nbsp; &nbsp;
-			<IconOptional width="1rem" /> 選填 &nbsp; &nbsp;
-			<IconPublish width="1rem" /> 公開
+			<IconRequired width="1.5rem" /> 必填 &nbsp; &nbsp;
+			<IconOptional width="1.5rem" /> 選填 &nbsp; &nbsp;
+			<IconPublish width="1.5rem" /> 公開
 		</div>
 	</div>
 	{
@@ -34,17 +34,18 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 
 <style>
 	.field {
-		margin: 1rem 0;
+		margin: 3rem 0;
 		text-align: left;
 	}
 	.field-head {
 		display: flex;
-		min-height: 4rem;
+		padding: 0 3rem;
+		min-height: 5.6rem;
 		align-items: center;
 		justify-content: space-between;
 		line-height: 1.5rem;
 		border-radius: 1.5rem 1.5rem 0.5rem 0.5rem;
-		background: #566d8d;
+		background: #345b92;
 		margin-bottom: 0.4rem;
 	}
 	.field-description {
@@ -54,18 +55,22 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		align-items: center;
 		color: #000000;
 		background-color: #ffffff;
-		max-height: 1.5rem;
+		font-size: 1.25rem;
+		min-height: 1.5rem;
 		justify-items: center;
 		padding: 0 1rem;
-		max-width: 40rem;
+		max-width: 30rem;
 		line-height: 1.8rem;
 		margin: 0 1.5rem;
 	}
 	.field-title {
-		padding: 0 1.5rem;
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
 	}
 	.field-item {
-		padding: 1rem 1.5rem;
+		padding: 1rem 3rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -74,16 +79,24 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		margin-bottom: 0.4rem;
 	}
 	.field-item-title {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
 		margin-top: 0;
 		margin-bottom: 0.5rem;
 		color: black;
 	}
 	.field-item-description {
+		font-size: 1.5rem;
+		font-weight: 500;
+		line-height: 1.5;
 		word-break: break-word;
 		text-align: justify;
 		max-width: 40rem;
-		line-height: 1.8rem;
 		color: black;
+		font-weight: 500;
+		letter-spacing: 0.075rem;
 	}
 	.field-icon-bar {
 		/* TODO: @media */

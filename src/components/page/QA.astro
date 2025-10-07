@@ -9,7 +9,7 @@ const { content } = Astro.props;
 			content.map((item: { question: string; answer: string }, index: number) => (
 				<>
 					<div class="qa-item" data-open="false" data-index={index}>
-						<h3>{item.question}</h3>
+						<div class="qa-question">{item.question}</div>
 						<div class="qa-toggle">＞</div>
 					</div>
 					<p style="display: none;">{item.answer}</p>
@@ -38,10 +38,18 @@ const { content } = Astro.props;
 	.qa {
 		margin-bottom: 2rem;
 	}
+
 	h2 {
 		text-align: center;
 		font-size: 2rem;
 		margin: 1.5rem 0;
+	}
+
+	.qa-question {
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 2;
+		letter-spacing: 0.05rem;
 	}
 
 	.qa-list {
