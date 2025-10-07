@@ -1,4 +1,6 @@
 ---
+const { btn_url } = Astro.props;
+
 import StarIcon from "@assets/desc_page/star.svg";
 
 import { getImage } from "astro:assets";
@@ -15,11 +17,11 @@ const optimizedBannerBackground = await getImage({ src: BannerBackground, format
 	</h3>
 	<h2 class="banner-title">別再猶豫，讓樂音在這場年會中響起！</h2>
 
-	<div class="banner-button">
+	<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
 		<StarIcon height="2rem" />
 		<span> 立即投稿 </span>
 		<StarIcon height="2rem" />
-	</div>
+	</a>
 </div>
 
 <style>
@@ -58,6 +60,7 @@ const optimizedBannerBackground = await getImage({ src: BannerBackground, format
 		display: flex;
 		flex-wrap: wrap;
 		border-radius: 6.25rem;
+		color: #ffffff;
 		background: #010121;
 		width: 100%;
 		font-size: 2rem;
