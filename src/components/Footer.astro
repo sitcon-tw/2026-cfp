@@ -1,0 +1,319 @@
+---
+import sitcon from "@assets/img/sitcon.svg";
+import facebook from "@assets/social/facebook.svg";
+import twitter from "@assets/social/twitter.svg";
+import youtube from "@assets/social/youtube.svg";
+import instagram from "@assets/social/instagram.svg";
+import telegram from "@assets/social/telegram.svg";
+
+// TODO: Need to update this to real links
+const links = [
+	{ name: "首頁", href: "/" },
+	{ name: "年會主題", href: "/" },
+	{ name: "一般議程投稿", href: "/" },
+	{ name: "開放式議程投稿", href: "/" },
+	{ name: "Demo 投稿", href: "/" }
+];
+
+const support = [
+	{ name: "我要贊助", href: "/" },
+	{ name: "索取贊助徵求書", href: "/" }
+];
+
+const years = [
+	{ year: "2013", href: "https://sitcon.org/2013/" },
+	{ year: "2014", href: "https://sitcon.org/2014/" },
+	{ year: "2015", href: "https://sitcon.org/2015/" },
+	{ year: "2016", href: "https://sitcon.org/2016/" },
+	{ year: "2017", href: "https://sitcon.org/2017/" },
+	{ year: "2018", href: "https://sitcon.org/2018/" },
+	{ year: "2019", href: "https://sitcon.org/2019/" },
+	{ year: "2020", href: "https://sitcon.org/2020/" },
+	{ year: "2021", href: "https://sitcon.org/2021/" },
+	{ year: "2022", href: "https://sitcon.org/2022/" },
+	{ year: "2024", href: "https://sitcon.org/2024/" },
+	{ year: "2025", href: "https://sitcon.org/2025/" }
+];
+
+const socialMedia = [
+	{ name: "Facebook", href: "https://www.facebook.com/SITCONtw", icon: facebook },
+	{ name: "Twitter", href: "https://x.com/sitcontw", icon: twitter },
+	{ name: "YouTube", href: "https://www.youtube.com/c/SITCONArchive", icon: youtube },
+	{ name: "Instagram", href: "https://www.instagram.com/sitcon.tw/", icon: instagram },
+	{ name: "Telegram", href: "https://sitcon.org/tg", icon: telegram }
+];
+---
+
+<footer class="footer">
+	<div class="footer-container">
+		<div class="footer-top">
+			<div class="footer-column">
+				<h3>連結</h3>
+				<ul>
+					{
+						links.map((link) => (
+							<li>
+								<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="footer-column">
+				<h3>支持我們</h3>
+				<ul>
+					{
+						support.map((item) => (
+							<li>
+								<a href={`${import.meta.env.BASE_URL}${item.href.slice(1)}`}>{item.name}</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+
+			<div class="footer-column">
+				<h3>歷年主題網站</h3>
+				<div class="years-grid">
+					{
+						years.map((item) => (
+							<a href={item.href} target="_blank" rel="noopener noreferrer">
+								{item.year}
+							</a>
+						))
+					}
+				</div>
+			</div>
+
+			<div class="footer-column">
+				<h3>聯絡我們</h3>
+				<a href="mailto:contact@sitcon.org" class="contact-email">contact@sitcon.org</a>
+			</div>
+		</div>
+
+		<div class="footer-divider"></div>
+
+		<div class="footer-bottom">
+			<div class="footer-branding">
+				<img src={sitcon.src} alt="SITCON" class="footer-logo" />
+				<div class="footer-text">
+					<p class="footer-title">學生計算機年會</p>
+					<p class="footer-subtitle">Students' Information Technology Conference</p>
+				</div>
+			</div>
+
+			<div class="social-media">
+				{
+					socialMedia.map((social) => (
+						<a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} class="social-icon">
+							<img src={social.icon.src} alt={social.name} />
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</footer>
+
+<style>
+	.footer {
+		background: #566D8D;
+		color: white;
+		padding: 4rem 2rem 2rem;
+		margin-top: auto;
+		font-family: "Noto Sans TC", sans-serif;
+	}
+
+	.footer-container {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	.footer-top {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 3rem;
+		margin-bottom: 3rem;
+	}
+
+	.footer-column h3 {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin-bottom: 1.5rem;
+		color: white;
+	}
+
+	.footer-column ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.footer-column ul li {
+		margin-bottom: 0.75rem;
+	}
+
+	.footer-column a {
+		color: rgba(255, 255, 255, 0.9);
+		text-decoration: none;
+		transition: color 0.3s ease;
+		font-size: 0.95rem;
+	}
+
+	.footer-column a:hover {
+		color: white;
+	}
+
+	.years-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(5, auto);
+		grid-auto-flow: column;
+		gap: 0.75rem 2rem;
+	}
+
+	.years-grid a {
+		color: rgba(255, 255, 255, 0.9);
+		text-decoration: none;
+		transition: color 0.3s ease;
+		font-size: 0.95rem;
+	}
+
+	.years-grid a:hover {
+		color: white;
+	}
+
+	.contact-email {
+		font-size: 1rem;
+		color: rgba(255, 255, 255, 0.9);
+	}
+
+	.footer-divider {
+		height: 1px;
+		background: rgba(255, 255, 255, 0.3);
+		margin: 2rem 0;
+	}
+
+	.footer-bottom {
+		display: flex;
+		justify-content: space-between;
+    margin-top: 3.5rem;
+		align-items: center;
+		gap: 2rem;
+	}
+
+	.footer-branding {
+		display: flex;
+		align-items: flex-end;
+		gap: 1.5rem;
+	}
+
+	.footer-logo {
+		height: 50px;
+		width: auto;
+		filter: brightness(0) invert(1);
+    margin-bottom: 0.25rem;
+  }
+
+	.footer-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.footer-title {
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0;
+	}
+
+	.footer-subtitle {
+		font-size: 0.85rem;
+		margin: 0;
+		opacity: 0.9;
+		font-family: "Inter", sans-serif;
+	}
+
+	.social-media {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.social-icon {
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 2px solid #ffffff;
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+	}
+
+	.social-icon:hover {
+		background: rgba(255, 255, 255, 0.2);
+		border-color: white;
+	}
+
+	.social-icon img {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 1024px) {
+		.footer-top {
+			grid-template-columns: repeat(2, 1fr);
+			gap: 2rem;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.footer {
+			padding: 3rem 1.5rem 2rem;
+		}
+
+		.footer-top {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+
+		.footer-bottom {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 2rem;
+		}
+
+		.social-media {
+			width: 100%;
+			justify-content: flex-start;
+		}
+
+		.years-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.footer-branding {
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+		}
+
+		.footer-logo {
+			height: 40px;
+		}
+
+		.social-icon {
+			width: 2rem;
+			height: 2rem;
+		}
+
+		.social-icon img {
+			width: 1rem;
+			height: 1rem;
+		}
+	}
+</style>
