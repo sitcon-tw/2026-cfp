@@ -1,5 +1,6 @@
 ---
 const { content } = Astro.props;
+import ArrowIcon from "@assets/desc_page/arrow.svg";
 ---
 
 <div class="qa">
@@ -10,7 +11,9 @@ const { content } = Astro.props;
 				<>
 					<div class="qa-item" data-open="false" data-index={index}>
 						<div class="qa-question">{item.question}</div>
-						<div class="qa-toggle">＞</div>
+						<div class="qa-toggle">
+							<ArrowIcon />
+						</div>
 					</div>
 					<p style="display: none;">{item.answer}</p>
 				</>
@@ -25,7 +28,7 @@ const { content } = Astro.props;
 		item.addEventListener("click", () => {
 			const isOpen = item.getAttribute("data-open") === "true";
 			item.setAttribute("data-open", !isOpen ? "true" : "false");
-			item.querySelector(".qa-toggle")?.setAttribute("style", !isOpen ? "rotate: 270deg;" : "rotate: 90deg;");
+			item.querySelector(".qa-toggle")?.setAttribute("style", !isOpen ? "rotate: 180deg;" : "rotate: 0deg;");
 			const answer = item.nextElementSibling;
 			if (answer) {
 				answer.setAttribute("style", !isOpen ? "display: block;" : "display: none;");
@@ -60,14 +63,11 @@ const { content } = Astro.props;
 		cursor: pointer;
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		border-radius: 3.6875rem;
 		background: #566d8d;
 		padding: 0.75rem 1.5rem;
 		margin: 1rem 0;
-	}
-
-	.qa-toggle {
-		rotate: 90deg;
 	}
 
 	p {
