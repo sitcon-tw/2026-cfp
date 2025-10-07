@@ -1,10 +1,13 @@
 ---
 import StarIcon from "@assets/desc_page/star.svg";
+
+import { getImage } from "astro:assets";
+
+import BannerBackground from "@assets/desc_page/banner_bg.webp";
+const optimizedBannerBackground = await getImage({ src: BannerBackground, format: "png" });
 ---
 
-<div class="banner">
-	<!-- TODO: bg-icon -->
-	<!-- TODO: word-color -->
+<div class="banner" style={`background-image: url(${optimizedBannerBackground.src});`}>
 	<h3 class="banner-text">
 		那段未曾被聽見的旋律，等著在混沌中覺醒。
 		<br />
@@ -21,22 +24,34 @@ import StarIcon from "@assets/desc_page/star.svg";
 
 <style>
 	.banner {
-		background: #ffffff;
-		padding: 8rem 4rem 8rem 4rem;
+		padding: 16rem 4rem 8rem 4rem;
 		width: 100%;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
 	}
 
 	.banner-text {
+		display: inline-block;
 		font-size: 2rem;
+		max-width: 100%;
+		text-wrap: balance;
 		line-height: 5rem;
-		color: #000000;
 		padding: 2rem 0;
+		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
 	}
 
 	.banner-title {
-		font-size: 4rem;
-		color: #000000;
+		font-size: 5rem;
 		padding: 2rem 0;
+		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+		text-wrap: balance;
 	}
 
 	.banner-button {
