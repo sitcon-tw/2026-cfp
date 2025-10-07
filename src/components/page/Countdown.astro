@@ -1,9 +1,9 @@
 ---
 import ArrowRight from "@assets/desc_page/arrow_right.svg";
-const { end, start, form_url } = Astro.props;
+const { end1, end2, start, form_url } = Astro.props;
 ---
 
-<div class="countdown" data-date-end={end} data-date-start={start}>
+<div class="countdown" data-date-end1={end1} data-date-end2={end2} data-date-start={start}>
 	<div class="title-bar">
 		<h2 class="title">投稿截止</h2>
 		<div class="progress-bar">
@@ -35,17 +35,7 @@ const { end, start, form_url } = Astro.props;
 	<div class="footer">
 		<div class="deadline">
 			截止時間<br />
-			{
-				new Date(end).toLocaleString("zh-TW", {
-					year: "numeric",
-					month: "numeric",
-					day: "numeric",
-					weekday: "narrow",
-					hour: "2-digit",
-					minute: "2-digit",
-					hour12: false
-				})
-			}
+			<span class="deadline-text"></span>
 		</div>
 		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿">
 			立即投稿
@@ -105,7 +95,8 @@ const { end, start, form_url } = Astro.props;
 
 	.timer-number {
 		font-size: 4.5rem;
-		font-weight: 500;	}
+		font-weight: 500;
+	}
 
 	.timer-text {
 		font-size: 1.5rem;
@@ -145,6 +136,22 @@ const { end, start, form_url } = Astro.props;
 </style>
 
 <script>
+	// TODO: end countdown
+	const end =
+		new Date() < new Date(document.querySelector(".countdown")!.getAttribute("data-date-end1") || "")
+			? document.querySelector(".countdown")!.getAttribute("data-date-end1")
+			: document.querySelector(".countdown")!.getAttribute("data-date-end2");
+	document.querySelector(".countdown")!.setAttribute("data-date-end", end || "");
+
+	const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit"
+	});
+	document.querySelector(".deadline-text")!.textContent = deadlineText.replace(",", "");
+
 	const dateToCountdownNumber = (date: string) => {
 		const now = new Date();
 		const deadline = new Date(date);
