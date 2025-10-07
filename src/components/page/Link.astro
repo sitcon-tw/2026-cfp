@@ -1,0 +1,59 @@
+---
+const { presentation_content, espresso_content } = Astro.props;
+---
+
+<div class="link-section">
+	<h3>PRESENTATION</h3>
+	<div class="links">
+		{
+			presentation_content.map((item: { title: string; img: string; href: string }) => {
+				return (
+					<a class="link-item" href={item.href} target="_blank" rel="noopener">
+						<img class="link-img" src={item.img} alt={item.title} />
+						<span>{item.title}</span>
+					</a>
+				);
+			})
+		}
+	</div>
+
+	<h3>ESPRESSO</h3>
+
+	<div class="links">
+		{
+			espresso_content.map((item: { title: string; img: string; href: string }) => {
+				return (
+					<a class="link-item" href={item.href} target="_blank" rel="noopener">
+						<img class="link-img" src={item.img} alt={item.title} />
+						<span>{item.title}</span>
+					</a>
+				);
+			})
+		}
+	</div>
+</div>
+
+<style>
+	.links {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1rem;
+		margin-top: 1rem;
+	}
+
+	.link-img {
+		width: 100%;
+		height: auto;
+		object-fit: contain;
+	}
+
+	.link-item {
+		max-height: 14rem;
+		text-decoration: none;
+		color: #c4c4c4;
+		align-items: center;
+		border-radius: 1.25rem;
+		background: #394877;
+		padding: 1rem;
+	}
+</style>
