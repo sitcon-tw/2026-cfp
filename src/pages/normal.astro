@@ -81,22 +81,22 @@ const field_content = [
 	}
 ];
 
-const table_content = [
+const block_content = [
 	{
-		header: "1.實作工作坊",
-		content: `111實作是學習一項新技能最直接項新技能最直項新技能最直項新技能最直的方式，期`
+		title: "Presentation",
+		time: {
+			spotlight: "30",
+			normal: "min"
+		},
+		detail: "Presentation 共 40 分鐘 ，包含完整 30 分鐘的議程與 10 分鐘的問答時間，讓您有充分的時間展示想法、描述經歷、和與會者交流。"
 	},
 	{
-		header: "2.實作工作坊",
-		content: `222實作是學習一項新技學習一項新技能學習一項新技能實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技學習一項新技能能最直接的方式，期`
-	},
-	{
-		header: "3.實作工作坊",
-		content: `333實作是學習一項新技能最直接的項新技能最直項新技能最直項新技能最直項新技能最直方式，期`
-	},
-	{
-		header: "4.實作工作坊",
-		content: `444實作是學習一項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直接的方式，期`
+		title: "Espresso",
+		time: {
+			spotlight: "10",
+			normal: "min"
+		},
+		detail: "Espresso 僅有 10 分鐘 ，挑戰最為濃縮與精華的議程，為與會者帶來短而精緻的知識洗禮。"
 	}
 ];
 
@@ -185,109 +185,165 @@ const espresso_content = [
 			</Content>
 
 			<Content title="議程種類">
-				<div></div>
-				<!-- TODO: blocks -->
-			</Content>
+				<div class="blocks">
+					<div class="block">
+						<h3 class="block-title">{block_content[0].title}</h3>
+						<span class="block-time-normal">
+							<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
+							{block_content[0].time.normal}
+						</span>
+						<p class="block-content">{block_content[0].detail}</p>
+					</div>
 
-			<Content title="投稿主題範例">
+					<div class="block">
+						<h3 class="block-title">Espresso</h3>
+						<div class="block-time-normal">
+							<span class="block-time-spotlight">20</span>
+							min
+						</div>
+						<p class="block-content">spresso 僅有 10 分鐘 ，挑戰最為濃縮與精華的議程，為與會者帶來短而精緻的知識洗禮。</p>
+					</div>
+				</div>
+
+				<Content title="投稿主題範例">
+					<ContentFormat>
+						<MdContent />
+
+						<!-- Links start -->
+						<h3>PRESENTATION</h3>
+						<div class="links">
+							{
+								presentation_content.map(item => {
+									return (
+										<a class="link-item" href={item.href}>
+											<img class="link-img" src={item.img} alt="HTML5" />
+											<span>{item.title}</span>
+										</a>
+									);
+								})
+							}
+						</div>
+
+						<h3>ESPRESSO</h3>
+
+						<div class="links">
+							{
+								espresso_content.map(item => {
+									return (
+										<a class="link-item" href={item.href}>
+											<img class="link-img" src={item.img} alt="HTML5" />
+											<span>{item.title}</span>
+										</a>
+									);
+								})
+							}
+						</div>
+					</ContentFormat>
+				</Content>
+
+				<div>
+					<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+					<FieldDescription title="投稿欄位說明" content={field_content} />
+					<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
+				</div>
+
 				<ContentFormat>
 					<MdContent />
-
-					<!-- Links start -->
-					<h3>PRESENTATION</h3>
-					<div class="links">
-						{
-							presentation_content.map(item => {
-								return (
-									<a class="link-item" href={item.href}>
-										<img class="link-img" src={item.img} alt="HTML5" />
-										<span>{item.title}</span>
-									</a>
-								);
-							})
-						}
-					</div>
-
-					<h3>ESPRESSO</h3>
-
-					<div class="links">
-						{
-							espresso_content.map(item => {
-								return (
-									<a class="link-item" href={item.href}>
-										<img class="link-img" src={item.img} alt="HTML5" />
-										<span>{item.title}</span>
-									</a>
-								);
-							})
-						}
-					</div>
 				</ContentFormat>
+
+				<QA content={qa_content} />
 			</Content>
-
-			<div>
-				<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
-				<FieldDescription title="投稿欄位說明" content={field_content} />
-				<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
-			</div>
-
-			<ContentFormat>
-				<MdContent />
-			</ContentFormat>
-
-			<QA content={qa_content} />
 		</div>
 		<div class="banner">
 			<Banner />
 		</div>
 	</main>
+
+	<style>
+		main {
+			margin: 2rem 0;
+			height: 100vh;
+			display: grid;
+			grid-template-columns: 1fr 4fr;
+			grid-template-rows: auto auto;
+		}
+
+		.blocks {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1.5rem;
+			margin: 2rem 1rem;
+		}
+
+		.block {
+			display: block;
+			text-align: center;
+			border-radius: 1.5rem;
+			padding: 1rem;
+			border: 4px solid #86aee5;
+			background-color: #fff;
+			color: #86aee5;
+			align-content: start;
+		}
+
+		.block-title {
+			font-size: 2rem;
+			margin-bottom: 0.5rem;
+		}
+
+		.block-content {
+			word-wrap: break-word;
+			text-align: justify;
+			margin: 0.5rem 0;
+			font-weight: bold;
+		}
+
+		.block-time-spotlight {
+			font-size: 5rem;
+			font-weight: bold;
+		}
+
+		.block-time-normal {
+			font-size: 2rem;
+		}
+
+		.links {
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			gap: 1rem;
+			margin-top: 1rem;
+		}
+
+		.link-img {
+			width: 100%;	
+			height: auto;
+			object-fit: contain;
+		}
+
+		.link-item {
+			max-height: 14rem;
+			text-decoration: none;
+			color: #c4c4c4;
+			align-items: center;
+			border-radius: 1.25rem;
+			background: #394877;
+			padding: 1rem;
+		}
+
+		.banner {
+			grid-column: 1 / -1;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			gap: 2rem;
+			padding: 0 3rem;
+		}
+
+		.toc {
+			padding: 0 2rem;
+			justify-self: center;
+		}
+	</style>
 </Layout>
-
-<style>
-	main {
-		margin: 2rem 0;
-		height: 100vh;
-		display: grid;
-		grid-template-columns: 1fr 4fr;
-		grid-template-rows: auto auto;
-	}
-
-	.links {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		gap: 1rem;
-		margin-top: 1rem;
-	}
-
-	.link-img {
-		width: 100%;
-		min-height: 3rem;
-		height: auto;
-		object-fit: contain;
-	}
-
-	.link-item {
-		max-height: 14rem;
-		text-decoration: none;
-		color: #c4c4c4;
-		align-items: center;
-		border-radius: 1.25rem;
-		background: #394877;
-		padding: 1rem;
-	}
-
-	.banner {
-		grid-column: 1 / -1;
-	}
-
-	.container {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		padding: 0 3rem;
-	}
-
-	.toc {
-		padding: 0 2rem;
-	}
-</style>
