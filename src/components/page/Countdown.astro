@@ -57,6 +57,16 @@ const { end1, end2, start, form_url } = Astro.props;
 		justify-content: space-around;
 	}
 
+	@media (max-width: 50rem) {
+		.countdown {
+			padding: 2.5rem;
+		}
+		.footer {
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+
 	.link {
 		display: flex;
 		color: #566d8d;
@@ -85,6 +95,7 @@ const { end1, end2, start, form_url } = Astro.props;
 		align-content: center;
 		flex-grow: 0.4;
 		border: 2px solid rgba(255, 255, 255, 0.8);
+		min-width: 17.5rem;
 	}
 
 	.timer {
@@ -92,6 +103,7 @@ const { end1, end2, start, form_url } = Astro.props;
 		justify-content: space-around;
 		margin: 2rem 0;
 		text-align: center;
+		gap: 0.7rem;
 	}
 
 	.timer-number {
