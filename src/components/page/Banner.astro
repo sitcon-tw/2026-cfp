@@ -3,18 +3,16 @@ const { btn_url } = Astro.props;
 
 import StarIcon from "@assets/desc_page/star.svg";
 
-import { getImage } from "astro:assets";
-
-import BannerBackground from "@assets/desc_page/banner_bg.webp";
-const optimizedBannerBackground = await getImage({ src: BannerBackground, format: "png" });
+import BannerBgIcon from "@assets/desc_page/banner_bg_icon.webp";
 ---
 
-<div class="banner" style={`background-image: url(${optimizedBannerBackground.src});`}>
+<div class="banner">
 	<h3 class="banner-text">
 		那段未曾被聽見的旋律，等著在混沌中覺醒。
 		<br />
 		現在是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。
 	</h3>
+	<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
 	<h2 class="banner-title">別再猶豫，讓樂音在這場年會中響起！</h2>
 
 	<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
@@ -26,11 +24,12 @@ const optimizedBannerBackground = await getImage({ src: BannerBackground, format
 
 <style>
 	.banner {
-		padding: 16rem 4rem 8rem 4rem;
+		position: relative;
+		padding: 28rem 4rem 8rem 4rem;
 		width: 100%;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-size: cover;
+		background: white;
+		mask-image: linear-gradient(to bottom, transparent, white 20%);
+		-webkit-mask-image: linear-gradient(to bottom, transparent, white 20%);
 	}
 
 	.banner-text {
@@ -69,5 +68,15 @@ const optimizedBannerBackground = await getImage({ src: BannerBackground, format
 		align-items: center;
 		justify-content: center;
 		margin: 4.5rem 0;
+	}
+
+	.bg-icon {
+		position: absolute;
+		max-width: 20rem;
+		top: 17rem;
+		right: 3rem;
+		opacity: 0.1;
+		pointer-events: none;
+		z-index: 0;
 	}
 </style>
