@@ -11,9 +11,9 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 			{title}
 		</h3>
 		<div class="field-description">
-			<IconRequired width="1.5rem" /> 必填
-			<IconOptional width="1.5rem" /> 選填
-			<IconPublish width="1.5rem" /> 公開
+			<IconRequired width="1.5rem" height="1.5rem" /> 必填 &nbsp;
+			<IconOptional width="1.5rem" height="1.5rem" /> 選填 &nbsp;
+			<IconPublish width="1.5rem" height="1.5rem" /> 公開 &nbsp;
 		</div>
 	</div>
 	{
@@ -39,7 +39,7 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 	}
 	.field-head {
 		display: flex;
-		padding: 0 0 0 2rem;
+		padding: 1rem 2rem 1rem 2rem;
 		min-height: 5.6rem;
 		align-items: center;
 		justify-content: space-between;
@@ -53,15 +53,14 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		gap: 0.5rem;
 		border-radius: 0.75rem;
 		align-items: center;
+		text-align: center;
 		color: #000000;
 		background-color: #ffffff;
 		font-size: 1.25rem;
 		min-height: 1.5rem;
-		justify-items: center;
-		padding: 0 1rem;
+		padding: 0.5rem 1rem;
 		max-width: 30rem;
 		line-height: 1.8rem;
-		margin: 0 1.5rem;
 	}
 	.field-title {
 		font-size: 2rem;
@@ -88,20 +87,29 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		color: black;
 	}
 	.field-item-description {
-		font-size: 1.5rem;
-		font-weight: 500;
-		line-height: 1.5;
+		font-size: 1rem;
 		word-break: break-word;
 		text-align: justify;
 		max-width: 40rem;
 		color: black;
-		font-weight: 500;
-		letter-spacing: 0.075rem;
 	}
 	.field-icon-bar {
-		/* TODO: @media */
 		margin-left: 0.8rem;
 		display: flex;
 		gap: 0.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.field-head {
+			display: block;
+		}
+
+		.field-title {
+			padding: 0 0 0.5rem 0;
+		}
+
+		.field-description {
+			display: block;
+		}
 	}
 </style>

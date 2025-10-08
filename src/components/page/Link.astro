@@ -62,4 +62,10 @@ const { presentation_content, espresso_content } = Astro.props;
 		background: #394877;
 		padding: 1rem;
 	}
+
+	@media (max-width: 768px) {
+		.links {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
 </style>

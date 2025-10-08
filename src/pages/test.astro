@@ -105,7 +105,7 @@ const table_content = [
 ---
 
 <Layout>
-	<a class="btn-fixed" href={submit_url} alt="立即投稿" target="_blank" rel="noopener">立即<br />投稿</a>
+	<a class="btn-fixed" href={submit_url}>立即<br />投稿</a>
 	<div class="out-container">
 		<div class="main-container">
 			<div class="toc">
@@ -133,9 +133,9 @@ const table_content = [
 					<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
 				</div>
 
-				<ContentFormat>
+				<!-- <ContentFormat>
 					<MdContent />
-				</ContentFormat>
+				</ContentFormat> -->
 
 				<QA content={qa_content} />
 			</main>

@@ -57,16 +57,6 @@ const { end1, end2, start, form_url } = Astro.props;
 		justify-content: space-around;
 	}
 
-	@media (max-width: 50rem) {
-		.countdown {
-			padding: 2.5rem;
-		}
-		.footer {
-			flex-direction: column;
-			align-items: center;
-		}
-	}
-
 	.link {
 		display: flex;
 		color: #566d8d;
@@ -125,7 +115,7 @@ const { end1, end2, start, form_url } = Astro.props;
 	.title-bar {
 		display: flex;
 		align-items: center;
-		gap: 0.7rem;
+		gap: 1rem;
 	}
 
 	.progress-bar {
@@ -133,18 +123,43 @@ const { end1, end2, start, form_url } = Astro.props;
 		flex-grow: 1;
 		background: #ffffff;
 		border-radius: 1rem;
-		margin: 0 1rem;
 		overflow: hidden;
 	}
+
 	.progress-number {
 		font-size: larger;
 		letter-spacing: 0.4rem;
 	}
+
 	.progress {
 		height: 100%;
 		background: #86aee5;
 		border-radius: 1rem 0 0 1rem;
 		transition: width 0.5s ease-in-out;
+	}
+
+	@media (max-width: 768px) {
+		.countdown {
+			padding: 2.5rem;
+		}
+
+		.timer {
+			display: block;
+		}
+
+		.footer {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.progress-bar {
+			width: 100%;
+		}
+
+		.title-bar {
+			flex-direction: column;
+			justify-self: center;
+		}
 	}
 </style>
 
