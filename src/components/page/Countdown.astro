@@ -136,12 +136,10 @@ const { end1, end2, start, form_url } = Astro.props;
 </style>
 
 <script>
-	// TODO: end countdown
 	const end =
 		new Date() < new Date(document.querySelector(".countdown")!.getAttribute("data-date-end1") || "")
 			? document.querySelector(".countdown")!.getAttribute("data-date-end1")
 			: document.querySelector(".countdown")!.getAttribute("data-date-end2");
-	document.querySelector(".countdown")!.setAttribute("data-date-end", end || "");
 
 	const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
 		year: "numeric",
@@ -179,8 +177,7 @@ const { end1, end2, start, form_url } = Astro.props;
 	const updateCountdown = () => {
 		document.querySelectorAll(".countdown").forEach(el => {
 			// Update countdown numbers
-			const end_string = el.getAttribute("data-date-end") || "";
-			const countdown = dateToCountdownNumber(end_string);
+			const countdown = dateToCountdownNumber(end || "");
 			el.querySelector(".countdown-days")!.textContent = countdown.days;
 			el.querySelector(".countdown-hours")!.textContent = countdown.hours;
 			el.querySelector(".countdown-minutes")!.textContent = countdown.minutes;
@@ -189,7 +186,7 @@ const { end1, end2, start, form_url } = Astro.props;
 			// Update progress bar
 			const start_string = el.getAttribute("data-date-start") || "";
 			const now = new Date();
-			const deadline = new Date(end_string);
+			const deadline = new Date(end || "");
 			const start = new Date(start_string);
 			const total = deadline.getTime() - start.getTime();
 			const elapsed = now.getTime() - start.getTime();
@@ -198,6 +195,14 @@ const { end1, end2, start, form_url } = Astro.props;
 			el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
 		});
 	};
-	setInterval(updateCountdown, 1000);
-	updateCountdown();
+	if (new Date() > new Date(end || "")) {
+		document.querySelectorAll(".countdown").forEach(el => {
+			el.querySelectorAll(".timer-number").forEach(num => (num.textContent = "00"));
+			el.querySelector(".progress")!.setAttribute("style", `width: 100%`);
+			el.querySelector(".progress-number")!.textContent = `100%`;
+		});
+	} else {
+		setInterval(updateCountdown, 1000);
+		updateCountdown();
+	}
 </script>
