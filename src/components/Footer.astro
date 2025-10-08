@@ -21,19 +21,19 @@ const support = [
 ];
 
 const years = [
-	{ year: "2013", href: "https://sitcon.org/2013/" },
-	{ year: "2014", href: "https://sitcon.org/2014/" },
-	{ year: "2015", href: "https://sitcon.org/2015/" },
-	{ year: "2016", href: "https://sitcon.org/2016/" },
-	{ year: "2017", href: "https://sitcon.org/2017/" },
-	{ year: "2018", href: "https://sitcon.org/2018/" },
-	{ year: "2019", href: "https://sitcon.org/2019/" },
-	{ year: "2020", href: "https://sitcon.org/2020/" },
-	{ year: "2021", href: "https://sitcon.org/2021/" },
-	{ year: "2022", href: "https://sitcon.org/2022/" },
-	{ year: "2023", href: "https://sitcon.org/2023/" },
+	{ year: "2025", href: "https://sitcon.org/2025/" },
 	{ year: "2024", href: "https://sitcon.org/2024/" },
-	{ year: "2025", href: "https://sitcon.org/2025/" }
+	{ year: "2023", href: "https://sitcon.org/2023/" },
+	{ year: "2022", href: "https://sitcon.org/2022/" },
+	{ year: "2021", href: "https://sitcon.org/2021/" },
+	{ year: "2020", href: "https://sitcon.org/2020/" },
+	{ year: "2019", href: "https://sitcon.org/2019/" },
+	{ year: "2018", href: "https://sitcon.org/2018/" },
+	{ year: "2017", href: "https://sitcon.org/2017/" },
+	{ year: "2016", href: "https://sitcon.org/2016/" },
+	{ year: "2015", href: "https://sitcon.org/2015/" },
+	{ year: "2014", href: "https://sitcon.org/2014/" },
+	{ year: "2013", href: "https://sitcon.org/2013/" },
 ];
 
 const socialMedia = [
@@ -52,7 +52,7 @@ const socialMedia = [
 				<h3>連結</h3>
 				<ul>
 					{
-						links.map((link) => (
+						links.map(link => (
 							<li>
 								<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
 							</li>
@@ -65,7 +65,7 @@ const socialMedia = [
 				<h3>支持我們</h3>
 				<ul>
 					{
-						support.map((item) => (
+						support.map(item => (
 							<li>
 								<a href={`${import.meta.env.BASE_URL}${item.href.slice(1)}`}>{item.name}</a>
 							</li>
@@ -78,7 +78,7 @@ const socialMedia = [
 				<h3>歷年主題網站</h3>
 				<div class="years-grid">
 					{
-						years.map((item) => (
+						years.map(item => (
 							<a href={item.href} target="_blank" rel="noopener noreferrer">
 								{item.year}
 							</a>
@@ -106,7 +106,7 @@ const socialMedia = [
 
 			<div class="social-media">
 				{
-					socialMedia.map((social) => (
+					socialMedia.map(social => (
 						<a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} class="social-icon">
 							<img src={social.icon.src} alt={social.name} />
 						</a>
@@ -119,7 +119,7 @@ const socialMedia = [
 
 <style>
 	.footer {
-		background: #566D8D;
+		background: #33598e;
 		color: white;
 		padding: 4rem 2rem 2rem;
 		margin-top: auto;
@@ -168,9 +168,8 @@ const socialMedia = [
 
 	.years-grid {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(3, minmax(0, 6rem));
 		grid-template-rows: repeat(5, auto);
-		grid-auto-flow: column;
 		gap: 0.75rem 2rem;
 	}
 
@@ -199,14 +198,14 @@ const socialMedia = [
 	.footer-bottom {
 		display: flex;
 		justify-content: space-between;
-    margin-top: 3rem;
-		align-items: center;
+		margin-top: 3rem;
+		align-items: end;
 		gap: 2rem;
 	}
 
 	.footer-branding {
 		display: flex;
-		align-items: flex-end;
+		align-items: end;
 		gap: 1.5rem;
 	}
 
@@ -214,7 +213,7 @@ const socialMedia = [
 		height: 50px;
 		width: auto;
 		filter: brightness(0) invert(1);
-    margin-bottom: 0.25rem;
+		margin-bottom: 0.25rem;
 	}
 
 	.footer-text {
