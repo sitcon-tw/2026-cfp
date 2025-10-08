@@ -16,8 +16,8 @@ const { schedule, calendarUrl } = Astro.props;
 	{
 		schedule.map((item: { date: Date; event: string }) => (
 			<div class="event" data-date={item.date.toISOString()}>
-				<div class="event-col">{item.date.toLocaleDateString("zh-Hant")}</div>
-				<div class="event-col">{item.event}</div>
+				<div class="event-col-date">{item.date.toLocaleDateString("zh-Hant")}</div>
+				<div class="event-col-event">{item.event}</div>
 			</div>
 		))
 	}
@@ -65,28 +65,43 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event {
 		display: flex;
-		border-radius: 1rem;
-		background: #ffffff;
-		color: #000000;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: 1rem;
 		font-size: 1.5rem;
 		font-weight: 700;
-		line-height: 2;
-		width: 100%;
-		align-content: center;
-		height: 4.25rem;
-		margin-top: 1rem;
-		align-items: center;
+		line-height: 3;
+		letter-spacing: 0.075rem;
+		gap: 1rem;
 	}
 
-	.event-before {
-		background: #8d5657;
-		color: #ffffff;
-	}
-
-	.event-col {
+	.event .event-col-date {
+		border-radius: 1rem 0 0 1rem;
+		background: #ffffff;
+		color: #010121;
 		flex: 1;
 	}
 
+	.event .event-col-event {
+		border-radius: 0 1rem 1rem 0;
+		background: #ffffff;
+		color: #010121;
+		flex: 2;
+	}
+
+	.event-before .event-col-date {
+		border-radius: 1rem 0 0 1rem;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
+		color: #ffffff;
+		flex: 1;
+	}
+
+	.event-before .event-col-event {
+		border-radius: 0 1rem 1rem 0;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
+		color: #ffffff;
+		flex: 2;
+	}
 </style>
 
 <script>
