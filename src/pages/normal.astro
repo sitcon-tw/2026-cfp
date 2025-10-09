@@ -370,7 +370,7 @@ const espresso_content = [
 	.toc-mobile {
 		display: none;
 		position: fixed;
-		top: 0;
+		top: 4.2rem;
 		right: 0;
 		width: 8.5rem;
 		max-width: 300px;
@@ -381,32 +381,7 @@ const espresso_content = [
 		transform: translateX(100%);
 		transition: transform 0.3s ease;
 		z-index: 1000;
-	}
-
-	.toc-mobile.active {
 		transform: translateX(0);
-	}
-
-	.toc-mobile h3 {
-		margin-top: 0;
-		font-size: 18px;
-	}
-
-	.toc-mobile ul {
-		list-style: none;
-		padding-left: 0;
-	}
-
-	.toc-mobile a {
-		display: block;
-		padding: 8px 0;
-		color: #0077cc;
-		text-decoration: none;
-		font-size: 16px;
-	}
-
-	.toc-mobile a:hover {
-		text-decoration: underline;
 	}
 
 	@media (max-width: 768px) {
@@ -414,9 +389,15 @@ const espresso_content = [
 			display: none;
 		}
 
+		.toc-mobile:hover {
+			display: block;
+			opacity: 1;
+		}
+
 		.toc-mobile,
 		.toc-toggle {
 			display: block;
+			opacity: 0;
 		}
 
 		.main-container {
@@ -432,12 +413,3 @@ const espresso_content = [
 		}
 	}
 </style>
-
-<script>
-	const tocBtn = document.getElementById("toc-toggle");
-	const tocPanel = document.getElementById("toc");
-
-	tocBtn?.addEventListener("click", () => {
-		tocPanel?.classList.toggle("active");
-	});
-</script>
