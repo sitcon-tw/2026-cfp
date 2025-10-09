@@ -1,5 +1,5 @@
 ---
-const { btn_url } = Astro.props;
+const { btn_url, h3, h2 } = Astro.props;
 
 import StarIcon from "@assets/desc_page/star.svg";
 
@@ -8,12 +8,10 @@ import BannerBgIcon from "@assets/desc_page/banner_bg_icon.webp";
 
 <div class="banner">
 	<h3 class="banner-text">
-		那段未曾被聽見的旋律，等著在混沌中覺醒。
-		<br />
-		現在是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。
+		{h3}
 	</h3>
 	<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
-	<h2 class="banner-title">別再猶豫，讓樂音在這場年會中響起！</h2>
+	<h2 class="banner-title">{h2}</h2>
 
 	<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
 		<StarIcon height="2rem" />
@@ -68,6 +66,7 @@ import BannerBgIcon from "@assets/desc_page/banner_bg_icon.webp";
 		align-items: center;
 		justify-content: center;
 		margin: 4.5rem 0;
+		text-decoration: none;
 	}
 
 	.bg-icon {
