@@ -9,41 +9,33 @@ import ContentFormat from "@components/page/ContentFormat.astro";
 import FieldDescription from "@components/page/FieldDescription.astro";
 import PersonalInfo from "@components/page/PersonalInfo.astro";
 import Banner from "@components/page/Banner.astro";
-import Table from "@components/page/Table.astro";
 import QA from "@components/page/QA.astro";
 
-import MdContent from "@assets/doc/test.md";
+import MdContent from "@assets/doc/demo/Content.md";
 
-const submit_url = "https://sitcon.org/";
+const submit_url = "https://forms.gle/VXedKquqWMTar5aQ7";
 
 const page_info = {
-	title: "Demo徵稿",
-	subtitle: "開放式議程為 40 分鐘的議程，該議程不限定進行方式，希望跳脫傳統議程框架，透過雙向互動、實作等，任何你想得到的非傳統形式進行此場議程。"
+	title: "Demo 展徵稿",
+	subtitle: "現場專案演示，汲取即時反饋。",
+	description:
+		"Demo 展提供展出者與會眾面對面的交流機會，透過專案演示、駐足討論獲得即時反饋，以促進專案的完善與拓展。Demo 展歡迎各階段參與者，從基礎專案研究至進階應用實作，包括但不限於學生專題展示、遊戲團隊試玩，皆可投稿。我們期望此形式不僅讓展出者曝光作品及取得更廣泛的回饋，更能從會眾的多元視角獲取建設性建議，進而激發後續發展靈感。"
 };
 
 const schedule = [
-	{ date: new Date("2025-01-11"), event: "XX截止" },
-	{ date: new Date("2025-10-15"), event: "YY公布" },
-	{ date: new Date("2025-10-15"), event: "ZZ發表" }
+	{ date: new Date("2025-10-12"), event: "開始徵稿", time_text: "2025/10/12" },
+	{ date: new Date("2025-11-30T23:59:00"), event: "早鳥投稿截止", time_text: "2025/11/30 23:59" },
+	{ date: new Date("2026-01-23T23:59:00"), event: "投稿及稿件修改截止", time_text: "2026/01/23 23:59" },
+	{ date: new Date("2026-02-05"), event: "Demo 展錄取通知", time_text: "2026年2月上旬" },
+	{ date: new Date("2026-03-08T23:59:00"), event: "錄取海報檔案及短影音上傳截止", time_text: "2026/03/08 23:59" },
+	{ date: new Date("2026-03-27"), event: "佈展", time_text: "2026/03/27" },
+	{ date: new Date("2026-03-28"), event: "年會", time_text: "2026/03/28" }
 ];
 
-const qa_content = [
-	{ question: "這是一個問題？", answer: "這是一個回答。" },
-	{ question: "這是一個問題？", answer: "這是一個回答。" }
-];
-
-const toc_content = [{ text: "重要時程", link: "#schedule" }];
-
-const field_content = [
+const paper_info_content = [
 	{
-		title: "中文題目 Chinese Project Title",
-		detail: "長度請自行斟酌。",
-		optional: false,
-		publish: true
-	},
-	{
-		title: "英文題目 English Project Title",
-		detail: "長度請自行斟酌。",
+		title: "題目 Project Title",
+		detail: "長度請自行斟酌，題目無須與年會主題相關。",
 		optional: false,
 		publish: true
 	},
@@ -54,58 +46,81 @@ const field_content = [
 		publish: true
 	},
 	{
-		title: "關鍵詞 Keywords",
-		detail: "至多三個。",
+		title: "主題標籤 Labels",
+		detail: "請填寫 1~3 個與展出內容相關的領域與知識標籤，例如：ML、Data Science、資安、NLP 等；錄取後會與投稿者溝通微調後公開於官網。",
 		optional: false,
 		publish: true
 	},
 	{
-		title: "研究說明 Project Content",
-		detail: `請以 pdf 檔案上傳，需簡要說明
-						（一）研究動機與目的 Research Question or Problem；（二）研究方法與過程 Methodology；
-						（三）研究結果與討論 Results and Interpretation of these 
-								results；
-						（四）結論應用及展望 Conclusions 等，以 1500 字為限。可
-								參考 臺灣國際科學展覽會實施要點 第 17 頁說明。`,
+		title: "專案說明 Project Content",
+		detail: `請以 PDF 檔案上傳，以 600~1500 字為限。內容涵蓋專案背景、目標與核心特色，闡述其欲解決的問題或實現的功能。請描述所使用的方法或技術，並展示專案或研究的主要成果及演示內容，說明其應用價值。投稿者可根據專案特性自行安排提交內容，包括於檔案中嵌入與演示相關的圖片或影片連結。專案說明無需設計或排版，僅需清楚闡述專案內容與演示重點即可。`,
 		optional: false,
 		publish: false
 	},
 	{
-		title: "海報內容 Poster Content",
-		description: `錄取後上傳。以呈現研究結果為主，除題目與摘要之外，建議依序可包含前言、研究方法、結論及參考文獻等，內容請投稿作者自行斟酌，以不超過海報尺寸為限。請以直版寬 xx 公分、高 xx 公分規格製作為 pdf 檔案，一篇投稿一面看板，請於收到錄取通知後依據郵件說明上傳最終版海報檔案，統一由大會進行印製與佈展。`,
-		optional: false,
+		title: "附件 Attachments",
+		detail: "可以附上程式碼、海報草稿或任何有助於瞭解作品的附件，請確認是否已開啟共用權限。",
+		optional: true,
 		publish: false
 	},
 	{
 		title: "其他說明 Additional Instructions",
-		description: `其他以上未提及之說明，若為延續性研究作品也請在此標明。`,
+		detail: "其他以上未提及之說明，若為延續性研究作品也請在此標明。",
 		optional: true,
 		publish: false
 	}
 ];
 
-const table_content = [
+const personal_info_content = [
 	{
-		header: "1.實作工作坊",
-		content: `111實作是學習一項新技能最直接項新技能最直項新技能最直項新技能最直的方式，期`
+		title: "電子郵件 Email",
+		detail: "能讓大會聯絡的電子信箱。（請在整個聯絡過程中維持使用相同信箱）",
+		optional: false,
+		publish: false
 	},
 	{
-		header: "2.實作工作坊",
-		content: `222實作是學習一項新技學習一項新技能學習一項新技能實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技實作是學習一項新技學習一項新技能學習一項新技學習一項新技能能最直接的方式，期`
+		title: "名字 Name",
+		detail: "您的姓名，公開於展出資料中。",
+		optional: false,
+		publish: true
 	},
 	{
-		header: "3.實作工作坊",
-		content: `333實作是學習一項新技能最直接的項新技能最直項新技能最直項新技能最直項新技能最直方式，期`
+		title: "暱稱 Nickname",
+		detail: "公開於展出者海報及網站的稱呼。",
+		optional: false,
+		publish: true
 	},
 	{
-		header: "4.實作工作坊",
-		content: `444實作是學習一項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直項新技能最直接的方式，期`
+		title: "自我介紹 Self Introduction",
+		detail: "公開於展出者海報及網站，將有助於會眾更加了解您的資訊。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "手機號碼 Phone",
+		detail: "用於大會聯絡與確認資訊的電話號碼。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他聯絡方式 Other Contact Information",
+		detail: "其他可聯絡您的方式（如 Telegram ID、住處電話等），以利審稿或聯絡作業。",
+		optional: false,
+		publish: false
 	}
 ];
+
+const qa_content = [
+	{ question: "投稿主題是否有必要切合年會主題？", answer: "不用。審稿時僅會依照上文所述方式審查，不會因為切合主題就拿到比較高分，或因為與主題無關就被扣分。" },
+	{ question: "是否一定要是學術研究的成果？", answer: "不用。本次投稿接受各類型的專案展示，包括學術研究及實務應用成果，歡迎學生分享各種形式的內容。" },
+	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
+];
+
+const toc_content = [{ text: "重要時程", link: "#schedule" }];
 ---
 
 <Layout>
-	<a class="btn-fixed" href={submit_url} alt="立即投稿" target="_blank" rel="noopener">立即<br />投稿</a>
+	<a class="btn-fixed" href={submit_url} target="_blank" rel="noopener">立即<br />投稿</a>
 	<div class="out-container">
 		<div class="main-container">
 			<div class="toc">
@@ -113,23 +128,28 @@ const table_content = [
 			</div>
 			<main>
 				<h1>{page_info.title}</h1>
-				<Description>
-					{page_info.subtitle}
-				</Description>
 
-				<Countdown end1="2025-10-20T21:59:00" end2="2025-10-30T21:59:00" start="2025-10-12T00:00:00" form_url="https://sitcon.org/" />
+				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url="https://sitcon.org/" />
 
 				<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
 
-				<Content title="什麼是開放式議程？">
-					在追求創新的時代，我們為講者提供了開放式議程這個選項，跳脫講者對聽眾單向陳述式的演講，開放式議程更加強調主講者和與會者的雙向交流。SITCON
-					作為學生展現自己的舞台，我們期待以學生為主體的投稿，可以是從學生角度出發的經驗分享、技術分享，或是一同探討學生相關議題等。
+				<Description>
+					{page_info.description}
+				</Description>
+
+				<Content title="投稿說明">
+					Demo
+					展投稿以現場專案演示為核心，輔以靜態海報與短影音呈現學生個人或團隊的專案。作品以資訊相關領域為主，不限語言，希望透過此方式能使更多學生能有展現自我的機會，同時為會眾帶來不同形式的學習與交流。
 				</Content>
 
 				<div>
-					<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
-					<FieldDescription title="投稿欄位說明" content={field_content} />
-					<PersonalInfo title="個人資料" description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。" content={field_content} />
+					<Content title="投稿格式"> 除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。</Content>
+					<FieldDescription title="稿件資訊" content={paper_info_content} />
+					<PersonalInfo
+						title="個人資料"
+						description="除了暱稱 / 名字、自我介紹被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位展出者時），供議程組於聯絡時使用。"
+						content={personal_info_content}
+					/>
 				</div>
 
 				<ContentFormat>
@@ -141,7 +161,7 @@ const table_content = [
 		</div>
 
 		<div class="banner">
-			<Banner />
+			<Banner btn_url={submit_url} h3="即興碰撞，節奏交融" h2="分享你的專案，在 Demo 展現場 riff 出你的獨特樂句！" />
 		</div>
 	</div>
 </Layout>
