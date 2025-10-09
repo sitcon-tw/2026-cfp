@@ -116,7 +116,12 @@ const qa_content = [
 	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
 ];
 
-const toc_content = [{ text: "重要時程", link: "#schedule" }];
+const toc_content = [
+	{ text: "重要時程", link: "#schedule" },
+	{ text: "議程說明", link: "#description" },
+	{ text: "投稿說明", link: "#submission" },
+	{ text: "投稿格式", link: "#paper-info" },
+];
 ---
 
 <Layout>
@@ -131,18 +136,24 @@ const toc_content = [{ text: "重要時程", link: "#schedule" }];
 
 				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url="https://sitcon.org/" />
 
-				<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
+				<div id="schedule">
+					<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
+				</div>
 
-				<Description>
-					{page_info.description}
-				</Description>
+				<div id="description">
+					<Description>
+						{page_info.description}
+					</Description>
+				</div>
 
-				<Content title="投稿說明">
-					Demo
-					展投稿以現場專案演示為核心，輔以靜態海報與短影音呈現學生個人或團隊的專案。作品以資訊相關領域為主，不限語言，希望透過此方式能使更多學生能有展現自我的機會，同時為會眾帶來不同形式的學習與交流。
-				</Content>
+				<div id="submission">
+					<Content title="投稿說明">
+						Demo
+						展投稿以現場專案演示為核心，輔以靜態海報與短影音呈現學生個人或團隊的專案。作品以資訊相關領域為主，不限語言，希望透過此方式能使更多學生能有展現自我的機會，同時為會眾帶來不同形式的學習與交流。
+					</Content>
+				</div>
 
-				<div>
+				<div id="paper-info">
 					<Content title="投稿格式"> 除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。</Content>
 					<FieldDescription title="稿件資訊" content={paper_info_content} />
 					<PersonalInfo
