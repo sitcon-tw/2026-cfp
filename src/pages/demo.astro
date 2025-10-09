@@ -14,6 +14,7 @@ import QA from "@components/page/QA.astro";
 import MdContent from "@assets/doc/demo/Content.md";
 
 const submit_url = "https://forms.gle/VXedKquqWMTar5aQ7";
+const calendar_url = "https://sitcon.org/";
 
 const page_info = {
 	title: "Demo 展徵稿",
@@ -133,10 +134,10 @@ const toc_content = [
 			<main>
 				<h1>{page_info.title}</h1>
 
-				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url="https://sitcon.org/" />
+				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url={submit_url} />
 
 				<div id="schedule">
-					<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
+					<Schedule schedule={schedule} calendarUrl={calendar_url} />
 				</div>
 
 				<div id="description">

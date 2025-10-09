@@ -12,86 +12,35 @@ import Banner from "@components/page/Banner.astro";
 import QA from "@components/page/QA.astro";
 import Link from "@components/page/Link.astro";
 
-import MdContent from "@assets/doc/test_text_full.md";
+import DescriptionContent from "@assets/doc/normal/Description.md";
+import SubjectSampleContent from "@assets/doc/normal/SubjectSample.md";
+import MdContent from "@assets/doc/normal/Content.md";
 
-const submit_url = "https://sitcon.org/";
+const submit_url = "https://forms.gle/bTjs7D6hxMSrWYx76";
+const calendar_url = "https://sitcon.org/";
 
 const page_info = {
-	title: "一般議程徵稿",
-	subtitle: "開放式議程為 40 分鐘的議程，該議程不限定進行方式，希望跳脫傳統議程框架，透過雙向互動、實作等，任何你想得到的非傳統形式進行此場議程。"
+	title: "一般議程徵稿"
 };
 
 const schedule = [
-	{ date: new Date("2025-01-11"), event: "XX截止" },
-	{ date: new Date("2025-10-15"), event: "YY公布" },
-	{ date: new Date("2025-10-15"), event: "ZZ發表" }
-];
-
-const qa_content = [
-	{ question: "這是一個問題？", answer: "這是一個回答。" },
-	{ question: "這是一個問題？", answer: "這是一個回答。" }
-];
-
-const toc_content = [{ text: "重要時程", link: "#schedule" }];
-
-const field_content = [
-	{
-		title: "中文題目 Chinese Project Title",
-		detail: "長度請自行斟酌。",
-		optional: false,
-		publish: true
-	},
-	{
-		title: "英文題目 English Project Title",
-		detail: "長度請自行斟酌。",
-		optional: false,
-		publish: true
-	},
-	{
-		title: "摘要 Abstract",
-		detail: "建議約 350 字，使用於宣傳與網站公告。",
-		optional: false,
-		publish: true
-	},
-	{
-		title: "關鍵詞 Keywords",
-		detail: "至多三個。",
-		optional: false,
-		publish: true
-	},
-	{
-		title: "研究說明 Project Content",
-		detail: `請以 pdf 檔案上傳，需簡要說明
-						（一）研究動機與目的 Research Question or Problem；（二）研究方法與過程 Methodology；
-						（三）研究結果與討論 Results and Interpretation of these 
-								results；
-						（四）結論應用及展望 Conclusions 等，以 1500 字為限。可
-								參考 臺灣國際科學展覽會實施要點 第 17 頁說明。`,
-		optional: false,
-		publish: false
-	},
-	{
-		title: "海報內容 Poster Content",
-		description: `錄取後上傳。以呈現研究結果為主，除題目與摘要之外，建議依序可包含前言、研究方法、結論及參考文獻等，內容請投稿作者自行斟酌，以不超過海報尺寸為限。請以直版寬 xx 公分、高 xx 公分規格製作為 pdf 檔案，一篇投稿一面看板，請於收到錄取通知後依據郵件說明上傳最終版海報檔案，統一由大會進行印製與佈展。`,
-		optional: false,
-		publish: false
-	},
-	{
-		title: "其他說明 Additional Instructions",
-		description: `其他以上未提及之說明，若為延續性研究作品也請在此標明。`,
-		optional: true,
-		publish: false
-	}
+	{ date: new Date("2025-10-12"), event: "開始徵稿", time_text: "2025/10/12" },
+	{ date: new Date("2025-11-30T23:59:00"), event: "早鳥投稿截止", time_text: "2025/11/30 23:59" },
+	{ date: new Date("2026-01-23T23:59:00"), event: "投稿及稿件修改截止", time_text: "2026/01/23 23:59" },
+	{ date: new Date("2026-02-05"), event: "議程錄取通知", time_text: "2026年2月上旬" },
+	{ date: new Date("2026-03-15T23:59:00"), event: "試講", time_text: "2026/02/22 至 3/15" },
+	{ date: new Date("2026-03-27"), event: "彩排", time_text: "2026/03/27" },
+	{ date: new Date("2026-03-28"), event: "年會", time_text: "2026/03/28" }
 ];
 
 const block_content = [
 	{
 		title: "Presentation",
 		time: {
-			spotlight: "30",
+			spotlight: "40",
 			normal: "min"
 		},
-		detail: "Presentation 共 40 分鐘 ，包含完整 30 分鐘的議程與 10 分鐘的問答時間，讓您有充分的時間展示想法、描述經歷、和與會者交流。"
+		detail: "包含 30 分鐘的議程與 10 分鐘的問答時間，讓您可以分享您的經歷、介紹您的技術或研究、帶給與會者一場豐富完整的知識洗禮。"
 	},
 	{
 		title: "Espresso",
@@ -99,8 +48,113 @@ const block_content = [
 			spotlight: "10",
 			normal: "min"
 		},
-		detail: "Espresso 僅有 10 分鐘 ，挑戰最為濃縮與精華的議程，為與會者帶來短而精緻的知識洗禮。"
+		detail: "挑戰用最濃縮且輕量的新知與技術分享，快速衝擊與會者的認知，激發他們對新領域的想像與好奇。"
 	}
+];
+
+const paper_info_content = [
+	{
+		title: "投稿類型",
+		detail: "必填、公開。請選擇欲投稿為何種議程類型（Presentation、Espresso）。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "題目",
+		detail: "必填、公開。請將字數維持在 20 字以內，題目無須與年會主題相關。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "摘要",
+		detail: "必填、公開。建議字數為 150–250 字（含標點符號），用於宣傳與網站公告。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "演講大綱",
+		detail: "必填。請說明議程內容大綱與時間分配。若為多位講者共同分享，請說明各個講者如何分配演講內容。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "目標受眾",
+		detail: "必填。請說明您期待該議程的目標受眾是哪些類型的與會者。例如：「嚮往成為前端開發者的初學者」、「欲精進某技能的後端工程師」等。\nSITCON 2025 的會眾比例為：大學生 55%、高中/職生 24%、社會人士 7%、研究生 10%、國中生 2%、其他 2%",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "先備知識",
+		detail: "必填、公開。請說明該議程的與會者所需具備的先備知識。例如：「能理解 Python 基礎語法」、「能熟練運用 Class 與 OOP」等。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "主題標籤",
+		detail: "必填、公開。請填寫 1~4 個該議程相關的領域與知識標籤，例如：ML、Data Science、資安紅隊、Blockchain、社團等。審稿委員將會參考此欄位了解稿件著重的面向，錄取後議程組也會參考此欄位，並在與您溝通後挑選合適的標籤呈現於官網議程表上。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "詳細說明",
+		detail: "必填。不限字數，請盡可能詳細說明這個議程的相關細節，如議程詳細架構及您想傳達的內容，或是您為什麼想講這個議程，及您預期此議程能為聽眾帶來的收穫等，以利審稿委員更瞭解您的議程及想法。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "附件",
+		detail: "選填。可以附上程式碼、投影片草稿或任何您認為有助於我們瞭解此議程的附件，提醒您請再三確認共用權限有被開啟。",
+		optional: true,
+		publish: false
+	}
+];
+
+const personal_info_content = [
+	{
+		title: "電子郵件",
+		detail: "可供大會聯絡您的電子信箱。（注意：請您在大會的聯絡過程中，維持使用相同信箱）",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "名字",
+		detail: "您的姓名。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "暱稱",
+		detail: "公開於講者海報及網站的稱呼。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "自我介紹",
+		detail: "將會公開於大會文宣及網站，以利會眾更加了解有關您的資訊。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "手機號碼",
+		detail: "可供大會與您聯絡、確認資訊時使用之電話號碼。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他聯絡方式",
+		detail: "其他任何我們能聯絡您的方式（如 Telegram ID、住處電話等），以利我們在審稿時即時向您釐清投稿資訊。",
+		optional: false,
+		publish: false
+	}
+];
+
+const qa_content = [
+	{
+		question: "「先備知識」與「目標受眾」有何不同？",
+		answer: "「目標受眾」表示您預期何種人將會前來參與該場議程，此欄位可能表示為與會者的興趣、生活環境抑或年齡層。「先備知識」表示對該議程有興趣者，您建議須先備哪些基礎技術、能力或經驗，有助於了解與吸收該場議程的知識精華。舉例而言，若一講題為「在營隊中使用虛擬貨幣」，則先備知識可能是「沒有」，目標受眾可能是「有想要辦營隊的人」。而如果是有關 Julia 程式語言的演講，則先備知識可能是「知道平行運算是什麼」，目標受眾可能是「想用 Julia 做資料科學的人」。"
+	},
+	{ question: "投稿主題是否有需要切合年會主題？", answer: "不用。審稿時僅會依照上文所述標準審查，不會因為呼應主題就拿到比較高分，或因為與主題無關就被扣分。" },
+	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
 ];
 
 const presentation_content = [
@@ -164,10 +218,17 @@ const espresso_content = [
 		href: "https://www.google.com.tw/"
 	}
 ];
+
+const toc_content = [
+	{ text: "議程說明", link: "#description" },
+	{ text: "重要時程", link: "#schedule" },
+	{ text: "議程種類", link: "#type" },
+	{ text: "投稿格式", link: "#paper-info" }
+];
 ---
 
 <Layout>
-	<a class="btn-fixed" href={submit_url} alt="立即投稿" target="_blank" rel="noopener">立即<br />投稿</a>
+	<a class="btn-fixed" href={submit_url} target="_blank" rel="noopener">立即<br />投稿</a>
 	<div class="out-container">
 		<div class="main-container">
 			<div class="toc">
@@ -175,69 +236,73 @@ const espresso_content = [
 			</div>
 			<main>
 				<h1>{page_info.title}</h1>
-				<Description>
-					{page_info.subtitle}
-				</Description>
 
-				<Countdown end1="2025-10-20T21:59:00" end2="2025-10-30T21:59:00" start="2025-10-12T00:00:00" form_url="https://sitcon.org/" />
-
-				<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
-
-				<Content title="議程早鳥">
-					<ContentFormat>
-						<MdContent />
-					</ContentFormat>
-				</Content>
-
-				<Content title="議程種類">
-					<div class="blocks">
-						<div class="block">
-							<h3 class="block-title">{block_content[0].title}</h3>
-							<span class="block-time-normal">
-								<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
-								{block_content[0].time.normal}
-							</span>
-							<p class="block-content">{block_content[0].detail}</p>
-						</div>
-
-						<div class="block">
-							<h3 class="block-title">Espresso</h3>
-							<div class="block-time-normal">
-								<span class="block-time-spotlight">20</span>
-								min
-							</div>
-							<p class="block-content">spresso 僅有 10 分鐘 ，挑戰最為濃縮與精華的議程，為與會者帶來短而精緻的知識洗禮。</p>
-						</div>
-					</div>
-
-					<Content title="投稿主題範例">
+				<div id="description">
+					<Description>
 						<ContentFormat>
-							<MdContent />
-							<Link presentation_content={presentation_content} espresso_content={espresso_content} />
+							<DescriptionContent />
 						</ContentFormat>
+					</Description>
+				</div>
+
+				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url={submit_url} />
+
+				<div id="schedule">
+					<Schedule schedule={schedule} calendarUrl={calendar_url} />
+				</div>
+
+				<div id="type">
+					<Content title="議程種類">
+						<div class="blocks">
+							<div class="block">
+								<h3 class="block-title">{block_content[0].title}</h3>
+								<span class="block-time-normal">
+									<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
+									{block_content[0].time.normal}
+								</span>
+								<p class="block-content">{block_content[0].detail}</p>
+							</div>
+
+							<div class="block">
+								<h3 class="block-title">{block_content[1].title}</h3>
+								<div class="block-time-normal">
+									<span class="block-time-spotlight">{block_content[1].time.spotlight}</span>
+									{block_content[1].time.normal}
+								</div>
+								<p class="block-content">{block_content[1].detail}</p>
+							</div>
+						</div>
 					</Content>
+				</div>
 
-					<div>
-						<Content title="投稿格式"> 各議程類型的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
-						<FieldDescription title="投稿欄位說明" content={field_content} />
-						<PersonalInfo
-							title="個人資料"
-							description="除了暱稱 / 名字被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），供議程組於聯絡時使用。"
-							content={field_content}
-						/>
-					</div>
-
+				<Content title="投稿主題範例">
 					<ContentFormat>
-						<MdContent />
+						<SubjectSampleContent />
+						<Link presentation_content={presentation_content} espresso_content={espresso_content} />
 					</ContentFormat>
-
-					<QA content={qa_content} />
 				</Content>
+
+				<div id="paper-info">
+					<Content title="投稿格式"> Presentation 與 Espresso 的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+					<FieldDescription title="投稿欄位說明" content={paper_info_content} />
+					<PersonalInfo
+						title="個人資料"
+						description="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
+						content={personal_info_content}
+					/>
+				</div>
+
+				<ContentFormat>
+					<MdContent />
+				</ContentFormat>
+
+				<QA content={qa_content} />
 			</main>
 		</div>
 
 		<div class="banner">
-			<Banner />
+			<Banner btn_url={submit_url} h3=`那段未曾被聽見的旋律，正等著在混沌中覺醒。
+現在，是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。` h2="別再猶豫，讓樂音在這場年會中響起！" />
 		</div>
 	</div>
 
