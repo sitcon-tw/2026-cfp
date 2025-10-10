@@ -7,65 +7,62 @@ import BannerBgIcon from "@assets/desc_page/banner_bg_icon.webp";
 ---
 
 <div class="banner">
-	<h3 class="banner-text">
-		{h3}
-	</h3>
-	<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
-	<h2 class="banner-title">{h2}</h2>
+	<div class="banner-container">
+		<div class="banner-text">{h3}</div>
+		<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
+		<h2 class="banner-title">{h2}</h2>
 
-	<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
-		<StarIcon height="2rem" />
-		<span> 立即投稿 </span>
-		<StarIcon height="2rem" />
-	</a>
+		<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
+			<StarIcon height="2rem" />
+			<span> 立即投稿 </span>
+			<StarIcon height="2rem" />
+		</a>
+	</div>
 </div>
 
 <style>
 	.banner {
 		position: relative;
-		padding: 28rem 4rem 8rem 4rem;
+		padding: 16rem 4rem 4rem 4rem;
 		width: 100%;
-		background: white;
-		mask-image: linear-gradient(to bottom, transparent, white 20%);
-		-webkit-mask-image: linear-gradient(to bottom, transparent, white 20%);
+		background: linear-gradient(transparent, white 10rem);
+		font-weight: bold;
 	}
 
-	.banner-text {
-		display: inline-block;
+	.banner-container {
+		max-width: 60rem;
+		margin: auto;
+	}
+
+	.banner-text,
+	.banner-title {
 		font-size: 2rem;
-		max-width: 100%;
 		text-wrap: balance;
-		line-height: 5rem;
-		padding: 2rem 0;
 		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
 		background-clip: text;
 		-webkit-text-fill-color: transparent;
 		color: transparent;
+		width: fit-content;
 	}
 
 	.banner-title {
-		font-size: 5rem;
-		padding: 2rem 0;
-		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		color: transparent;
-		text-wrap: balance;
+		font-size: 2.5rem;
+	}
+
+	.banner-text {
+		margin-bottom: 2rem;
 	}
 
 	.banner-button {
 		display: flex;
-		flex-wrap: wrap;
-		border-radius: 6.25rem;
+		border-radius: 1000px;
 		color: #ffffff;
 		background: #010121;
-		width: 100%;
 		font-size: 2rem;
-		line-height: 4.5rem;
-		font-weight: bold;
 		align-items: center;
 		justify-content: center;
 		margin: 4.5rem 0;
+		padding: 1rem 1rem;
 		text-decoration: none;
 	}
 
