@@ -1,0 +1,265 @@
+---
+// Attend component - "我想參與" section
+const timeline = [
+  { date: "09/28", event: "年會籌備起跑" },
+  { date: "10/19", event: "主題定案" },
+  { date: "11/22", event: "公開宣傳、議程徵稿" },
+  { date: "01/12", event: "XX 票開始申請" },
+  { date: "01/29", event: "公布議程表" },
+  { date: "03/28", event: "年會舉辦" },
+];
+---
+
+<section id="attend" class="attend-section">
+  <!-- White Card Section -->
+  <div class="white-card">
+    <div class="quotation-mark">”</div>
+    <h2 class="card-title">我想參與</h2>
+    <div class="card-content">
+      <p class="content-text">
+        SITCON 是個開放的社群，許多籌備的相關事項都會在公開的郵件論壇上進行討論，如果有興趣參與，歡迎訂閱 SITCON 的郵件論壇並貢獻你的想法！
+      </p>
+      <p class="content-text">
+        若你想進一步了解過往討論的內容，也歡迎到 GitLab 上查看 SITCON 2026 的籌備歷程。
+      </p>
+    </div>
+    <div class="button-group">
+      <button onclick="window.open('https://groups.google.com/g/sitcon-general/', '_blank')" class="action-button">訂閱郵件論壇</button>
+      <button onclick="window.open('https://gitlab.com/sitcon-tw/2026/board/-/boards/', '_blank')" class="action-button">查看 GitLab</button>
+      {/* <button class="action-button">查看近期活動</button> */}
+    </div>
+  </div>
+  <div class="round-end-container">
+    <div class="round-end"/>
+  </div>
+
+  <div class="timeline">
+    {timeline.map((item, index) => (
+        <div class={`white-card ${index % 2 === 0 ? "left" : "right"}`}>
+        <div class="timeline-item">
+            <span class="timeline-date">{item.date}</span>
+            <span class="timeline-event">{item.event}</span>
+        </div>
+        </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .attend-section {
+    background-color: #010121;
+    padding: 4rem 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* White Card Styles */
+  .white-card {
+    background-color: #ffffff;
+    padding: 3rem;
+    max-width: 65%;
+    width: 100%;
+    position: relative;
+  }
+
+  .white-card.left {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    max-width: 65%;
+    border-radius: 10rem 0;
+    width: 100%;
+    position: relative;
+  }
+
+  .white-card.right {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    max-width: 65%;
+    border-radius: 0 10rem;
+    width: 100%;
+    position: relative;
+  }
+
+  .white-card.left:last-child {
+    border-radius: 10rem 0 10rem 20rem;
+  }
+
+  .white-card.right:last-child {
+    border-radius: 0 10rem 10rem 20rem;
+  }
+
+  .round-end-container {
+    width: 65%;
+    height: 0.5rem;
+    background-color: #FFFFFF;
+  }
+
+  .round-end {
+    background-color: #010121;
+    height: 0.5rem;
+    width: 40rem;
+    border-radius: 0 10rem 10rem 0;
+  }
+
+  .quotation-mark {
+    position: absolute;
+    top: -1.5rem;
+    font-family: "Orbitron", sans-serif;
+    right: 10rem;
+    font-size: 6rem;
+    color: #4A86E8;
+    font-weight: bold;
+    letter-spacing: 0.35rem;
+    line-height: 1;
+  }
+
+  .card-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #000000;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .card-content {
+    margin-bottom: 2.5rem;
+  }
+
+  .content-text {
+    color: #000000;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .action-button {
+    background-color: #4A86E8;
+    color: #ffffff;
+    border: none;
+    border-radius: 10rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+
+  .action-button:hover {
+    background-color: #3a6bc7;
+  }
+
+  /* Timeline Styles */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .timeline-item {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .timeline-date {
+    color: #010121;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Orbitron", sans-serif;
+  }
+
+  .timeline-event {
+    color: #010121;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  /* Vector Graphics from Design */
+  .vector-graphics {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .bg-pattern {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .attend-section {
+      padding: 2rem 0;
+    }
+
+    .quotation-mark {
+      right: 2rem;
+    }
+
+    .white-card {
+      padding: 2rem;
+      max-width: 85%;
+    }
+
+    .white-card.left {
+      max-width: 85%;
+    }
+
+    .white-card.right {
+      max-width: 85%;
+    }
+
+    .card-title {
+      font-size: 2rem;
+    }
+
+    .content-text {
+      font-size: 1rem;
+    }
+
+    .action-button {
+      font-size: 1.2rem;
+    }
+
+    .button-group {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-button {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .timeline-item {
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .timeline-date {
+      font-size: 1.2rem;
+    }
+
+    .timeline-event {
+      font-size: 1.2rem;
+    }
+  }
+</style>
