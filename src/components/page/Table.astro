@@ -1,0 +1,118 @@
+---
+const content = [
+	{
+		header: "實作工作坊形式",
+		content: `實作是學習一項新技能最直接的方式，您可以設計一個實務導向的工作坊，在介紹新技術的同時穿插應用的範例，讓會眾在過程中獲得成就感並帶走實用的技能。無論是軟體開發、工具使用，還是技術應用實作工作方的題目可以像是：
+從零開始開發一個簡單的聊天應用程式。
+從數位音樂到 AI 視覺藝術的創意應用。
+`
+	},
+	{
+		header: "議題交流形式",
+		content: `知識的交流不只受限於於演講，資訊發展快速，卻也延伸出許多可以深入討論的議題，我們期待透過講者的引言，拋磚引玉，激發聽眾的想法，透過多方觀點的交流，聽眾可以理解不同看法，進而發現新的思考方向。 例如：
+人工智慧是否會有自我意識？
+隱私權與數據共享如何找到平衡點？
+`
+	},
+	{
+		header: "社群分享形式",
+		content: `社群的力量在於凝聚志同道合的人，講者可以分享社群運營經驗，無論是分享如何推廣技術還是組織活動的秘訣，透過經驗分享，探討如何打造互助的社群環境，或介紹該社群所推廣的技術、理念與特色，讓更多人對此產生興趣。例如：
+如何吸引新手加入開源社群？
+如何帶領社群成員認識資料科學？
+`
+	},
+	{
+		header: "更多形式由您來創造",
+		content: `不只有上述的形式，我們非常歡迎其他形式的議程。
+無論是主持一場圓桌會議，一起腦力激盪，甚至舉辦一場小競賽，任何你想得到的非傳統議程形式都可以在開放式議程中進行！
+`
+	}
+];
+---
+
+<div class="table">
+	<div id="table-head-1" class="table-header">{content[0].header}</div>
+	<div id="table-content-1" class="table-content">
+		{content[0].content}
+	</div>
+	<div id="table-head-2" class="table-header">{content[1].header}</div>
+	<div id="table-content-2" class="table-content">
+		{content[1].content}
+	</div>
+	<div id="table-head-3" class="table-header">{content[2].header}</div>
+	<div id="table-content-3" class="table-content">
+		{content[2].content}
+	</div>
+	<div id="table-head-4" class="table-header">{content[3].header}</div>
+	<div id="table-content-4" class="table-content">
+		{content[3].content}
+	</div>
+</div>
+
+<style>
+	.table {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.table-header {
+		border: 0.1rem #010121 solid;
+		background: #345b92;
+		color: white;
+		font-size: 2rem;
+		padding: 0.5rem 3rem;
+		align-content: center;
+	}
+	.table-content {
+		border: 0.1rem #010121 solid;
+		max-height: 15rem;
+		background: #ffffff;
+		color: #000000;
+		text-align: justify;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 1.6;
+		letter-spacing: 0.05rem;
+		padding: 1rem;
+		border-top: none;
+	}
+
+	#table-content-1,
+	#table-content-2,
+	#table-content-3,
+	#table-content-4 {
+		min-height: 100%;
+		overflow: auto;
+	}
+
+	#table-head-1,
+	#table-head-3,
+	#table-content-1,
+	#table-content-3 {
+		grid-column: 1;
+	}
+
+	#table-head-2,
+	#table-head-4,
+	#table-content-2,
+	#table-content-4 {
+		grid-column: 2;
+	}
+
+	#table-head-1,
+	#table-head-2 {
+		grid-row: 1;
+	}
+	#table-content-1,
+	#table-content-2 {
+		grid-row: 2;
+	}
+	#table-head-3,
+	#table-head-4 {
+		grid-row: 3;
+	}
+	#table-content-3,
+	#table-content-4 {
+		grid-row: 4;
+	}
+</style>

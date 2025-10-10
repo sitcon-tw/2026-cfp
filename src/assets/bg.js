@@ -1,14 +1,17 @@
-const canvas = document.getElementById("bg");
-const gl = canvas.getContext("webgl");
-if (!gl) {
-	alert("WebGL not supported");
-}
-const vert = `
+document.addEventListener("astro:page-load", () => {
+	if (!(window.location.pathname == "/2026/cfp/")) return;
+
+	const canvas = document.getElementById("bg");
+	const gl = canvas.getContext("webgl");
+	if (!gl) {
+		alert("WebGL not supported");
+	}
+	const vert = `
 attribute vec2 a_pos;
 void main() { gl_Position = vec4(a_pos,0.0,1.0); }
 `;
 
-const frag = `
+	const frag = `
 precision highp float;
 uniform vec2 u_res;
 uniform float u_time;
@@ -172,46 +175,47 @@ void main(){
 }
 `;
 
-function compile(type, src) {
-	const s = gl.createShader(type);
-	gl.shaderSource(s, src);
-	gl.compileShader(s);
-	if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-		console.error(gl.getShaderInfoLog(s));
+	function compile(type, src) {
+		const s = gl.createShader(type);
+		gl.shaderSource(s, src);
+		gl.compileShader(s);
+		if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+			console.error(gl.getShaderInfoLog(s));
+		}
+		return s;
 	}
-	return s;
-}
 
-const vs = compile(gl.VERTEX_SHADER, vert);
-const fs = compile(gl.FRAGMENT_SHADER, frag);
-const prog = gl.createProgram();
-gl.attachShader(prog, vs);
-gl.attachShader(prog, fs);
-gl.linkProgram(prog);
-gl.useProgram(prog);
+	const vs = compile(gl.VERTEX_SHADER, vert);
+	const fs = compile(gl.FRAGMENT_SHADER, frag);
+	const prog = gl.createProgram();
+	gl.attachShader(prog, vs);
+	gl.attachShader(prog, fs);
+	gl.linkProgram(prog);
+	gl.useProgram(prog);
 
-const buf = gl.createBuffer();
-gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
-const loc = gl.getAttribLocation(prog, "a_pos");
-gl.enableVertexAttribArray(loc);
-gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+	const buf = gl.createBuffer();
+	gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+	const loc = gl.getAttribLocation(prog, "a_pos");
+	gl.enableVertexAttribArray(loc);
+	gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
-const uRes = gl.getUniformLocation(prog, "u_res");
-const uTime = gl.getUniformLocation(prog, "u_time");
+	const uRes = gl.getUniformLocation(prog, "u_res");
+	const uTime = gl.getUniformLocation(prog, "u_time");
 
-function resize() {
-	canvas.width = innerWidth * window.devicePixelRatio;
-	canvas.height = innerHeight * window.devicePixelRatio;
-	gl.viewport(0, 0, canvas.width, canvas.height);
-	gl.uniform2f(uRes, canvas.width, canvas.height);
-}
-resize();
-addEventListener("resize", resize);
+	function resize() {
+		canvas.width = innerWidth * window.devicePixelRatio;
+		canvas.height = innerHeight * window.devicePixelRatio;
+		gl.viewport(0, 0, canvas.width, canvas.height);
+		gl.uniform2f(uRes, canvas.width, canvas.height);
+	}
+	resize();
+	addEventListener("resize", resize);
 
-function draw(t) {
-	gl.uniform1f(uTime, t * 0.001);
-	gl.drawArrays(gl.TRIANGLES, 0, 6);
+	function draw(t) {
+		gl.uniform1f(uTime, t * 0.001);
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
+		requestAnimationFrame(draw);
+	}
 	requestAnimationFrame(draw);
-}
-requestAnimationFrame(draw);
+});

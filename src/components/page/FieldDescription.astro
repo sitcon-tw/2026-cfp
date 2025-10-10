@@ -1,0 +1,115 @@
+---
+const { title, description = "", content } = Astro.props;
+import IconOptional from "@assets/desc_page/field_optional.svg";
+import IconRequired from "@assets/desc_page/field_required.svg";
+import IconPublish from "@assets/desc_page/field_publish.svg";
+---
+
+<div class="field">
+	<div class="field-head">
+		<h3 class="field-title">
+			{title}
+		</h3>
+		<div class="field-description">
+			<IconRequired width="1.5rem" height="1.5rem" /> 必填 &nbsp;
+			<IconOptional width="1.5rem" height="1.5rem" /> 選填 &nbsp;
+			<IconPublish width="1.5rem" height="1.5rem" /> 公開 &nbsp;
+		</div>
+	</div>
+	{
+		content.map((ctx: { title: string; detail: string; optional: boolean; publish: boolean }) => (
+			<div class="field-item">
+				<div>
+					<h3 class="field-item-title">{ctx.title}</h3>
+					<p class="field-item-description">{ctx.detail}</p>
+				</div>
+				<div class="field-icon-bar">
+					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
+					{ctx.publish ? <IconPublish width="2.5rem" /> : null}
+				</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.field {
+		margin: 3rem 0;
+		text-align: left;
+	}
+	.field-head {
+		display: flex;
+		padding: 1rem 2rem 1rem 2rem;
+		min-height: 5.6rem;
+		align-items: center;
+		justify-content: space-between;
+		line-height: 1.5rem;
+		border-radius: 1.5rem 1.5rem 0.5rem 0.5rem;
+		background: #345b92;
+		margin-bottom: 0.4rem;
+	}
+	.field-description {
+		display: flex;
+		gap: 0.5rem;
+		border-radius: 0.75rem;
+		align-items: center;
+		text-align: center;
+		color: #000000;
+		background-color: #ffffff;
+		font-size: 1.25rem;
+		min-height: 1.5rem;
+		padding: 0.5rem 1rem;
+		max-width: 30rem;
+		line-height: 1.8rem;
+	}
+	.field-title {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
+	}
+	.field-item {
+		padding: 1rem 3rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-radius: 0.5rem;
+		background: #ffffff;
+		margin-bottom: 0.4rem;
+	}
+	.field-item-title {
+		font-size: 2rem;
+		font-weight: 700;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
+		margin-top: 0;
+		margin-bottom: 0.5rem;
+		color: black;
+	}
+	.field-item-description {
+		font-size: 1rem;
+		word-break: break-word;
+		text-align: justify;
+		max-width: 40rem;
+		color: black;
+	}
+	.field-icon-bar {
+		margin-left: 0.8rem;
+		display: flex;
+		gap: 0.5rem;
+	}
+
+	@media (max-width: 768px) {
+		.field-head {
+			display: block;
+		}
+
+		.field-title {
+			padding: 0 0 0.5rem 0;
+		}
+
+		.field-description {
+			display: block;
+		}
+	}
+</style>

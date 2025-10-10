@@ -1,0 +1,123 @@
+---
+import CalendarIcon from "@assets/desc_page/calendar.svg";
+const { schedule, calendarUrl } = Astro.props;
+---
+
+<div class="schedule">
+	<div class="header">
+		<h2>重要時程</h2>
+		<a class="btn-add-calendar" href={calendarUrl} target="_blank" rel="noopener" aria-label="加入行事曆">
+			<CalendarIcon width="1.5rem" />
+			<span>加入行事曆</span>
+		</a>
+	</div>
+
+	<div class="divider"></div>
+	{
+		schedule.map((item: { date: Date; event: string; time_text: string }) => (
+			<div class="event" data-date={item.date.toISOString()}>
+				<div class="event-col-date">{item.time_text}</div>
+				<div class="event-col-event">{item.event}</div>
+			</div>
+		))
+	}
+</div>
+
+<style>
+	.schedule {
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 2.25rem;
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1rem;
+	}
+
+	.btn-add-calendar {
+		text-decoration: none;
+		display: flex;
+		gap: 0.3rem;
+		font-weight: bold;
+		font-size: 1.5rem;
+		letter-spacing: 0.15rem;
+		border-radius: 0.625rem;
+		background: #345b92;
+		color: #ffffff;
+		padding: 0.8rem;
+		line-height: 1rem;
+		border: none;
+		align-items: center;
+	}
+
+	.divider {
+		height: 0.25rem;
+		width: 100%;
+		background: #ffffff;
+		margin-top: 0.8rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.event {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+		margin-top: 1rem;
+		font-size: 1.5rem;
+		font-weight: 700;
+		line-height: 3;
+		letter-spacing: 0.075rem;
+		gap: 0.7rem;
+	}
+
+	.event .event-col-date {
+		border-radius: 1rem 0 0 1rem;
+		background: #ffffff;
+		color: #010121;
+		flex: 1;
+		text-align: center;
+		align-content: center;
+	}
+
+	.event .event-col-event {
+		border-radius: 0 1rem 1rem 0;
+		background: #ffffff;
+		color: #010121;
+		flex: 1;
+		text-align: center;
+		align-content: center;
+	}
+
+	.event-before .event-col-date {
+		border-radius: 1rem 0 0 1rem;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
+		color: #ffffff;
+		flex: 1;
+		text-align: center;
+		align-content: center;
+	}
+
+	.event-before .event-col-event {
+		border-radius: 0 1rem 1rem 0;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
+		color: #ffffff;
+		flex: 1;
+		text-align: center;
+		align-content: center;
+	}
+</style>
+
+<script>
+	const diffDate = (a: Date) => a.getTime() - new Date().getTime();
+	document.querySelectorAll(".event").forEach(el => {
+		const date = new Date(el.getAttribute("data-date") || "");
+		if (diffDate(date) < 0) {
+			el.classList.add("event-before");
+		}
+	});
+</script>

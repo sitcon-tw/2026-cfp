@@ -1,0 +1,31 @@
+<div class="md-body">
+	<slot />
+</div>
+
+<style is:global>
+	.md-body {
+		margin: 0 1rem;
+		font-size: 1rem;
+		text-align: justify;
+		word-break: break-word;
+		color: #c4c4c4;
+	}
+
+	p {
+		margin: 0.5rem 0;
+	}
+
+	.md-body a {
+		color: #86aee5;
+		text-decoration: underline;
+	}
+
+	.md-body h2,
+	.md-body h3 {
+		margin: 2rem 0 .7rem;
+		color: white;
+		font-weight: 500;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
+	}
+</style>

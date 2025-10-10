@@ -1,0 +1,40 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="content">
+	<h2>{title}</h2>
+	<div class="divider"></div>
+	<p class="content-text">
+		<slot />
+	</p>
+</div>
+
+<style>
+	.content {
+		margin-top: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+		font-weight: 500;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
+	}
+
+	.divider {
+		height: 0.25rem;
+		width: 100%;
+		background: #ffffff;
+		margin-top: 0.8rem;
+		margin-bottom: 0.8rem;
+	}
+
+	.content-text {
+		font-size: 1rem;
+		text-align: justify;
+		word-break: break-word;
+		color: #c4c4c4;
+	}
+</style>

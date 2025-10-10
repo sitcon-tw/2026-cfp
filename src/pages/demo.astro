@@ -1,0 +1,136 @@
+---
+import SubmissionPage from "@layouts/SubmissionPage.astro";
+import Content from "@components/page/Content.astro";
+import MdContent from "@assets/doc/demo/Content.md";
+
+const page_info = {
+	title: "Demo 展徵稿",
+	description:
+		"Demo 展提供展出者與會眾面對面的交流機會，透過專案演示、駐足討論獲得即時反饋，以促進專案的完善與拓展。Demo 展歡迎各階段參與者，從基礎專案研究至進階應用實作，包括但不限於學生專題展示、遊戲團隊試玩，皆可投稿。我們期望此形式不僅讓展出者曝光作品及取得更廣泛的回饋，更能從會眾的多元視角獲取建設性建議，進而激發後續發展靈感。"
+};
+
+const schedule = [
+	{ date: new Date("2025-10-12"), event: "開始徵稿", time_text: "2025/10/12" },
+	{ date: new Date("2025-11-30T23:59:00"), event: "早鳥投稿截止", time_text: "2025/11/30 23:59" },
+	{ date: new Date("2026-01-23T23:59:00"), event: "投稿及稿件修改截止", time_text: "2026/01/23 23:59" },
+	{ date: new Date("2026-02-05"), event: "Demo 展錄取通知", time_text: "2026年2月上旬" },
+	{ date: new Date("2026-03-08T23:59:00"), event: "錄取海報檔案及短影音上傳截止", time_text: "2026/03/08 23:59" },
+	{ date: new Date("2026-03-27"), event: "佈展", time_text: "2026/03/27" },
+	{ date: new Date("2026-03-28"), event: "年會", time_text: "2026/03/28" }
+];
+
+const paper_info_content = [
+	{
+		title: "題目 Project Title",
+		detail: "長度請自行斟酌，題目無須與年會主題相關。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "摘要 Abstract",
+		detail: "建議約 350 字，使用於宣傳與網站公告。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "主題標籤 Labels",
+		detail: "請填寫 1~3 個與展出內容相關的領域與知識標籤，例如：ML、Data Science、資安、NLP 等；錄取後會與投稿者溝通微調後公開於官網。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "專案說明 Project Content",
+		detail: `請以 PDF 檔案上傳，以 600~1500 字為限。內容涵蓋專案背景、目標與核心特色，闡述其欲解決的問題或實現的功能。請描述所使用的方法或技術，並展示專案或研究的主要成果及演示內容，說明其應用價值。投稿者可根據專案特性自行安排提交內容，包括於檔案中嵌入與演示相關的圖片或影片連結。專案說明無需設計或排版，僅需清楚闡述專案內容與演示重點即可。`,
+		optional: false,
+		publish: false
+	},
+	{
+		title: "附件 Attachments",
+		detail: "可以附上程式碼、海報草稿或任何有助於瞭解作品的附件，請確認是否已開啟共用權限。",
+		optional: true,
+		publish: false
+	},
+	{
+		title: "其他說明 Additional Instructions",
+		detail: "其他以上未提及之說明，若為延續性研究作品也請在此標明。",
+		optional: true,
+		publish: false
+	}
+];
+
+const personal_info_content = [
+	{
+		title: "電子郵件 Email",
+		detail: "能讓大會聯絡的電子信箱。（請在整個聯絡過程中維持使用相同信箱）",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "名字 Name",
+		detail: "您的姓名，公開於展出資料中。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "暱稱 Nickname",
+		detail: "公開於展出者海報及網站的稱呼。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "自我介紹 Self Introduction",
+		detail: "公開於展出者海報及網站，將有助於會眾更加了解您的資訊。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "手機號碼 Phone",
+		detail: "用於大會聯絡與確認資訊的電話號碼。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他聯絡方式 Other Contact Information",
+		detail: "其他可聯絡您的方式（如 Telegram ID、住處電話等），以利審稿或聯絡作業。",
+		optional: false,
+		publish: false
+	}
+];
+
+const qa_content = [
+	{ question: "投稿主題是否有必要切合年會主題？", answer: "不用。審稿時僅會依照上文所述方式審查，不會因為切合主題就拿到比較高分，或因為與主題無關就被扣分。" },
+	{ question: "是否一定要是學術研究的成果？", answer: "不用。本次投稿接受各類型的專案展示，包括學術研究及實務應用成果，歡迎學生分享各種形式的內容。" },
+	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
+];
+
+const toc_content = [
+	{ text: "重要時程", link: "#schedule" },
+	{ text: "議程說明", link: "#description" },
+	{ text: "投稿說明", link: "#submission" },
+	{ text: "投稿格式", link: "#paper-info" }
+];
+---
+
+<SubmissionPage
+	title={page_info.title}
+	submitUrl="https://forms.gle/VXedKquqWMTar5aQ7"
+	schedule={schedule}
+	tocContent={toc_content}
+	bannerH3="即興碰撞，節奏交融"
+	bannerH2="分享你的專案，在 Demo 展現場 riff 出你的獨特樂句！"
+	description={page_info.description}
+	paperInfoContent={paper_info_content}
+	personalInfoContent={personal_info_content}
+	qaContent={qa_content}
+	mdContent={MdContent}
+	paperInfoTitle="稿件資訊"
+>
+	<Content slot="paper-info-header" title="投稿格式">除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。</Content>
+
+	<div slot="after-schedule" id="submission">
+		<Content title="投稿說明">
+			Demo
+			展投稿以現場專案演示為核心，輔以靜態海報與短影音呈現學生個人或團隊的專案。作品以資訊相關領域為主，不限語言，希望透過此方式能使更多學生能有展現自我的機會，同時為會眾帶來不同形式的學習與交流。
+		</Content>
+	</div>
+</SubmissionPage>

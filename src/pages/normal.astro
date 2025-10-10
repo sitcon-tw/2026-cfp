@@ -1,0 +1,341 @@
+---
+import SubmissionPage from "@layouts/SubmissionPage.astro";
+import Content from "@components/page/Content.astro";
+import ContentFormat from "@components/page/ContentFormat.astro";
+import Link from "@components/page/Link.astro";
+
+import DescriptionContent from "@assets/doc/normal/Description.md";
+import SubjectSampleContent from "@assets/doc/normal/SubjectSample.md";
+import MdContent from "@assets/doc/normal/Content.md";
+
+const submit_url = "https://forms.gle/bTjs7D6hxMSrWYx76";
+
+const page_info = {
+	title: "一般議程徵稿"
+};
+
+const schedule = [
+	{ date: new Date("2025-10-12"), event: "開始徵稿", time_text: "2025/10/12" },
+	{ date: new Date("2025-11-30T23:59:00"), event: "早鳥投稿截止", time_text: "2025/11/30 23:59" },
+	{ date: new Date("2026-01-23T23:59:00"), event: "投稿及稿件修改截止", time_text: "2026/01/23 23:59" },
+	{ date: new Date("2026-02-05"), event: "議程錄取通知", time_text: "2026年2月上旬" },
+	{ date: new Date("2026-03-15T23:59:00"), event: "試講", time_text: "2026/02/22 至 3/15" },
+	{ date: new Date("2026-03-27"), event: "彩排", time_text: "2026/03/27" },
+	{ date: new Date("2026-03-28"), event: "年會", time_text: "2026/03/28" }
+];
+
+const block_content = [
+	{
+		title: "Presentation",
+		time: {
+			spotlight: "40",
+			normal: "min"
+		},
+		detail: "包含 30 分鐘的議程與 10 分鐘的問答時間，讓您可以分享您的經歷、介紹您的技術或研究、帶給與會者一場豐富完整的知識洗禮。"
+	},
+	{
+		title: "Espresso",
+		time: {
+			spotlight: "10",
+			normal: "min"
+		},
+		detail: "挑戰用最濃縮且輕量的新知與技術分享，快速衝擊與會者的認知，激發他們對新領域的想像與好奇。"
+	}
+];
+
+const paper_info_content = [
+	{
+		title: "投稿類型",
+		detail: "必填、公開。請選擇欲投稿為何種議程類型（Presentation、Espresso）。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "題目",
+		detail: "必填、公開。請將字數維持在 20 字以內，題目無須與年會主題相關。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "摘要",
+		detail: "必填、公開。建議字數為 150–250 字（含標點符號），用於宣傳與網站公告。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "演講大綱",
+		detail: "必填。請說明議程內容大綱與時間分配。若為多位講者共同分享，請說明各個講者如何分配演講內容。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "目標受眾",
+		detail: "必填。請說明您期待該議程的目標受眾是哪些類型的與會者。例如：「嚮往成為前端開發者的初學者」、「欲精進某技能的後端工程師」等。\nSITCON 2025 的會眾比例為：大學生 55%、高中/職生 24%、社會人士 7%、研究生 10%、國中生 2%、其他 2%",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "先備知識",
+		detail: "必填、公開。請說明該議程的與會者所需具備的先備知識。例如：「能理解 Python 基礎語法」、「能熟練運用 Class 與 OOP」等。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "主題標籤",
+		detail: "必填、公開。請填寫 1~4 個該議程相關的領域與知識標籤，例如：ML、Data Science、資安紅隊、Blockchain、社團等。審稿委員將會參考此欄位了解稿件著重的面向，錄取後議程組也會參考此欄位，並在與您溝通後挑選合適的標籤呈現於官網議程表上。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "詳細說明",
+		detail: "必填。不限字數，請盡可能詳細說明這個議程的相關細節，如議程詳細架構及您想傳達的內容，或是您為什麼想講這個議程，及您預期此議程能為聽眾帶來的收穫等，以利審稿委員更瞭解您的議程及想法。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "附件",
+		detail: "選填。可以附上程式碼、投影片草稿或任何您認為有助於我們瞭解此議程的附件，提醒您請再三確認共用權限有被開啟。",
+		optional: true,
+		publish: false
+	}
+];
+
+const personal_info_content = [
+	{
+		title: "電子郵件",
+		detail: "可供大會聯絡您的電子信箱。（注意：請您在大會的聯絡過程中，維持使用相同信箱）",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "名字",
+		detail: "您的姓名。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "暱稱",
+		detail: "公開於講者海報及網站的稱呼。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "自我介紹",
+		detail: "將會公開於大會文宣及網站，以利會眾更加了解有關您的資訊。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "手機號碼",
+		detail: "可供大會與您聯絡、確認資訊時使用之電話號碼。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他聯絡方式",
+		detail: "其他任何我們能聯絡您的方式（如 Telegram ID、住處電話等），以利我們在審稿時即時向您釐清投稿資訊。",
+		optional: false,
+		publish: false
+	}
+];
+
+const qa_content = [
+	{
+		question: "「先備知識」與「目標受眾」有何不同？",
+		answer: "「目標受眾」表示您預期何種人將會前來參與該場議程，此欄位可能表示為與會者的興趣、生活環境抑或年齡層。「先備知識」表示對該議程有興趣者，您建議須先備哪些基礎技術、能力或經驗，有助於了解與吸收該場議程的知識精華。舉例而言，若一講題為「在營隊中使用虛擬貨幣」，則先備知識可能是「沒有」，目標受眾可能是「有想要辦營隊的人」。而如果是有關 Julia 程式語言的演講，則先備知識可能是「知道平行運算是什麼」，目標受眾可能是「想用 Julia 做資料科學的人」。"
+	},
+	{ question: "投稿主題是否有需要切合年會主題？", answer: "不用。審稿時僅會依照上文所述標準審查，不會因為呼應主題就拿到比較高分，或因為與主題無關就被扣分。" },
+	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
+];
+
+const presentation_content = [
+	{
+		title: "比 Python 更人性化 - 圖形化程式語言 Grapycal",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/fbe417/"
+	},
+	{
+		title: "教練我想打 Code！為甚麼要學計組和 OS？",
+		img: "",
+		href: "https://sitcon.org/2022/agenda/82b1c6"
+	},
+	{
+		title: "那些在德國 37C3 的經驗談：啤酒、馬黛茶、混亂",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/53292d/"
+	},
+	{
+		title: "超越文字的力量：大型語言模型的能力與缺陷",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/ecfb2c/"
+	},
+	{
+		title: "想自己辦活動或比賽嗎？那先來看看我們吧！",
+		img: "",
+		href: "https://sitcon.org/2022/agenda/9109ae"
+	},
+	{
+		title: "Windows 系統安全這麼複雜怎麼學",
+		img: "",
+		href: "https://sitcon.org/2022/agenda/6362cd"
+	},
+	{
+		title: "身為學生，做研究也要拿出真本事",
+		img: "",
+		href: "https://sitcon.org/2022/agenda/44d2d0"
+	},
+	{
+		title: "第一次做密室逃脫就上手",
+		img: "",
+		href: "https://sitcon.org/2020/agenda/bdcf60d1-4ea7-4485-bc64-a6252eabc19f"
+	},
+	{
+		title: "網路維運，在台灣怎麼玩？打造全台最大家用網路！",
+		img: "",
+		href: "https://sitcon.org/2021/agenda/3fe74d93-2ab5-4c42-8b49-b5b92973f4aa"
+	},
+	{
+		title: "從學校到業界，工程師作為職業的現實",
+		img: "",
+		href: "https://sitcon.org/2019/agenda/7a67f4fb-b6f4-4595-b9af-527b3024c8f8"
+	},
+	{
+		title: "奔跑吧！台北：遊戲開發經驗分享",
+		img: "",
+		href: "https://sitcon.org/2018/#/agenda/sub/d946b6e1-d826-4c64-86a4-bf013bcc0c06"
+	},
+	{
+		title: "關於 CTF 的那些事",
+		img: "",
+		href: "https://sitcon.org/2021/agenda/7a88857e-7d50-4d9c-a656-2d99feef6198"
+	},
+	{
+		title: "我怎麼開發出 3 天破萬人用的 Threads 分析工具？",
+		img: "",
+		href: "https://sitcon.org/2025/agenda/552acd/"
+	},
+	{
+		title: "手刻 RAG 客服！讓 AI 更聰明但不再「胡扯」",
+		img: "",
+		href: "https://sitcon.org/2025/agenda/a7f767/"
+	},
+	{
+		title: "再也不用切換輸入法了!? PolyKey 多語言輸入法",
+		img: "",
+		href: "https://sitcon.org/2025/agenda/ec804b/"
+	}
+];
+
+const espresso_content = [
+	{
+		title: "格鬥遊戲 AI 開發經驗談",
+		img: "",
+		href: "https://sitcon.org/2025/agenda/ryLLzSwQ54w"
+	},
+	{
+		title: "PHP 是世界上最棒的語言，但我做了一個比它更棒的！",
+		img: "",
+		href: "https://sitcon.org/2021/agenda/bb826e6d-8544-4101-8811-13032bd9a4fd"
+	},
+	{
+		title: "科技藝術入門 - 淺談 p5.js",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/f01c4f/"
+	},
+	{
+		title: "喜歡打街機？做一台放家裡打r",
+		img: "",
+		href: "https://sitcon.org/2021/agenda/2b210726-c5b0-4094-a591-fccb51f0ee55"
+	},
+	{
+		title: "我也能讓 Python 幫忙操控電腦嗎？",
+		img: "",
+		href: "https://sitcon.org/2020/agenda/32ba951d-3cfb-4461-ae6a-5ddbab693b8b"
+	},
+	{
+		title: "創造真正的專家：專有領域的語言模型案例介紹",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/819758/"
+	},
+	{
+		title: "深度學習如何深度學習",
+		img: "",
+		href: "https://sitcon.org/2018/#/agenda/sub/f3c6853d-2b0e-464c-8837-9411455961d8"
+	},
+	{
+		title: "平行程式設計：讓 GoAccess 性能提升 x3.6 倍",
+		img: "",
+		href: "https://sitcon.org/2024/agenda/90acce/"
+	},
+	{
+		title: "你所不知道的維基 - Wikidata",
+		img: "",
+		href: "https://sitcon.org/2019/agenda/7959ab0b-cdfa-40bc-8566-099477abb195"
+	},
+	{
+		title: "淺談社會網路分析",
+		img: "",
+		href: "https://sitcon.org/2019/agenda/f60637a1-0ccb-4c02-b1b0-be7a6a393d87"
+	},
+	{
+		title: "如何從零到千星？開源專案成功的實戰分享",
+		img: "",
+		href: "https://sitcon.org/2025/agenda/15512d/"
+	}
+];
+
+const toc_content = [
+	{ text: "議程說明", link: "#description" },
+	{ text: "重要時程", link: "#schedule" },
+	{ text: "議程種類", link: "#type" },
+	{ text: "投稿格式", link: "#paper-info" }
+];
+---
+
+<SubmissionPage
+	title={page_info.title}
+	submitUrl={submit_url}
+	schedule={schedule}
+	tocContent={toc_content}
+	bannerH3={`那段未曾被聽見的旋律，正等著在混沌中覺醒。
+現在，是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。`}
+	bannerH2="別再猶豫，讓樂音在這場年會中響起！"
+	paperInfoContent={paper_info_content}
+	personalInfoContent={personal_info_content}
+	qaContent={qa_content}
+	mdContent={MdContent}
+	personalInfoDesc="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
+	descriptionContent={DescriptionContent}
+>
+	<Content slot="paper-info-header" title="投稿格式"> Presentation 與 Espresso 的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+
+	<div slot="after-schedule">
+		<Content title="議程種類" id="type">
+			<div class="blocks">
+				<div class="block">
+					<h3 class="block-title">{block_content[0].title}</h3>
+					<span class="block-time-normal">
+						<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
+						{block_content[0].time.normal}
+					</span>
+					<p class="block-content">{block_content[0].detail}</p>
+				</div>
+				<div class="block">
+					<h3 class="block-title">{block_content[1].title}</h3>
+					<div class="block-time-normal">
+						<span class="block-time-spotlight">{block_content[1].time.spotlight}</span>
+						{block_content[1].time.normal}
+					</div>
+					<p class="block-content">{block_content[1].detail}</p>
+				</div>
+			</div>
+		</Content>
+
+		<Content title="投稿主題範例">
+			<ContentFormat>
+				<SubjectSampleContent />
+				<Link presentation_content={presentation_content} espresso_content={espresso_content} />
+			</ContentFormat>
+		</Content>
+	</div>
+</SubmissionPage>

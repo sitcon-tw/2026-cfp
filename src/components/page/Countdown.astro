@@ -1,0 +1,258 @@
+---
+import ArrowRight from "@assets/desc_page/arrow_right.svg";
+const { end1, end2, start, form_url } = Astro.props;
+---
+
+<div class="countdown" data-date-end1={end1} data-date-end2={end2} data-date-start={start}>
+	<div class="title-bar">
+		<h2 class="title">投稿截止</h2>
+		<div class="progress-bar">
+			<div class="progress" style="width: 99%;"></div>
+		</div>
+		<span class="progress-number">99%</span>
+	</div>
+	<p class="text"></p>
+	<div class="timer">
+		<div>
+			<div class="timer-number countdown-days">00</div>
+			<div class="timer-text">DAYS</div>
+		</div>
+
+		<div>
+			<div class="timer-number countdown-hours">00</div>
+			<div class="timer-text">HOURS</div>
+		</div>
+
+		<div>
+			<div class="timer-number countdown-minutes">00</div>
+			<div class="timer-text">MINUTES</div>
+		</div>
+
+		<div>
+			<div class="timer-number countdown-seconds">00</div>
+			<div class="timer-text">SECONDS</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="deadline">
+			截止時間<br />
+			<span class="deadline-text"></span>
+		</div>
+		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿">
+			立即投稿
+			<ArrowRight width="3rem" />
+		</a>
+	</div>
+</div>
+
+<style>
+	.countdown {
+		border-radius: 2rem;
+		background: #345b92;
+		padding: 3rem 3.5rem;
+	}
+
+	.text {
+		font-size: 1.5rem;
+		margin: 2rem 0 0 0;
+	}
+
+	.footer {
+		gap: 1rem;
+		display: flex;
+		justify-content: space-around;
+	}
+
+	.link {
+		display: flex;
+		color: #566d8d;
+		font-size: 2rem;
+		font-weight: bold;
+		text-decoration: none;
+		justify-content: center;
+		align-items: center;
+		line-height: 2rem;
+		letter-spacing: 1rem;
+		border-radius: 1.5rem;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		background-color: rgba(255, 255, 255, 0.8);
+		gap: 0.2rem;
+		padding: 0.2rem 1rem;
+		flex-grow: 0.4;
+	}
+
+	.deadline {
+		padding: 0.2rem;
+		text-align: center;
+		font-size: 1.1rem;
+		line-height: 2.5rem;
+		letter-spacing: 0.2rem;
+		border-radius: 1.5rem;
+		align-content: center;
+		flex-grow: 0.4;
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		min-width: 17.5rem;
+	}
+
+	.timer {
+		display: flex;
+		justify-content: space-around;
+		margin: 2rem 0;
+		text-align: center;
+		gap: 0.7rem;
+	}
+
+	.timer-number {
+		font-size: 4.5rem;
+		font-weight: 500;
+	}
+
+	.timer-text {
+		font-size: 1.5rem;
+		font-weight: 300;
+		line-height: 1.5;
+	}
+
+	.title {
+		letter-spacing: 1rem;
+		font-size: 2.5rem;
+	}
+
+	.title-bar {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.progress-bar {
+		height: 0.8rem;
+		flex-grow: 1;
+		background: #ffffff;
+		border-radius: 1rem;
+		overflow: hidden;
+	}
+
+	.progress-number {
+		font-size: larger;
+		letter-spacing: 0.4rem;
+	}
+
+	.progress {
+		height: 100%;
+		background: #86aee5;
+		border-radius: 1rem 0 0 1rem;
+		transition: width 0.5s ease-in-out;
+	}
+
+	@media (max-width: 768px) {
+		.countdown {
+			padding: 2.5rem;
+		}
+
+		.timer {
+			display: block;
+		}
+
+		.text {
+			text-align: center;
+		}
+
+		.footer {
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.progress-bar {
+			width: 100%;
+		}
+
+		.title-bar {
+			flex-direction: column;
+			justify-self: center;
+		}
+
+		.link {
+			font-size: 1.5rem;
+		}
+
+		.banner-button {
+			font-size: 1.5rem;
+		}
+	}
+</style>
+
+<script>
+	let end;
+	if (new Date() < new Date(document.querySelector(".countdown")!.getAttribute("data-date-end1") || "")) {
+		end = document.querySelector(".countdown")!.getAttribute("data-date-end1");
+		document.querySelector(".text")!.textContent = "距離早鳥投稿截止還有";
+	} else {
+		end = document.querySelector(".countdown")!.getAttribute("data-date-end2");
+		document.querySelector(".text")!.textContent = "距離投稿截止還有";
+	}
+
+	const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
+		year: "numeric",
+		month: "2-digit",
+		day: "2-digit",
+		hour: "2-digit",
+		minute: "2-digit"
+	});
+	document.querySelector(".deadline-text")!.textContent = deadlineText.replace(",", "");
+
+	const dateToCountdownNumber = (date: string) => {
+		const now = new Date();
+		const deadline = new Date(date);
+		if (deadline <= now) {
+			return {
+				days: "00",
+				hours: "00",
+				minutes: "00",
+				seconds: "00"
+			};
+		}
+		const diff = deadline.getTime() - now.getTime();
+		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+		const minutes = Math.floor((diff / (1000 * 60)) % 60);
+		const seconds = Math.floor((diff / 1000) % 60);
+		return {
+			days: String(days).padStart(2, "0"),
+			hours: String(hours).padStart(2, "0"),
+			minutes: String(minutes).padStart(2, "0"),
+			seconds: String(seconds).padStart(2, "0")
+		};
+	};
+
+	const updateCountdown = () => {
+		document.querySelectorAll(".countdown").forEach(el => {
+			// Update countdown numbers
+			const countdown = dateToCountdownNumber(end || "");
+			el.querySelector(".countdown-days")!.textContent = countdown.days;
+			el.querySelector(".countdown-hours")!.textContent = countdown.hours;
+			el.querySelector(".countdown-minutes")!.textContent = countdown.minutes;
+			el.querySelector(".countdown-seconds")!.textContent = countdown.seconds;
+
+			// Update progress bar
+			const start_string = el.getAttribute("data-date-start") || "";
+			const now = new Date();
+			const deadline = new Date(end || "");
+			const start = new Date(start_string);
+			const total = deadline.getTime() - start.getTime();
+			const elapsed = now.getTime() - start.getTime();
+			const progress = Math.min(Math.max((elapsed / total) * 100, 0), 100);
+			el.querySelector(".progress")!.setAttribute("style", `width: ${progress}%`);
+			el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
+		});
+	};
+	if (new Date() > new Date(end || "")) {
+		document.querySelectorAll(".countdown").forEach(el => {
+			el.querySelectorAll(".timer-number").forEach(num => (num.textContent = "00"));
+			el.querySelector(".progress")!.setAttribute("style", `width: 100%`);
+			el.querySelector(".progress-number")!.textContent = `100%`;
+		});
+	} else {
+		setInterval(updateCountdown, 1000);
+		updateCountdown();
+	}
+</script>

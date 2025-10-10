@@ -1,0 +1,127 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Toc from "@components/page/Toc.astro";
+import Countdown from "@components/page/Countdown.astro";
+import Schedule from "@components/page/Schedule.astro";
+import Banner from "@components/page/Banner.astro";
+import Description from "@components/page/Description.astro";
+import Content from "@components/page/Content.astro";
+import FieldDescription from "@components/page/FieldDescription.astro";
+import PersonalInfo from "@components/page/PersonalInfo.astro";
+import ContentFormat from "@components/page/ContentFormat.astro";
+import QA from "@components/page/QA.astro";
+import "@assets/description-page.css";
+
+interface Props {
+	title: string;
+	submitUrl: string;
+	schedule: Array<{
+		date: Date;
+		event: string;
+		time_text: string;
+	}>;
+	tocContent: Array<{
+		text: string;
+		link: string;
+	}>;
+	bannerH3: string;
+	bannerH2: string;
+	description?: string;
+	descriptionContent?: any;
+	paperInfoContent: Array<any>;
+	personalInfoContent: Array<any>;
+	qaContent: Array<any>;
+	mdContent: any;
+	paperInfoTitle?: string;
+	personalInfoDesc?: string;
+	countdownEnd1?: string;
+	countdownEnd2?: string;
+	countdownStart?: string;
+}
+
+const {
+	title,
+	submitUrl,
+	schedule,
+	tocContent,
+	bannerH3,
+	bannerH2,
+	description,
+	descriptionContent,
+	paperInfoContent,
+	personalInfoContent,
+	qaContent,
+	mdContent,
+	paperInfoTitle = "投稿欄位說明",
+	personalInfoDesc = "除了暱稱 / 名字、自我介紹被用於宣傳，其餘資訊僅需提供一人作為代表（當稿件同時有多位展出者時），供議程組於聯絡時使用。",
+	countdownEnd1 = "2025-11-30T23:59:00",
+	countdownEnd2 = "2026-01-23T23:59:00",
+	countdownStart = "2025-10-12T00:00:00"
+} = Astro.props;
+
+const MdContent = mdContent;
+const DescriptionContent = descriptionContent;
+---
+
+<Layout>
+	<div class="main-container">
+		<div class="toc">
+			<Toc content={tocContent} />
+		</div>
+		<main>
+			<h1>{title}</h1>
+
+			{
+				(description || descriptionContent) && (
+					<div id="description">
+						<Description>
+							{descriptionContent ? (
+								<ContentFormat>
+									<DescriptionContent />
+								</ContentFormat>
+							) : (
+								description
+							)}
+						</Description>
+					</div>
+				)
+			}
+
+			<Countdown end1={countdownEnd1} end2={countdownEnd2} start={countdownStart} form_url={submitUrl} />
+
+			<div id="schedule">
+				<Schedule schedule={schedule} calendarUrl="https://sitcon.org/" />
+			</div>
+
+			{
+				description && (
+					<div id="description">
+						<Description>{description}</Description>
+					</div>
+				)
+			}
+
+			<slot name="after-schedule" />
+
+			<div id="paper-info">
+				<slot name="paper-info-header" />
+				<FieldDescription title={paperInfoTitle} content={paperInfoContent} />
+				<PersonalInfo title="個人資料" description={personalInfoDesc} content={personalInfoContent} />
+			</div>
+
+			<ContentFormat>
+				<MdContent />
+			</ContentFormat>
+
+			<QA content={qaContent} />
+		</main>
+	</div>
+
+	<Banner btn_url={submitUrl} h3={bannerH3} h2={bannerH2} />
+
+	<button id="toc-toggle" class="toc-toggle">☰</button>
+	<a class="btn-fixed" href={submitUrl} target="_blank" rel="noopener">立即<br />投稿</a>
+	<div id="toc" class="toc-mobile">
+		<Toc content={tocContent} />
+	</div>
+</Layout>

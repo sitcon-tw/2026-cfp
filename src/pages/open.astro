@@ -1,0 +1,173 @@
+---
+import SubmissionPage from "@layouts/SubmissionPage.astro";
+import Content from "@components/page/Content.astro";
+import Table from "@components/page/Table.astro";
+
+import MdContent from "@assets/doc/open/Content.md";
+
+const page_info = {
+	title: "一般議程徵稿",
+	description: "開放式議程分為 40 分鐘和 90 分鐘兩種時長，該議程不限定進行方式，希望跳脫傳統議程框架，透過雙向互動、實作等，任何您想得到的非傳統形式進行此場議程。"
+};
+
+const schedule = [
+	{ date: new Date("2025-10-12"), event: "開始徵稿", time_text: "2025/10/12" },
+	{ date: new Date("2025-11-30T23:59:00"), event: "早鳥投稿截止", time_text: "2025/11/30 23:59" },
+	{ date: new Date("2026-01-23T23:59:00"), event: "投稿及稿件修改截止", time_text: "2026/01/23 23:59" },
+	{ date: new Date("2026-02-05"), event: "議程錄取通知", time_text: "2026年2月上旬" },
+	{ date: new Date("2026-03-15T23:59:00"), event: "試講", time_text: "2026/02/22 至 3/15" },
+	{ date: new Date("2026-03-27"), event: "彩排", time_text: "2026/03/27" },
+	{ date: new Date("2026-03-28"), event: "年會", time_text: "2026/03/28" }
+];
+
+const paper_info_content = [
+	{
+		title: "題目 Title",
+		detail: "請不要超出 20 字。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "摘要 Abstract",
+		detail: "建議 150–250 字，使用於宣傳與網站公告。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "為何選擇開放式議程 Format Preference Explanation",
+		detail: "請簡述為什麼您認為開放式議程更適合此議程的內容或主題呈現。這部分可以包括您希望透過開放式議程達成的效果、氣氛或參與方式，以便審稿委員理解您的設計考量。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "進行模式 Method",
+		detail: "不限字數，請詳細說明該議程預計如何和會眾互動，以及是否需要額外的工具，此項目將幫助會眾預期該如何參與此議程。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "議程時長選擇 - 40 或 90 分鐘",
+		detail: "原則上以 40 分鐘議程為主，若您覺得 40 分鐘的時長難以使您傳達內容，我們將限量開放申請時長為 90 分鐘的議程。若欲申請 90 分鐘，請詳細說明您的議程有以 90 分鐘表達的必要性與優勢。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "議程大綱 Outline",
+		detail: "請說明該開放式議程的大綱及時間長度規劃。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "目標受眾 Target Audience",
+		detail: "請說明您期待該議程的目標受眾為怎麼樣的人。例如：「嚮往成為前端開發者的初學者」、「不知道該不該讀研究所的學生」等。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "先備知識 Prior Knowledge",
+		detail: "請說明該議程的與會者所需具備的先備知識。例如：「能理解 Python 基礎語法」、「略懂 108 課綱現況」等。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "主題標籤 Labels",
+		detail: "請填寫 1~4 個該議程相關的領域與知識標籤，例如：ML、Data Science、資安紅隊、blockchain、社團等；錄取後會與講者溝通微調後公開於官網議程表。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "詳細說明 Description",
+		detail: "不限字數，請說明這個議程您認為重要的相關細節，以利審稿委員更瞭解您的議程。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "附件 Attachment",
+		detail: "可以附上程式碼、投影片草稿或任何您認為有助於我們瞭解您議程的附件，請再三確認是否有開啟共用權限。",
+		optional: true,
+		publish: false
+	}
+];
+
+const personal_info_content = [
+	{
+		title: "電子郵件 Email",
+		detail: "能讓大會聯絡的電子信箱。（注意：請您在大會的聯絡過程中，維持使用相同信箱）",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "名字",
+		detail: "您的姓名。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "暱稱",
+		detail: "公開於講者海報及網站的稱呼。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "自我介紹 Self Introduction",
+		detail: "公開於講者海報及網站，將有助於會眾更加了解有關你的資訊。",
+		optional: false,
+		publish: true
+	},
+	{
+		title: "手機號碼 Phone",
+		detail: "用於大會聯絡、確認資訊用的電話號碼。",
+		optional: false,
+		publish: false
+	},
+	{
+		title: "其他聯絡方式 Other Contact Information",
+		detail: "其他任何我們能聯絡您的方式（如 Telegram ID、住處電話等），以利我們在審稿時即時向您釐清投稿資訊。",
+		optional: false,
+		publish: false
+	}
+];
+
+const qa_content = [
+	{
+		question: "「先備知識」與「目標受眾」有何不同？",
+		answer: "「目標受眾」表示您預期何種人將會前來參與該場議程，此欄位可能表示為與會者的興趣、生活環境抑或年齡層。「先備知識」表示對該議程有興趣者，您建議須先備哪些基礎技術、能力或經驗，有助於了解與吸收該場議程的知識精華。舉例而言，若一講題為「在營隊中使用虛擬貨幣」，則先備知識可能是「沒有」，目標受眾可能是「有想要辦營隊的人」。而如果是有關 Julia 程式語言的演講，則先備知識可能是「知道平行運算是什麼」，目標受眾可能是「想用 Julia 做資料科學的人」。"
+	},
+	{ question: "投稿主題是否有需要切合年會主題？", answer: "不用。審稿時僅會依照上文所述標準審查，不會因為呼應主題就拿到比較高分，或因為與主題無關就被扣分。" },
+	{ question: "還有疑問怎麼辦？", answer: "歡迎寄信至 session@sitcon.org 詢問，我們會儘速回應。" }
+];
+
+const toc_content = [
+	{ text: "重要時程", link: "#schedule" },
+	{ text: "議程說明", link: "#description" },
+	{ text: "投稿格式", link: "#paper-info" }
+];
+---
+
+<SubmissionPage
+	title={page_info.title}
+	submitUrl="https://forms.gle/rnuPsPYxdgrtU9PTA"
+	schedule={schedule}
+	tocContent={toc_content}
+	bannerH3={`開放式議程不只是演講，而是一場集體創作。
+你不是獨奏者，而是引領眾聲的指揮家。
+或許你將帶領與會者親手奏出悅耳旋律；
+或許你能讓多元聲音不再彼此掩蓋，而是相互襯托；
+又或許——你想指揮出怎樣的和聲？`}
+	bannerH2="我們正等待你的登場，引領眾人演奏獨特的章節！"
+	description={page_info.description}
+	paperInfoContent={paper_info_content}
+	personalInfoContent={personal_info_content}
+	qaContent={qa_content}
+	mdContent={MdContent}
+>
+	<Content slot="paper-info-header" title="投稿格式"> 除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+
+	<div slot="after-schedule" id="what">
+		<Content title="什麼是開放式議程？">
+			在追求創新的時代，我們為講者提供了開放式議程這個選項，跳脫講者對聽眾單向陳述式的演講，開放式議程更加強調主講者和與會者的雙向交流。SITCON
+			作為學生展現自己的舞台，我們期待以學生為主體的投稿，可以是從學生角度出發的經驗分享、技術分享，或是一同探討學生相關議題等。
+		</Content>
+		<Table />
+	</div>
+</SubmissionPage>
