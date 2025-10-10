@@ -8,6 +8,6 @@ export default defineConfig({
 	trailingSlash: "always",
 	integrations: [],
 	build: {
-		format: "file"
+		format: "directory"
 	}
 });
