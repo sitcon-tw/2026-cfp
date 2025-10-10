@@ -1,15 +1,7 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Toc from "@components/page/Toc.astro";
-import Description from "@components/page/Description.astro";
+import SubmissionPage from "@layouts/SubmissionPage.astro";
 import Content from "@components/page/Content.astro";
-import Schedule from "@components/page/Schedule.astro";
-import Countdown from "@components/page/Countdown.astro";
 import ContentFormat from "@components/page/ContentFormat.astro";
-import FieldDescription from "@components/page/FieldDescription.astro";
-import PersonalInfo from "@components/page/PersonalInfo.astro";
-import Banner from "@components/page/Banner.astro";
-import QA from "@components/page/QA.astro";
 import Link from "@components/page/Link.astro";
 
 import DescriptionContent from "@assets/doc/normal/Description.md";
@@ -17,7 +9,6 @@ import SubjectSampleContent from "@assets/doc/normal/SubjectSample.md";
 import MdContent from "@assets/doc/normal/Content.md";
 
 const submit_url = "https://forms.gle/bTjs7D6hxMSrWYx76";
-const calendar_url = "https://sitcon.org/";
 
 const page_info = {
 	title: "一般議程徵稿"
@@ -301,254 +292,50 @@ const toc_content = [
 ];
 ---
 
-<Layout>
-	<a class="btn-fixed" href={submit_url} target="_blank" rel="noopener">立即<br />投稿</a>
-	<div class="out-container">
-		<div class="main-container">
-			<div class="toc">
-				<Toc content={toc_content} />
+<SubmissionPage
+	title={page_info.title}
+	submitUrl={submit_url}
+	schedule={schedule}
+	tocContent={toc_content}
+	bannerH3={`那段未曾被聽見的旋律，正等著在混沌中覺醒。
+現在，是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。`}
+	bannerH2="別再猶豫，讓樂音在這場年會中響起！"
+	paperInfoContent={paper_info_content}
+	personalInfoContent={personal_info_content}
+	qaContent={qa_content}
+	mdContent={MdContent}
+	personalInfoDesc="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
+	descriptionContent={DescriptionContent}
+>
+	<Content slot="paper-info-header" title="投稿格式"> Presentation 與 Espresso 的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
+
+	<div slot="after-schedule">
+		<Content title="議程種類" id="type">
+			<div class="blocks">
+				<div class="block">
+					<h3 class="block-title">{block_content[0].title}</h3>
+					<span class="block-time-normal">
+						<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
+						{block_content[0].time.normal}
+					</span>
+					<p class="block-content">{block_content[0].detail}</p>
+				</div>
+				<div class="block">
+					<h3 class="block-title">{block_content[1].title}</h3>
+					<div class="block-time-normal">
+						<span class="block-time-spotlight">{block_content[1].time.spotlight}</span>
+						{block_content[1].time.normal}
+					</div>
+					<p class="block-content">{block_content[1].detail}</p>
+				</div>
 			</div>
-			<main>
-				<h1>{page_info.title}</h1>
+		</Content>
 
-				<div id="description">
-					<Description>
-						<ContentFormat>
-							<DescriptionContent />
-						</ContentFormat>
-					</Description>
-				</div>
-
-				<Countdown end1="2025-11-30T23:59:00" end2="2026-01-23T23:59:00" start="2025-10-12T00:00:00" form_url={submit_url} />
-
-				<div id="schedule">
-					<Schedule schedule={schedule} calendarUrl={calendar_url} />
-				</div>
-
-				<div id="type">
-					<Content title="議程種類">
-						<div class="blocks">
-							<div class="block">
-								<h3 class="block-title">{block_content[0].title}</h3>
-								<span class="block-time-normal">
-									<span class="block-time-spotlight">{block_content[0].time.spotlight}</span>
-									{block_content[0].time.normal}
-								</span>
-								<p class="block-content">{block_content[0].detail}</p>
-							</div>
-
-							<div class="block">
-								<h3 class="block-title">{block_content[1].title}</h3>
-								<div class="block-time-normal">
-									<span class="block-time-spotlight">{block_content[1].time.spotlight}</span>
-									{block_content[1].time.normal}
-								</div>
-								<p class="block-content">{block_content[1].detail}</p>
-							</div>
-						</div>
-					</Content>
-				</div>
-
-				<Content title="投稿主題範例">
-					<ContentFormat>
-						<SubjectSampleContent />
-						<Link presentation_content={presentation_content} espresso_content={espresso_content} />
-					</ContentFormat>
-				</Content>
-
-				<div id="paper-info">
-					<Content title="投稿格式"> Presentation 與 Espresso 的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
-					<FieldDescription title="投稿欄位說明" content={paper_info_content} />
-					<PersonalInfo
-						title="個人資料"
-						description="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
-						content={personal_info_content}
-					/>
-				</div>
-
-				<ContentFormat>
-					<MdContent />
-				</ContentFormat>
-
-				<QA content={qa_content} />
-			</main>
-		</div>
-
-		<div class="banner">
-			<Banner btn_url={submit_url} h3=`那段未曾被聽見的旋律，正等著在混沌中覺醒。
-現在，是你的使命，投下專屬於你的作品，為失序添上一抹即興，喚起共鳴。` h2="別再猶豫，讓樂音在這場年會中響起！" />
-		</div>
+		<Content title="投稿主題範例">
+			<ContentFormat>
+				<SubjectSampleContent />
+				<Link presentation_content={presentation_content} espresso_content={espresso_content} />
+			</ContentFormat>
+		</Content>
 	</div>
-
-	<button id="toc-toggle" class="toc-toggle">☰</button>
-
-	<div id="toc" class="toc-mobile">
-		<Toc content={toc_content} />
-	</div>
-</Layout>
-
-<style>
-	.main-container {
-		max-width: 65rem;
-		margin: 3rem 1rem;
-		display: grid;
-		grid-template-columns: 1fr 5fr;
-		grid-template-rows: auto auto;
-	}
-
-	main {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-
-	.out-container {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.blocks {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1.5rem;
-		margin: 2rem 1rem;
-	}
-
-	.block {
-		display: block;
-		text-align: center;
-		border-radius: 1.5rem;
-		padding: 1rem;
-		border: 4px solid #86aee5;
-		background-color: #fff;
-		color: #86aee5;
-		align-content: start;
-	}
-
-	.block-title {
-		font-size: 2rem;
-		margin-bottom: 0.5rem;
-		font-size: 2.5rem;
-		letter-spacing: 0.125rem;
-		font-weight: 700;
-	}
-
-	.block-content {
-		word-wrap: break-word;
-		text-align: justify;
-		margin: 0.5rem 0;
-		font-weight: bold;
-		font-size: 1.5rem;
-		font-weight: 700;
-		letter-spacing: 0.075rem;
-	}
-
-	.block-time-spotlight {
-		font-size: 5rem;
-		font-weight: bold;
-	}
-
-	.block-time-normal {
-		font-size: 2rem;
-	}
-
-	.banner {
-		grid-column: 1 / -1;
-	}
-
-	.toc {
-		padding: 0 2rem;
-		justify-self: center;
-	}
-
-	h1 {
-		font-size: 4rem;
-		font-weight: 900;
-	}
-
-	.btn-fixed {
-		text-decoration: none;
-		border-radius: 50%;
-		background: #ffffff;
-		border-color: #589dff;
-		border-width: 3rem;
-		color: #566d8d;
-		text-align: center;
-		font-size: 1.3rem;
-		font-weight: 500;
-		line-height: 1.3;
-		letter-spacing: 0.12rem;
-		filter: drop-shadow(4px 3px 30.1px rgba(255, 255, 255, 0.21));
-		position: fixed;
-		right: 1rem;
-		bottom: 1rem;
-		z-index: 9999;
-		display: inline-flex;
-		align-items: center;
-		gap: 10px;
-		padding: 12px 16px;
-	}
-
-	.toc-toggle {
-		display: none;
-		position: fixed;
-		bottom: 20px;
-		left: 20px;
-		background: #0077cc;
-		color: white;
-		border: none;
-		border-radius: 50%;
-		width: 54px;
-		height: 54px;
-		font-size: 20px;
-		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-		cursor: pointer;
-		z-index: 9999;
-	}
-
-	.toc-mobile {
-		display: none;
-		position: fixed;
-		top: 4.2rem;
-		right: 0;
-		width: 8.5rem;
-		max-width: 300px;
-		height: 100vh;
-		background: #0101218f;
-		box-shadow: -2px 0 12px rgba(0, 0, 0, 0.2);
-		padding: 80px 20px;
-		transform: translateX(100%);
-		transition: transform 0.3s ease;
-		z-index: 1000;
-		transform: translateX(0);
-	}
-
-	@media (max-width: 768px) {
-		.toc {
-			display: none;
-		}
-
-		.toc-mobile:hover {
-			display: block;
-			opacity: 1;
-		}
-
-		.toc-mobile,
-		.toc-toggle {
-			display: block;
-			opacity: 0;
-		}
-
-		.main-container {
-			display: block;
-		}
-
-		.blocks {
-			display: block;
-		}
-
-		.block {
-			margin: 1rem 0;
-		}
-	}
-</style>
+</SubmissionPage>
