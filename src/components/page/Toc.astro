@@ -10,7 +10,7 @@ const { content } = Astro.props;
 	{
 		content.map((item: { text: string; link: string }) => (
 			<a class="toc-item" href={item.link} data-target={item.link}>
-				<span class="toc-indicator"></span>
+				<span class="toc-indicator" />
 				<span class="toc-text">{item.text}</span>
 			</a>
 		))
@@ -20,33 +20,33 @@ const { content } = Astro.props;
 <script>
 	// Active section detection
 	function updateActiveTocItem() {
-		const sections = document.querySelectorAll('main [id]');
-		const tocItems = document.querySelectorAll('.toc-item');
-		
-		let currentSection = '';
+		const sections = document.querySelectorAll("main [id]");
+		const tocItems = document.querySelectorAll(".toc-item");
+
+		let currentSection = "";
 		const scrollPosition = window.scrollY + 150;
 
-		sections.forEach((section) => {
+		sections.forEach(section => {
 			const sectionTop = (section as HTMLElement).offsetTop;
 			if (scrollPosition >= sectionTop) {
-				currentSection = '#' + section.id;
+				currentSection = "#" + section.id;
 			}
 		});
 
-		tocItems.forEach((item) => {
-			const target = item.getAttribute('data-target');
+		tocItems.forEach(item => {
+			const target = item.getAttribute("data-target");
 			if (target === currentSection) {
-				item.classList.add('active');
+				item.classList.add("active");
 			} else {
-				item.classList.remove('active');
+				item.classList.remove("active");
 			}
 		});
 	}
 
 	// Update on scroll and load
-	window.addEventListener('scroll', updateActiveTocItem);
-	window.addEventListener('load', updateActiveTocItem);
-	document.addEventListener('astro:page-load', updateActiveTocItem);
+	window.addEventListener("scroll", updateActiveTocItem);
+	window.addEventListener("load", updateActiveTocItem);
+	document.addEventListener("astro:page-load", updateActiveTocItem);
 </script>
 
 <style>
@@ -57,21 +57,21 @@ const { content } = Astro.props;
 		position: sticky;
 		top: 13rem;
 	}
-	
+
 	.toc-title {
 		color: #fff;
 		font-size: 1rem;
 		margin-bottom: 0.5rem;
 		line-height: 2rem;
 	}
-	
+
 	.toc-divider {
 		height: 0.1rem;
 		width: 100%;
 		background: #ccc;
 		margin-bottom: 0.5rem;
 	}
-	
+
 	.toc-item {
 		display: flex;
 		align-items: center;
@@ -83,7 +83,7 @@ const { content } = Astro.props;
 		transition: all 0.3s ease;
 		cursor: pointer;
 	}
-	
+
 	.toc-indicator {
 		width: 3px;
 		height: 20px;
@@ -92,29 +92,29 @@ const { content } = Astro.props;
 		transition: all 0.3s ease;
 		flex-shrink: 0;
 	}
-	
+
 	.toc-text {
 		color: #ccc;
 		font-size: 0.9rem;
 		transition: color 0.3s ease;
 		text-align: left;
 	}
-	
+
 	.toc-item:hover .toc-indicator {
 		background: #aaa;
 		height: 24px;
 	}
-	
+
 	.toc-item:hover .toc-text {
 		color: #fff;
 	}
-	
+
 	.toc-item.active .toc-indicator {
 		background: #fff;
 		height: 28px;
 		width: 4px;
 	}
-	
+
 	.toc-item.active .toc-text {
 		color: #fff;
 		font-weight: 600;
