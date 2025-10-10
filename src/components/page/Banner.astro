@@ -4,81 +4,103 @@ const { btn_url, h3, h2 } = Astro.props;
 import StarIcon from "@assets/desc_page/star.svg";
 
 import BannerBgIcon from "@assets/desc_page/banner_bg_icon.webp";
+import BannerTransitionIcon from "@assets/desc_page/banner_tran.svg";
 ---
 
-<div class="banner">
-	<div class="banner-container">
-		<div class="banner-text">{h3}</div>
-		<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
-		<h2 class="banner-title">{h2}</h2>
+<div class="banner-section">
+  <img src={BannerTransitionIcon.src} class="banner-transition" alt="banner transition" />
+  <div class="banner">
+    <div class="banner-container">
+      <div class="banner-text">{h3}</div>
+      <img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
+      <h2 class="banner-title">{h2}</h2>
 
-		<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
-			<StarIcon height="2rem" />
-			<span> 立即投稿 </span>
-			<StarIcon height="2rem" />
-		</a>
-	</div>
+      <a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
+        <StarIcon height="2rem" />
+        <span> 立即投稿 </span>
+        <StarIcon height="2rem" />
+      </a>
+    </div>
+  </div>
 </div>
 
 <style>
-	.banner {
-		position: relative;
-		padding: 16rem 4rem 4rem 4rem;
-		width: 100%;
-		background: linear-gradient(transparent, white 10rem);
-		font-weight: bold;
-	}
+  .banner-section {
+    position: relative;
+    width: 100%;
+    background: #ffffff;
+  }
+  .banner {
+    position: relative;
+    padding: 4rem 4rem 4rem 4rem;
+    width: 100%;
+    background: #ffffff;
+    font-weight: bold;
+  }
 
-	.banner-container {
-		max-width: 60rem;
-		margin: auto;
-	}
+  .banner-container {
+    max-width: 60rem;
+    margin: auto;
+  }
 
-	.banner-text,
-	.banner-title {
-		font-size: 2rem;
-		text-wrap: balance;
-		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
-		background-clip: text;
-		-webkit-text-fill-color: transparent;
-		color: transparent;
-		width: fit-content;
-	}
+  .banner-transition {
+    top: -1px;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-context-menu: none;
+  }
 
-	.banner-title {
-		font-size: 2.5rem;
-	}
+  .banner-text,
+  .banner-title {
+    font-size: 2rem;
+    text-wrap: balance;
+    background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    width: fit-content;
+  }
 
-	.banner-text {
-		margin-bottom: 2rem;
-	}
+  .banner-title {
+    font-size: 2.5rem;
+  }
 
-	.banner-button {
-		display: flex;
-		border-radius: 1000px;
-		color: #ffffff;
-		background: #010121;
-		font-size: 2rem;
-		align-items: center;
-		justify-content: center;
-		margin: 4.5rem 0;
-		padding: 1rem 1rem;
-		text-decoration: none;
-	}
+  .banner-text {
+    margin-bottom: 2rem;
+  }
 
-	.bg-icon {
-		position: absolute;
-		max-width: 20rem;
-		top: 17rem;
-		right: 3rem;
-		opacity: 0.1;
-		pointer-events: none;
-		z-index: 0;
-	}
+  .banner-button {
+    display: flex;
+    border-radius: 1000px;
+    color: #ffffff;
+    background: #010121;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    margin: 4.5rem 0;
+    padding: 1rem 1rem;
+    text-decoration: none;
+  }
 
-	@media (max-width: 768px) {
-		.banner-button {
-			font-size: 1.5rem;
-		}
-	}
+  .bg-icon {
+    position: absolute;
+    max-width: 20rem;
+    top: 17rem;
+    right: 3rem;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 768px) {
+    .banner-button {
+      font-size: 1.5rem;
+    }
+  }
 </style>
