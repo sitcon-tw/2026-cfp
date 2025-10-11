@@ -1,8 +1,7 @@
 ---
-import redArrow from "@assets/img/red_arrow.svg";
-import blueArrow from "@assets/img/blue_arrow.svg";
-import yellowArrow from "@assets/img/yellow_arrow.svg";
+import arrow from "@assets/img/arrow.svg";
 import introBg from "@assets/intro_bg.svg";
+import { Icon } from "astro-icon/components";
 ---
 
 <section id="submit">
@@ -19,7 +18,7 @@ import introBg from "@assets/intro_bg.svg";
                 <div class="card-title">一般議程</div>
                 <div class="card-desc">40 分鐘</div>
             </div>
-            <div class="card-cta" aria-hidden="true"><img src={redArrow.src} aria-hidden="true" /></div>
+            <div class="card-cta red" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
         </a>
 
         <a class="card" href="#">
@@ -27,7 +26,7 @@ import introBg from "@assets/intro_bg.svg";
                 <div class="card-title">開放式議程</div>
                 <div class="card-desc">10 分鐘精準傳達</div>
             </div>
-            <div class="card-cta" aria-hidden="true"><img src={blueArrow.src} aria-hidden="true" /></div>
+            <div class="card-cta blue" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
         </a>
 
         <a class="card demo-card" href="#">
@@ -35,7 +34,7 @@ import introBg from "@assets/intro_bg.svg";
                 <div class="card-title">Demo 徵稿</div>
                 <div class="card-desc">互動裝置展示</div>
             </div>
-            <div class="card-cta" aria-hidden="true"><img src={yellowArrow.src} aria-hidden="true" /></div>
+            <div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
             <div class="marquee-bar" aria-hidden="true">
                 <div class="marquee-content">
                     <span class="tag">NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW</span>
@@ -123,8 +122,28 @@ import introBg from "@assets/intro_bg.svg";
     .card-desc { margin-top: .5rem; color: #555; }
 
     .card-cta {
-        width: 56px;
-        height: 56px;
+        padding: 0.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #4A86E8;
+        border-radius: 50%;
+    }
+
+    .card-cta.red {
+        background-color: #DC5456;
+    }
+
+    .card-cta.blue {
+        background-color: #2972C4;
+    }
+
+    .card-cta.yellow {
+        background-color: #FF8400;
+    }
+
+    .card-cta .arrow {
+        width: 3.5rem;
     }
 
     .marquee-bar {
@@ -198,22 +217,24 @@ import introBg from "@assets/intro_bg.svg";
     .intro-bg-container {
         position: absolute;
         bottom: 0;
-        left: -25%;
-        width: 150%;
-        height: 100%;
+        left: 50%;
+        width: 100vw;
+        height: 150%;
         z-index: -1;
+        transform: translateX(-50%);
     }
 
     @media (max-width: 768px) {
         .intro-bg-container {
-            bottom: -15rem;
+            bottom: 0;
         }
     }
 
     .intro-bg {
         width: 100%;
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center bottom;
     }
 </style>
 
