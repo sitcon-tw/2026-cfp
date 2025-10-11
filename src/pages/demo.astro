@@ -6,7 +6,9 @@ import MdContent from "@assets/doc/demo/Content.md";
 const page_info = {
 	title: "Demo 展徵稿",
 	description:
-		"Demo 展提供展出者與會眾面對面的交流機會，透過專案演示、駐足討論獲得即時反饋，以促進專案的完善與拓展。Demo 展歡迎各階段參與者，從基礎專案研究至進階應用實作，包括但不限於學生專題展示、遊戲團隊試玩，皆可投稿。我們期望此形式不僅讓展出者曝光作品及取得更廣泛的回饋，更能從會眾的多元視角獲取建設性建議，進而激發後續發展靈感。"
+		"Demo 展提供展出者與會眾面對面的交流機會，透過專案演示、駐足討論獲得即時反饋，以促進專案的完善與拓展。Demo 展歡迎各階段參與者，從基礎專案研究至進階應用實作，包括但不限於學生專題展示、遊戲團隊試玩，皆可投稿。我們期望此形式不僅讓展出者曝光作品及取得更廣泛的回饋，更能從會眾的多元視角獲取建設性建議,進而激發後續發展靈感。",
+	seo_title: "Demo 展投稿 - 專案演示即時交流 | SITCON 2026",
+	seo_description: "SITCON 2026 全新 Demo 展徵稿！現場演示你的專案作品，與會眾面對面交流，獲得即時反饋。歡迎學生專題、遊戲試玩、創新應用等各類作品投稿。"
 };
 
 const schedule = [
@@ -124,6 +126,8 @@ const toc_content = [
 	qaContent={qa_content}
 	mdContent={MdContent}
 	paperInfoTitle="稿件資訊"
+	seoTitle={page_info.seo_title}
+	seoDescription={page_info.seo_description}
 >
 	<Content slot="paper-info-header" title="投稿格式">除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。</Content>
 
