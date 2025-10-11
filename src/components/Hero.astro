@@ -7,17 +7,17 @@ import supportBtn from "@assets/hero/button/support.svg";
 ---
 
 <header>
-	<canvas id="bg"></canvas>
+	<canvas id="bg" aria-hidden="true"></canvas>
 	<h1>Jam the Chaos</h1>
 	<p class="location">2026/03/28 中央研究院人文社會科學館</p>
-	<div class="button-container">
-		<a href="#attend" class="button"><img src={attendBtn.src} alt="我要參與" /></a>
-		<a href="#submit" class="button"><img src={submitBtn.src} alt="我要投稿" /></a>
-		<a href="#support" class="button"><img src={supportBtn.src} alt="支持我們" /></a>
-	</div>
-	<img src={sitconLeaf.src} alt="Hero Background Graphics" class="sitcon-leaf" />
-	<img src={sitconCircle.src} alt="Hero Background Graphics" class="sitcon-circle" />
-	<div class="sitcon-banner">
+	<nav class="button-container" aria-label="主要操作導覽">
+		<a href="#attend" class="button" aria-label="我要參與 SITCON 2026"><img src={attendBtn.src} alt="" role="presentation" /></a>
+		<a href="#submit" class="button" aria-label="我要投稿 SITCON 2026"><img src={submitBtn.src} alt="" role="presentation" /></a>
+		<a href="#support" class="button" aria-label="支持我們 SITCON 2026"><img src={supportBtn.src} alt="" role="presentation" /></a>
+	</nav>
+	<img src={sitconLeaf.src} alt="" aria-hidden="true" class="sitcon-leaf" />
+	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
+	<div class="sitcon-banner" aria-label="SITCON 2026 活動標誌">
 		<span class="sitcon-text">SITCON 2026</span>
 	</div>
 </header>

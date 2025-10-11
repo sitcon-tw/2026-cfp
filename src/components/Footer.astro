@@ -48,7 +48,7 @@ const socialMedia = [
 <footer class="footer">
 	<div class="footer-container">
 		<div class="footer-top">
-			<div class="footer-column">
+			<nav class="footer-column" aria-label="網站導覽">
 				<h3>連結</h3>
 				<ul>
 					{
@@ -59,9 +59,9 @@ const socialMedia = [
 						))
 					}
 				</ul>
-			</div>
+			</nav>
 
-			<div class="footer-column">
+			<nav class="footer-column" aria-label="贊助資訊">
 				<h3>支持我們</h3>
 				<ul>
 					{
@@ -72,24 +72,24 @@ const socialMedia = [
 						))
 					}
 				</ul>
-			</div>
+			</nav>
 
 			<div class="footer-column">
 				<h3>歷年網站</h3>
 				<div class="years-grid">
 					{
 						years.map(item => (
-							<a href={item.href} target="_blank" rel="noopener noreferrer">
+							<a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`SITCON ${item.year} 年會網站`}>
 								{item.year}
 							</a>
 						))
 					}
 				</div>
-			</div>
+			</nav>
 
 			<div class="footer-column">
 				<h3>聯絡我們</h3>
-				<a href="mailto:contact@sitcon.org" class="contact-email">contact@sitcon.org</a>
+				<a href="mailto:contact@sitcon.org" class="contact-email" aria-label="寄送電子郵件至 contact@sitcon.org">contact@sitcon.org</a>
 			</div>
 		</div>
 
@@ -97,22 +97,22 @@ const socialMedia = [
 
 		<div class="footer-bottom">
 			<div class="footer-branding">
-				<img src={sitcon.src} alt="SITCON" class="footer-logo" />
+				<img src={sitcon.src} alt="SITCON Logo" class="footer-logo" />
 				<div class="footer-text">
 					<p class="footer-title">學生計算機年會</p>
 					<p class="footer-subtitle">Students' Information Technology Conference</p>
 				</div>
 			</div>
 
-			<div class="social-media">
+			<nav class="social-media" aria-label="社群媒體連結">
 				{
 					socialMedia.map(social => (
-						<a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name} class="social-icon">
-							<img src={social.icon.src} alt={social.name} />
+						<a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={`前往 SITCON ${social.name} 頁面`} class="social-icon">
+							<img src={social.icon.src} alt="" aria-hidden="true" />
 						</a>
 					))
 				}
-			</div>
+			</nav>
 		</div>
 	</div>
 </footer>
