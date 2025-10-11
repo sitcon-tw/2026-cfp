@@ -24,7 +24,6 @@ interface Props {
 		text: string;
 		link: string;
 	}>;
-	bannerH3: string;
 	bannerH2: string;
 	description?: string;
 	descriptionContent?: any;
@@ -46,7 +45,6 @@ const {
 	submitUrl,
 	schedule,
 	tocContent,
-	bannerH3,
 	bannerH2,
 	description,
 	descriptionContent,
@@ -121,7 +119,7 @@ const DescriptionContent = descriptionContent;
 		</main>
 	</div>
 
-	<Banner btn_url={submitUrl} h3={bannerH3} h2={bannerH2} />
+	<Banner btn_url={submitUrl} h2={bannerH2} />
 
 	<button id="toc-toggle" class="toc-toggle">☰</button>
 	<a class="btn-fixed" href={submitUrl} target="_blank" rel="noopener">立即<br />投稿</a>
