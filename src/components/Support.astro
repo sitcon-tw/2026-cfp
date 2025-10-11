@@ -1,0 +1,123 @@
+---
+// Support component
+---
+
+<section id="support" class="support-section">
+	<div class="support-container">
+		<h2 class="support-title">支持我們</h2>
+		
+		<div class="support-content">
+			<p class="support-paragraph">
+				SITCON 秉持著不向與會者收費的原則，十年以來致力於推廣學生資訊教育，創造學生交流、教學互長的機會。
+			</p>
+			
+			<p class="support-paragraph">
+				如果您也認同 SITCON 的理念，歡迎以行動支持 SITCON 的運作，點擊下方「個人贊助方案」，您的支持將會成為我們的動力，讓更多學生能在舞台上展現自我、讓資訊教育遍及臺灣的每個角落！
+			</p>
+			
+			<p class="support-paragraph">
+				若您有興趣成為我們的贊助夥伴，歡迎點擊下方「索取贊助徵求書」，了解詳細合作方案，或是利用 contact@sitcon.org 聯絡我們，我們將有專人與您商討更多的合作方式！
+			</p>
+		</div>
+		
+        <div class="support-button-container">
+            <button onclick="window.open('https://sitcon.org/2026/cfs/', '_blank')" class="support-button">前往贊助徵求網頁 ↗</button>
+        </div>
+		
+	</div>
+</section>
+
+<style>
+	.support-section {
+        position: relative;
+        margin: 0 auto;
+		background-color: #ffffff;
+		padding: 4rem 10rem;
+		min-height: 70vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.support-container {
+		width: 100%;
+		padding: 0 40px;
+		margin: 0 auto;
+	}
+
+	.support-title {
+		font-size: 4rem;
+		font-weight: 700;
+		color: #000000;
+		margin-bottom: 2rem;
+		line-height: 1.2;
+        letter-spacing: 0.35rem;
+	}
+
+	.support-content {
+		margin-bottom: 3rem;
+	}
+
+	.support-paragraph {
+		font-size: 1.125rem;
+		letter-spacing: 0.15rem;
+		line-height: 1.8;
+		color: #000000;
+		margin-bottom: 1.5rem;
+	}
+
+	.support-paragraph:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.support-button-container {
+		margin-top: 2rem;
+		display: flex;
+		justify-content: end;
+	}
+
+	.support-button {
+		background-color: #4285F4;
+		color: #ffffff;
+		border: none;
+		padding: 16px 32px;
+		font-size: 1.125rem;
+		font-weight: 600;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.support-button:hover {
+		background-color: #3367D6;
+		box-shadow: 0 6px 16px rgba(66, 133, 244, 0.4);
+	}
+
+	.support-button:active {
+		transform: translateY(0);
+		box-shadow: 0 2px 8px rgba(66, 133, 244, 0.3);
+	}
+
+	/* Responsive design */
+	@media (max-width: 768px) {
+		.support-section {
+			padding: 2rem 0;
+		}
+
+		.support-title {
+			font-size: 3rem;
+		}
+
+		.support-paragraph {
+			font-size: 1.1rem;
+		}
+
+		.support-button {
+			padding: 0.8rem 1.8rem;
+			font-size: 1.3rem;
+		}
+	}
+</style>

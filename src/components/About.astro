@@ -1,0 +1,138 @@
+---
+import sitconLeaf from "@assets/img/sitcon_leaf.svg";
+import sitconCircle from "@assets/img/sitcon_circle.svg";
+import light from "@assets/light.svg";
+import sitcon2025 from "@assets/sitcon-2025.webp";
+---
+
+<section>
+	<p class="about-title">關於 SITCON</p>
+	<p class="about-content">學生計算機年會（Students’ Information Technology Conference）自 2012 年發起，以學生為本、由學生自發舉辦，長期投身學生資訊教育與推廣開源精神，希望引領更多學子踏入資訊的殿堂，更冀望所有對資訊有興趣的學生，能夠在年會裏齊聚一堂，彼此激盪、傳承、啟發，達到「學以致用、教學相長」的實際展現。</p>
+	<img src={sitconLeaf.src} alt="Hero Background Graphics" aria-hidden="true" class="sitcon-leaf" />
+	<img src={sitconCircle.src} alt="Hero Background Graphics" aria-hidden="true" class="sitcon-circle" />
+	<div class="grid"></div>
+	<img src={light.src} alt="Hero Background Graphics" aria-hidden="true" class="light" />
+	<div class="image-container">
+		<img src={sitcon2025.src} alt="SITCON 2025 工人團體照" class="sitcon2025" />
+	</div>
+	
+</section>
+
+<style>
+	section {
+		min-height: 120vh;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.about-title {
+		color: #ffffff;
+		font-size: 3.5rem;
+		font-weight: bold;
+		font-family: "Orbitron", sans-serif;
+	}
+
+	.about-content {
+		max-width: 75%;
+		margin: 0 auto;
+		line-height: 2;
+		letter-spacing: 0.15rem;
+		color: #ffffff;
+		font-size: 1.2rem;
+	}
+
+	.sitcon-leaf {
+		position: absolute;
+		bottom: 0;
+		right: -10rem;
+		z-index: -1;
+		opacity: 0.9;
+		-webkit-mask-image: -webkit-gradient(linear, left bottom, right top, 
+		from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+		width: 50%;
+		height: 50%;
+		max-width: 100%;
+		overflow: hidden;
+	}
+
+	.sitcon-circle {
+		position: absolute;
+		top: 0;
+		left: -14rem;
+		z-index: -1;
+	}
+
+	.grid {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		opacity: 0.4;
+		background-image: 
+			/* Horizontal lines */
+			linear-gradient(to right, rgba(255,255,255,0.8) 1px, transparent 1px),
+			/* Vertical lines */
+			linear-gradient(to bottom, rgba(255,255,255,0.8) 1px, transparent 1px);
+		background-size: 
+			/* Horizontal spacing: approximately 80px intervals */
+			80px 80px,
+			/* Vertical spacing: approximately 80px intervals */
+			80px 80px;
+		background-position: 0 0, 0 0;
+		mask-image: linear-gradient(to bottom, 
+			rgba(0,0,0,0) 0%, 
+			rgba(0,0,0,1) 70%, 
+			rgba(0,0,0,0) 100%);
+		-webkit-mask-image: linear-gradient(to bottom, 
+			rgba(0,0,0,0) 0%, 
+			rgba(0,0,0,1) 70%, 
+			rgba(0,0,0,0) 100%);
+	}
+
+	.light {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		opacity: 0.9;
+		filter: blur(4rem);
+	}	
+
+	.image-container {
+		width: 40%;
+		margin: 2rem auto 0 auto;
+	}
+
+	.sitcon2025 {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 3rem;
+	}
+
+	@media (max-width: 768px) {
+		.about-title {
+			font-size: 3rem;
+		}
+
+		.about-content {
+			font-size: 1.2rem;
+		}
+
+		.image-container {
+			width: 90%;
+		}
+
+
+		.sitcon-leaf {
+			right: 0;
+		}
+	}
+</style>
