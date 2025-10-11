@@ -12,26 +12,26 @@ import introBg from "@assets/intro_bg.svg";
     </div>
 
     <div class="cards">
-        <a class="card" href="#">
+        <a class="card" href="normal/">
             <div class="card-body">
                 <div class="card-title">一般議程</div>
-                <div class="card-desc">40 分鐘</div>
+                <div class="card-desc">40 分鐘深度分享<br />又或是 10 分鐘精準傳達</div>
             </div>
             <div class="card-cta red" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
         </a>
 
-        <a class="card" href="#">
+        <a class="card" href="open/">
             <div class="card-body">
                 <div class="card-title">開放式議程</div>
-                <div class="card-desc">10 分鐘精準傳達</div>
+                <div class="card-desc">一起交流，共創議程</div>
             </div>
             <div class="card-cta blue" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
         </a>
 
-        <a class="card demo-card" href="#">
+        <a class="card demo-card" href="demo/">
             <div class="card-body">
                 <div class="card-title">Demo 徵稿</div>
-                <div class="card-desc">互動裝置展示</div>
+                <div class="card-desc">現場專案演示<br />汲取即時反饋</div>
             </div>
             <div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} class="arrow" aria-hidden="true" /></div>
             <div class="marquee-bar" aria-hidden="true">
@@ -201,15 +201,23 @@ import introBg from "@assets/intro_bg.svg";
         }
 
         .card-title {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
         }
 
         .card-desc {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
         }
 
         .calendar-hint {
             font-size: 1.2rem;
+        }
+
+        .cards {
+            gap: 0.5rem;
+        }
+
+        .card-cta .arrow {
+            width: 2.6rem;
         }
     }
 
