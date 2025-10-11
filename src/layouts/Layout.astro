@@ -10,7 +10,7 @@ interface Props {
 }
 
 const {
-	title = "SITCON 2026 徵稿 | Jam the Chaos - 學生計算機年會",
+	title = "Jam the Chaos - SITCON 2026 徵稿",
 	description = "SITCON 2026 學生計算機年會徵稿開始！主題「Jam the Chaos」，邀請對資訊技術有熱情的學生投稿分享你的創新想法、專案經驗與技術見解。2026/03/28 於中央研究院人文社會科學館盛大舉辦。",
 	ogImage = "/2026/cfp/og-image.jpg"
 } = Astro.props;
@@ -25,8 +25,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
-		
-		<!-- Primary Meta Tags -->
+
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
@@ -34,8 +33,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<meta name="author" content="SITCON 學生計算機年會籌備團隊" />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={siteUrl} />
-		
-		<!-- Open Graph / Facebook -->
+
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={siteUrl} />
 		<meta property="og:title" content={title} />
@@ -45,8 +43,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<meta property="og:image:height" content="630" />
 		<meta property="og:locale" content="zh_TW" />
 		<meta property="og:site_name" content="SITCON 學生計算機年會" />
-		
-		<!-- Twitter Card -->
+
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={siteUrl} />
 		<meta name="twitter:title" content={title} />
@@ -54,20 +51,17 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<meta name="twitter:image" content={fullOgImage} />
 		<meta name="twitter:site" content="@SITCONtw" />
 		<meta name="twitter:creator" content="@SITCONtw" />
-		
-		<!-- Additional SEO -->
+
 		<meta name="theme-color" content="#010121" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<link rel="alternate" hreflang="zh-Hant-TW" href={siteUrl} />
-		
-		<!-- Preconnect for performance -->
+
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://www.googletagmanager.com" />
-		
-		<!-- JSON-LD Structured Data for Event -->
-		<script type="application/ld+json">
+
+		<script type="application/ld+json" is:inline>
 			{
 				"@context": "https://schema.org",
 				"@type": "Event",
@@ -88,9 +82,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 						"addressCountry": "TW"
 					}
 				},
-				"image": [
-					"https://sitcon.org/2026/cfp/og-image.jpg"
-				],
+				"image": ["https://sitcon.org/2026/cfp/og-image.jpg"],
 				"organizer": {
 					"@type": "Organization",
 					"name": "SITCON 學生計算機年會籌備團隊",
@@ -110,7 +102,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 				}
 			}
 		</script>
-		
+
 		<!-- Google Tag Manager -->
 		<script is:inline>
 			(function (w, d, s, l, i) {
@@ -142,7 +134,6 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 				box-sizing: border-box;
 			}
 
-			/* Skip to main content link for accessibility */
 			.skip-link {
 				position: absolute;
 				top: -40px;
