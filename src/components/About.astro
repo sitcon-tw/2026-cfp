@@ -20,7 +20,7 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 
 <style>
 	section {
-		min-height: 120vh;
+		min-height: 130vh;
 		position: relative;
 		display: flex;
 		flex-direction: column;
@@ -106,7 +106,7 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 	}	
 
 	.image-container {
-		width: 40%;
+		width: 60%;
 		margin: 2rem auto 0 auto;
 	}
 
@@ -118,21 +118,31 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 	}
 
 	@media (max-width: 768px) {
+		section {
+			min-height: 110vh;
+		}
+
 		.about-title {
-			font-size: 3rem;
+			font-size: 2.6rem;
 		}
 
 		.about-content {
-			font-size: 1.2rem;
+			margin-top: 1rem;
+			font-size: 1.05rem;
 		}
 
 		.image-container {
 			width: 90%;
 		}
 
-
 		.sitcon-leaf {
 			right: 0;
+		}
+	}
+
+	@media (max-width: 330px) {
+		section {
+			min-height: 150vh;
 		}
 	}
 </style>
