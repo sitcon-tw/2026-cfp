@@ -13,7 +13,7 @@ interface Props {
 const {
 	title = "Jam the Chaos - SITCON 2026 徵稿",
 	description = "SITCON 2026 學生計算機年會徵稿開始！主題「Jam the Chaos」，邀請對資訊技術有熱情的學生投稿分享你的創新想法、專案經驗與技術見解。2026/03/28 於中央研究院人文社會科學館盛大舉辦。",
-	ogImage = "/2026/cfp/og-image.jpg"
+	ogImage = "/2026/cfp/og-image.webp"
 } = Astro.props;
 
 const siteUrl = "https://sitcon.org/2026/cfp/";
@@ -83,7 +83,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 						"addressCountry": "TW"
 					}
 				},
-				"image": ["https://sitcon.org/2026/cfp/og-image.jpg"],
+				"image": ["https://sitcon.org/2026/cfp/og-image.webp"],
 				"organizer": {
 					"@type": "Organization",
 					"name": "SITCON 學生計算機年會籌備團隊",
@@ -192,7 +192,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 				color: #4896ff;
 				transition: color 0.3s ease;
 			}
-			
+
 			a:hover {
 				color: #71aeff;
 			}
