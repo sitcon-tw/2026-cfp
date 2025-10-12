@@ -24,8 +24,8 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 					<p class="field-item-description" set:html={ctx.detail} />
 				</div>
 				<div class="field-icon-bar">
-					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
 					{ctx.publish ? <IconPublish width="2.5rem" /> : null}
+					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
 				</div>
 			</div>
 		))
