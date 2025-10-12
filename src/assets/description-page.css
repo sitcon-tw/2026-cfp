@@ -65,8 +65,7 @@ h1 {
 	text-decoration: none;
 	border-radius: 50%;
 	background: var(--white);
-	border-color: #589dff;
-	border-width: 3rem;
+	border: #345b92 4px solid;
 	color: #566d8d;
 	text-align: center;
 	font-size: 1.3rem;
@@ -80,8 +79,12 @@ h1 {
 	z-index: 6;
 	display: inline-flex;
 	align-items: center;
-	gap: 10px;
 	padding: 12px 16px;
+	transition: all 0.3s ease;
+}
+
+.btn-fixed:hover {
+	border-color: #589dff;
 }
 
 .toc-toggle {

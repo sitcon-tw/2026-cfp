@@ -50,7 +50,7 @@ import supportBtn from "@assets/hero/button/support.svg";
 	}
 
 	h1 {
-		color: var(--white)aa;
+		color: var(--white) aa;
 		-webkit-text-stroke: 2px var(--white); /* white stroke */
 		text-stroke: 2px var(--white); /* experimental */
 		font-family: "Orbitron", sans-serif;
@@ -118,6 +118,12 @@ import supportBtn from "@assets/hero/button/support.svg";
 		-webkit-text-stroke: 1px #e0e0e0;
 		text-stroke: 1px #e0e0e0;
 		text-transform: uppercase;
+	}
+	.button {
+		transition: transform 0.2s;
+	}
+	.button:hover {
+		transform: scale(1.05);
 	}
 
 	@media (max-width: 768px) {
