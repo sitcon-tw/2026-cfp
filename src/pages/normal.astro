@@ -3,8 +3,6 @@ import SubmissionPage from "@layouts/SubmissionPage.astro";
 import Content from "@components/page/Content.astro";
 import ContentFormat from "@components/page/ContentFormat.astro";
 import Link from "@components/page/Link.astro";
-
-import DescriptionContent from "@assets/doc/normal/Description.md";
 import SubjectSampleContent from "@assets/doc/normal/SubjectSample.md";
 import MdContent from "@assets/doc/normal/Content.md";
 
@@ -12,6 +10,7 @@ const submit_url = "https://forms.gle/bTjs7D6hxMSrWYx76";
 
 const page_info = {
 	title: "一般議程徵稿",
+	description: "以深度分享或精準傳達為形式，著重單向講述，由講者系統呈現技術洞見或實務經驗，帶領會眾汲取新知與啟發。",
 	seo_title: "一般議程投稿 | SITCON 2026 徵稿",
 	seo_description: "SITCON 2026 一般議程徵稿開跑！歡迎投稿 40 分鐘深度分享或 10 分鐘閃電秀，分享你的技術見解、專案經驗與創新想法。主題「Jam the Chaos」，探討 AI、協作與跨域整合。"
 };
@@ -313,8 +312,8 @@ const toc_content = [
 	personalInfoContent={personal_info_content}
 	qaContent={qa_content}
 	mdContent={MdContent}
+	description={page_info.description}
 	personalInfoDesc="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
-	descriptionContent={DescriptionContent}
 	seoTitle={page_info.seo_title}
 	seoDescription={page_info.seo_description}
 >

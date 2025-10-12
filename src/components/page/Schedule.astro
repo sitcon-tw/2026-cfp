@@ -111,11 +111,13 @@ const { schedule, calendarUrl } = Astro.props;
 </style>
 
 <script>
-	const diffDate = (a: Date) => a.getTime() - new Date().getTime();
-	document.querySelectorAll(".event").forEach(el => {
-		const date = new Date(el.getAttribute("data-date") || "");
-		if (diffDate(date) < 0) {
-			el.classList.add("event-before");
-		}
+	document.addEventListener("astro:page-load", () => {
+		const diffDate = (a: Date) => a.getTime() - new Date().getTime();
+		document.querySelectorAll(".event").forEach(el => {
+			const date = new Date(el.getAttribute("data-date") || "");
+			if (diffDate(date) < 0) {
+				el.classList.add("event-before");
+			}
+		});
 	});
 </script>

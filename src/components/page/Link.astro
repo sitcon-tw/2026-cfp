@@ -9,7 +9,7 @@ const { presentation_content, espresso_content } = Astro.props;
 			presentation_content.map((item: { title: string; img: string; href: string }) => {
 				return (
 					<a class="link-item" href={item.href} target="_blank" rel="noopener">
-						<img class="link-img" src={item.img} alt={item.title} />
+						<img class="link-img" src={item.img} alt={item.title} loading="lazy" />
 						<span>{item.title}</span>
 					</a>
 				);
@@ -24,7 +24,7 @@ const { presentation_content, espresso_content } = Astro.props;
 			espresso_content.map((item: { title: string; img: string; href: string }) => {
 				return (
 					<a class="link-item" href={item.href} target="_blank" rel="noopener">
-						<img class="link-img" src={item.img} alt={item.title} />
+						<img class="link-img" src={item.img} alt={item.title} loading="lazy" />
 						<span>{item.title}</span>
 					</a>
 				);

@@ -45,7 +45,6 @@ const {
 	tocContent,
 	bannerH2,
 	description,
-	descriptionContent,
 	paperInfoContent,
 	personalInfoContent,
 	qaContent,
@@ -60,7 +59,6 @@ const {
 } = Astro.props;
 
 const MdContent = mdContent;
-const DescriptionContent = descriptionContent;
 ---
 
 <Layout title={seoTitle} description={seoDescription}>
@@ -72,17 +70,9 @@ const DescriptionContent = descriptionContent;
 			<h1>{title}</h1>
 
 			{
-				(description || descriptionContent) && (
+				description && (
 					<div id="description">
-						<Description>
-							{descriptionContent ? (
-								<ContentFormat>
-									<DescriptionContent />
-								</ContentFormat>
-							) : (
-								description
-							)}
-						</Description>
+						<Description>{description}</Description>
 					</div>
 				)
 			}

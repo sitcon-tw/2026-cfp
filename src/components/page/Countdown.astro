@@ -6,10 +6,12 @@ const { end1, end2, start, form_url } = Astro.props;
 <div class="countdown" data-date-end1={end1} data-date-end2={end2} data-date-start={start}>
 	<div class="title-bar">
 		<h2 class="title">投稿截止</h2>
-		<div class="progress-bar">
-			<div class="progress" style="width: 99%;"></div>
+		<div class="bar-container">
+			<div class="progress-bar">
+				<div class="progress" style="width: 99%;"></div>
+			</div>
+			<span class="progress-number">99%</span>
 		</div>
-		<span class="progress-number">99%</span>
 	</div>
 	<div class="text">距離早鳥投稿截止還有</div>
 	<div class="timer">
@@ -39,7 +41,7 @@ const { end1, end2, start, form_url } = Astro.props;
 			<span class="deadline-text"></span>
 		</div>
 		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿">
-			立即投稿
+			<span>立即投稿</span>
 			<ArrowRight width="3rem" height="3rem" />
 		</a>
 	</div>
@@ -76,12 +78,21 @@ const { end1, end2, start, form_url } = Astro.props;
 		justify-content: center;
 		align-items: center;
 		letter-spacing: 0.2rem;
-		color: #345B92;
+		color: #345b92;
 		font-size: 2rem;
 		font-weight: bold;
 		text-decoration: none;
 		gap: 1rem;
 		background-color: rgba(255, 255, 255, 0.8);
+		white-space: nowrap;
+		transition:
+			background-color 0.3s,
+			color 0.3s;
+	}
+
+	.link:hover {
+		background-color: var(--light-blue);
+		color: var(--white);
 	}
 
 	.deadline {
@@ -132,6 +143,13 @@ const { end1, end2, start, form_url } = Astro.props;
 		overflow: hidden;
 	}
 
+	.bar-container {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		flex-grow: 1;
+	}
+
 	.progress-number {
 		font-size: larger;
 		letter-spacing: 0.4rem;
@@ -151,6 +169,7 @@ const { end1, end2, start, form_url } = Astro.props;
 
 		.text {
 			text-align: center;
+			font-size: 1rem;
 		}
 
 		.footer {
@@ -174,81 +193,100 @@ const { end1, end2, start, form_url } = Astro.props;
 		.banner-button {
 			font-size: 1.5rem;
 		}
+
+		.bar-container {
+			width: 100%;
+		}
 	}
 </style>
 
 <script>
-	let end;
-	if (new Date() < new Date(document.querySelector(".countdown")!.getAttribute("data-date-end1") || "")) {
-		end = document.querySelector(".countdown")!.getAttribute("data-date-end1");
-		document.querySelector(".text")!.textContent = "距離早鳥投稿截止還有";
-	} else {
-		end = document.querySelector(".countdown")!.getAttribute("data-date-end2");
-		document.querySelector(".text")!.textContent = "距離投稿截止還有";
-	}
+	let end: string | null;
+	let intervalId: number | undefined;
 
-	const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
-		year: "numeric",
-		month: "2-digit",
-		day: "2-digit",
-		hour: "2-digit",
-		minute: "2-digit"
-	});
-	document.querySelector(".deadline-text")!.textContent = deadlineText.replace(",", "");
-
-	const dateToCountdownNumber = (date: string) => {
-		const now = new Date();
-		const deadline = new Date(date);
-		if (deadline <= now) {
-			return {
-				days: "00",
-				hours: "00",
-				minutes: "00",
-				seconds: "00"
-			};
+	const initCountdown = () => {
+		const countdownElement = document.querySelector(".countdown");
+		if (!countdownElement) return;
+		if (new Date() < new Date(countdownElement.getAttribute("data-date-end1") || "")) {
+			end = countdownElement.getAttribute("data-date-end1");
+			document.querySelector(".text")!.textContent = "距離早鳥投稿截止還有";
+		} else {
+			end = countdownElement.getAttribute("data-date-end2");
+			document.querySelector(".text")!.textContent = "距離投稿截止還有";
 		}
-		const diff = deadline.getTime() - now.getTime();
-		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-		const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-		const minutes = Math.floor((diff / (1000 * 60)) % 60);
-		const seconds = Math.floor((diff / 1000) % 60);
-		return {
-			days: String(days).padStart(2, "0"),
-			hours: String(hours).padStart(2, "0"),
-			minutes: String(minutes).padStart(2, "0"),
-			seconds: String(seconds).padStart(2, "0")
-		};
-	};
 
-	const updateCountdown = () => {
-		document.querySelectorAll(".countdown").forEach(el => {
-			// Update countdown numbers
-			const countdown = dateToCountdownNumber(end || "");
-			el.querySelector(".countdown-days")!.textContent = countdown.days;
-			el.querySelector(".countdown-hours")!.textContent = countdown.hours;
-			el.querySelector(".countdown-minutes")!.textContent = countdown.minutes;
-			el.querySelector(".countdown-seconds")!.textContent = countdown.seconds;
+		const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
+			year: "numeric",
+			month: "2-digit",
+			day: "2-digit",
+			hour: "2-digit",
+			minute: "2-digit"
+		});
+		document.querySelector(".deadline-text")!.textContent = deadlineText.replace(",", "");
 
-			// Update progress bar
-			const start_string = el.getAttribute("data-date-start") || "";
+		const dateToCountdownNumber = (date: string) => {
 			const now = new Date();
-			const deadline = new Date(end || "");
-			const start = new Date(start_string);
-			const total = deadline.getTime() - start.getTime();
-			const elapsed = now.getTime() - start.getTime();
-			const progress = Math.min(Math.max((elapsed / total) * 100, 0), 100);
-			el.querySelector(".progress")!.setAttribute("style", `width: ${progress}%`);
-			el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
-		});
+			const deadline = new Date(date);
+			if (deadline <= now) {
+				return {
+					days: "00",
+					hours: "00",
+					minutes: "00",
+					seconds: "00"
+				};
+			}
+			const diff = deadline.getTime() - now.getTime();
+			const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+			const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+			const minutes = Math.floor((diff / (1000 * 60)) % 60);
+			const seconds = Math.floor((diff / 1000) % 60);
+			return {
+				days: String(days).padStart(2, "0"),
+				hours: String(hours).padStart(2, "0"),
+				minutes: String(minutes).padStart(2, "0"),
+				seconds: String(seconds).padStart(2, "0")
+			};
+		};
+
+		const updateCountdown = () => {
+			document.querySelectorAll(".countdown").forEach(el => {
+				const countdown = dateToCountdownNumber(end || "");
+				el.querySelector(".countdown-days")!.textContent = countdown.days;
+				el.querySelector(".countdown-hours")!.textContent = countdown.hours;
+				el.querySelector(".countdown-minutes")!.textContent = countdown.minutes;
+				el.querySelector(".countdown-seconds")!.textContent = countdown.seconds;
+
+				const start_string = el.getAttribute("data-date-start") || "";
+				const now = new Date();
+				const deadline = new Date(end || "");
+				const start = new Date(start_string);
+				const total = deadline.getTime() - start.getTime();
+				const elapsed = now.getTime() - start.getTime();
+				const progress = Math.min(Math.max((elapsed / total) * 100, 0), 100);
+				el.querySelector(".progress")!.setAttribute("style", `width: ${progress}%`);
+				el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
+			});
+		};
+
+		if (new Date() > new Date(end || "")) {
+			document.querySelectorAll(".countdown").forEach(el => {
+				el.querySelectorAll(".timer-number").forEach(num => (num.textContent = "00"));
+				el.querySelector(".progress")!.setAttribute("style", `width: 100%`);
+				el.querySelector(".progress-number")!.textContent = `100%`;
+			});
+		} else {
+			intervalId = window.setInterval(updateCountdown, 1000);
+			updateCountdown();
+		}
 	};
-	if (new Date() > new Date(end || "")) {
-		document.querySelectorAll(".countdown").forEach(el => {
-			el.querySelectorAll(".timer-number").forEach(num => (num.textContent = "00"));
-			el.querySelector(".progress")!.setAttribute("style", `width: 100%`);
-			el.querySelector(".progress-number")!.textContent = `100%`;
-		});
-	} else {
-		setInterval(updateCountdown, 1000);
-		updateCountdown();
-	}
+
+	const cleanupCountdown = () => {
+		if (intervalId) {
+			clearInterval(intervalId);
+			intervalId = undefined;
+		}
+	};
+
+	document.addEventListener("astro:page-load", initCountdown);
+	document.addEventListener("astro:before-preparation", cleanupCountdown);
 </script>

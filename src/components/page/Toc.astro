@@ -35,7 +35,6 @@ const { content } = Astro.props;
 
 		tocItems.forEach(item => {
 			const target = item.getAttribute("data-target");
-			console.log(target, currentSection);
 			if (target === currentSection) {
 				item.classList.add("active");
 			} else {
