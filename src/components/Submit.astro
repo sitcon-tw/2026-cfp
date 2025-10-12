@@ -1,6 +1,10 @@
 ---
 import arrow from "@assets/img/arrow.svg";
 import introBg from "@assets/intro_bg.svg";
+import Google from "@assets/calendar/Google.svg";
+import Apple from "@assets/calendar/Apple.svg";
+import Outlook from "@assets/calendar/Outlook.svg";
+import Yahoo from "@assets/calendar/Yahoo.svg";
 ---
 
 <section id="submit">
@@ -45,7 +49,32 @@ import introBg from "@assets/intro_bg.svg";
 		</a>
 	</div>
 
-	<a href="https://sitcon.org/2026/cfp/SITCON_2026_投稿重要時程.ics" class="calendar-hint" aria-label="將 SITCON 2026 投稿重要時程加入行事曆">將投稿重要時程加入行事曆</a>
+	<div class="calendar-dropdown">
+		<button class="calendar-hint" aria-label="將 SITCON 2026 投稿重要時程加入行事曆">
+			將投稿重要時程加入行事曆
+			<span class="dropdown-arrow">▼</span>
+		</button>
+		<div class="dropdown-menu">
+			<a
+				href="https://calendar.google.com/calendar/r?cid=webcal://sitcon.org/2026/cfp/SITCON_2026_投稿重要時程.ics"
+				class="dropdown-item"
+				aria-label="訂閱 Google Calendar"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<span class="icon"><img src={Google.src} alt="" /></span>
+				<span>Google Calendar</span>
+			</a>
+			<a href="https://sitcon.org/2026/cfp/SITCON_2026_投稿重要時程.ics" class="dropdown-item" aria-label="Apple Calendar 下載">
+				<span class="icon"><img src={Apple.src} alt="" /></span>
+				<span>Apple Calendar</span>
+			</a>
+			<a href="https://sitcon.org/2026/cfp/SITCON_2026_投稿重要時程.ics" class="dropdown-item" aria-label="下載 iCal 格式">
+				<span class="icon">📆</span>
+				<span>iCal</span>
+			</a>
+		</div>
+	</div>
 
 	<div class="intro-bg-container" aria-hidden="true">
 		<img src={introBg.src} alt="" class="intro-bg" aria-hidden="true" />
@@ -208,29 +237,100 @@ import introBg from "@assets/intro_bg.svg";
 		}
 	}
 
-	.calendar-hint {
-		display: inline-block;
-		font-size: 1.2rem;
-		text-align: center;
+	.calendar-dropdown {
+		position: relative;
+		display: flex;
+		justify-content: center;
 		margin: 2rem auto 0;
+	}
+
+	.calendar-hint {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		font-size: 1.2rem;
 		padding: 0.8rem 2rem;
 		font-weight: bold;
 		letter-spacing: 0.5px;
 		color: #000;
 		background-color: var(--white);
-		text-decoration: none;
+		border: none;
+		cursor: pointer;
 		transition:
 			transform 0.15s ease,
 			background-color 0.3s ease;
 		transform: skewX(-10deg);
-		position: relative;
-		left: 50%;
-		transform: translateX(-50%) skewX(-10deg);
 	}
 
 	.calendar-hint:hover {
 		background-color: #f0f0f0;
-		transform: translateX(-50%) skewX(-10deg) translateY(-2px);
+		transform: skewX(-10deg) translateY(-2px);
+	}
+
+	.dropdown-arrow {
+		font-size: 0.8rem;
+		transition: transform 0.2s ease;
+	}
+
+	.calendar-dropdown:hover .dropdown-arrow {
+		transform: rotate(180deg);
+	}
+
+	.dropdown-menu {
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--white);
+		border: 2px solid #e0e0e0;
+		min-width: 240px;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.2s ease,
+			visibility 0.2s ease,
+			transform 0.2s ease;
+		z-index: 10;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	}
+
+	.calendar-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.dropdown-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.875rem 1.25rem;
+		color: #000;
+		text-decoration: none;
+		transition: background-color 0.2s ease;
+		border-bottom: 1px solid #f0f0f0;
+	}
+
+	.dropdown-item:last-child {
+		border-bottom: none;
+	}
+
+	.dropdown-item:hover {
+		background-color: #f8f8f8;
+	}
+
+	.dropdown-item .icon {
+		font-size: 1.5rem;
+		flex-shrink: 0;
+	}
+	.dropdown-item .icon img {
+		width: 1.5rem;
+		height: 1.5rem;
+		object-fit: contain;
+	}
+
+	.dropdown-item span:last-child {
+		font-weight: 600;
+		font-size: 1rem;
 	}
 
 	@media (max-width: 62rem) {
@@ -280,6 +380,22 @@ import introBg from "@assets/intro_bg.svg";
 
 		.calendar-hint {
 			font-size: 1.2rem;
+		}
+
+		.dropdown-menu {
+			min-width: 200px;
+		}
+
+		.dropdown-item {
+			padding: 0.75rem 1rem;
+		}
+
+		.dropdown-item .icon {
+			font-size: 1.25rem;
+		}
+
+		.dropdown-item span:last-child {
+			font-size: 0.9rem;
 		}
 
 		.cards {

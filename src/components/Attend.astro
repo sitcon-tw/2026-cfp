@@ -1,5 +1,8 @@
 ---
 // Attend component - "我想參與" section
+import Google from "@assets/calendar/Google.svg";
+import Apple from "@assets/calendar/Apple.svg";
+
 const timeline = [
 	{ date: "10/12", event: "議程徵稿開始" },
 	{ date: "11/03", event: "遠道而來票票開始申請" },
@@ -24,13 +27,38 @@ const timeline = [
 					href="https://sitcon.org/tg"
 					target="_blank"
 					rel="noopener noreferrer">Telegram</a
-				> 與大家交流；也可以將 SITCON 2026 的重要時程加入你的行事曆，避免錯過任何重要的日期！
+				> 與大家交流；也可以將 SITCON 2026 的重要時程加入你的行事曆,避免錯過任何重要的日期！
 			</p>
 			<p>SITCON 是個開放的社群，許多籌備的相關事項都會在公開的郵件論壇上進行討論，如果有興趣參與，歡迎訂閱 SITCON 的郵件論壇並貢獻你的想法！</p>
 			<p>若你想進一步了解過往討論的內容，也歡迎到 GitLab 上查看 SITCON 2026 的籌備歷程。</p>
 		</div>
 		<div class="button-group">
-			<a href="https://sitcon.org/2026/cfp/SITCON_2026_重要時程.ics" target="_blank" rel="noopener noreferrer" class="action-button" role="button" aria-label="加入行事曆">加入行事曆</a>
+			<div class="calendar-dropdown">
+				<button class="action-button calendar-button" aria-label="將 SITCON 2026 重要時程加入行事曆">
+					加入行事曆
+					<span class="dropdown-arrow">▼</span>
+				</button>
+				<div class="dropdown-menu">
+					<a
+						href="https://calendar.google.com/calendar/r?cid=webcal://sitcon.org/2026/cfp/SITCON_2026_重要時程.ics"
+						class="dropdown-item"
+						aria-label="訂閱 Google Calendar"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<span class="icon"><img src={Google.src} alt="" /></span>
+						<span>Google Calendar</span>
+					</a>
+					<a href="https://sitcon.org/2026/cfp/SITCON_2026_重要時程.ics" class="dropdown-item" aria-label="下載 iCal 格式">
+						<span class="icon"><img src={Apple.src} alt="" /></span>
+						<span>Apple Calendar</span>
+					</a>
+					<a href="https://sitcon.org/2026/cfp/SITCON_2026_重要時程.ics" class="dropdown-item" aria-label="下載 iCal 格式">
+						<span class="icon">📆</span>
+						<span>iCal</span>
+					</a>
+				</div>
+			</div>
 			<a href="https://groups.google.com/g/sitcon-general/" target="_blank" rel="noopener noreferrer" class="action-button" role="button" aria-label="訂閱 SITCON 郵件論壇">訂閱郵件論壇</a>
 			<a href="https://gitlab.com/sitcon-tw/2026/board/-/boards/" target="_blank" rel="noopener noreferrer" class="action-button" role="button" aria-label="查看 SITCON 2026 GitLab 籌備進度"
 				>查看 GitLab</a
@@ -142,6 +170,11 @@ const timeline = [
 		flex-wrap: wrap;
 	}
 
+	.calendar-dropdown {
+		position: relative;
+		display: inline-block;
+	}
+
 	.action-button {
 		background-color: #4a86e8;
 		color: var(--white);
@@ -155,6 +188,21 @@ const timeline = [
 		text-decoration: none;
 	}
 
+	.calendar-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.dropdown-arrow {
+		font-size: 0.7rem;
+		transition: transform 0.2s ease;
+	}
+
+	.calendar-dropdown:hover .dropdown-arrow {
+		transform: rotate(180deg);
+	}
+
 	.action-button:hover {
 		background-color: #3a6bc7;
 	}
@@ -163,7 +211,69 @@ const timeline = [
 		background-color: #2e55a8;
 	}
 
-	/* Timeline Styles */
+	.dropdown-menu {
+		position: absolute;
+		top: calc(100% + 0.5rem);
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--white);
+		border: 2px solid #e0e0e0;
+		border-radius: 0.5rem;
+		min-width: 240px;
+		opacity: 0;
+		visibility: hidden;
+		transition:
+			opacity 0.2s ease,
+			visibility 0.2s ease;
+		z-index: 10;
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+	}
+
+	.calendar-dropdown:hover .dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.dropdown-item {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.875rem 1.25rem;
+		color: #000;
+		text-decoration: none;
+		transition: background-color 0.2s ease;
+		border-bottom: 1px solid #f0f0f0;
+	}
+
+	.dropdown-item:first-child {
+		border-radius: 0.5rem 0.5rem 0 0;
+	}
+
+	.dropdown-item:last-child {
+		border-bottom: none;
+		border-radius: 0 0 0.5rem 0.5rem;
+	}
+
+	.dropdown-item:hover {
+		background-color: #f8f8f8;
+	}
+
+	.dropdown-item .icon {
+		font-size: 1.5rem;
+		flex-shrink: 0;
+	}
+
+	.dropdown-item .icon img {
+		width: 1.5rem;
+		height: 1.5rem;
+		object-fit: contain;
+	}
+
+	.dropdown-item span:last-child {
+		font-weight: 600;
+		font-size: 1rem;
+	}
+
 	.timeline {
 		display: flex;
 		flex-direction: column;
@@ -249,9 +359,31 @@ const timeline = [
 			align-items: center;
 		}
 
-		.action-button {
+		.action-button,
+		.calendar-dropdown {
 			width: 100%;
 			max-width: 300px;
+		}
+
+		.dropdown-menu {
+			min-width: 200px;
+		}
+
+		.dropdown-item {
+			padding: 0.75rem 1rem;
+		}
+
+		.dropdown-item .icon {
+			font-size: 1.25rem;
+		}
+
+		.dropdown-item .icon img {
+			width: 1.25rem;
+			height: 1.25rem;
+		}
+
+		.dropdown-item span:last-child {
+			font-size: 0.9rem;
 		}
 
 		.timeline-item {
