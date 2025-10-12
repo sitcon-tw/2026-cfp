@@ -200,6 +200,9 @@ void main(){
 	gl.enableVertexAttribArray(loc);
 	gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
+	let isRendering = false;
+	let animationId = null;
+
 	const uRes = gl.getUniformLocation(prog, "u_res");
 	const uTime = gl.getUniformLocation(prog, "u_time");
 
@@ -217,5 +220,37 @@ void main(){
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
 		requestAnimationFrame(draw);
 	}
-	requestAnimationFrame(draw);
+	const windowHeight = window.innerHeight;
+	const observer = new IntersectionObserver(
+		entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					if (!isRendering) {
+						isRendering = true;
+						requestAnimationFrame(draw);
+					}
+				} else {
+					isRendering = false;
+					if (animationId) {
+						cancelAnimationFrame(animationId);
+						animationId = null;
+					}
+				}
+			});
+		},
+		{
+			rootMargin: `${windowHeight}px 0px ${windowHeight}px 0px`,
+			threshold: 0
+		}
+	);
+
+	observer.observe(canvas);
+
+	document.addEventListener("astro:before-preparation", () => {
+		observer.disconnect();
+		isRendering = false;
+		if (animationId) {
+			cancelAnimationFrame(animationId);
+		}
+	});
 });
