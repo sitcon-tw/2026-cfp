@@ -41,7 +41,15 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 						answer.style.display = "block";
 						answer.style.height = "0";
 						answer.style.opacity = "0";
-						const fullText = answer.textContent || "";
+
+						// Get full text from aria-label or textContent (first time)
+						const fullText = answer.getAttribute("aria-label") || answer.textContent || "";
+
+						// Store full text in aria-label if not already stored
+						if (!answer.getAttribute("aria-label")) {
+							answer.setAttribute("aria-label", fullText);
+						}
+
 						answer.textContent = "";
 
 						// Get the natural height
@@ -55,7 +63,7 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 
 						// Typing effect
 						let charIndex = 0;
-						const typingSpeed = 20;
+						const typingSpeed = 1000 / fullText.length;
 						const typeInterval = setInterval(() => {
 							answer.style.transition = "none";
 							if (charIndex < fullText.length) {
