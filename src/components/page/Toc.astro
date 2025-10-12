@@ -28,13 +28,14 @@ const { content } = Astro.props;
 
 		sections.forEach(section => {
 			const sectionTop = (section as HTMLElement).offsetTop;
-			if (scrollPosition >= sectionTop) {
+			if (scrollPosition >= sectionTop && section.id !== "toc" && section.id !== "toc-toggle") {
 				currentSection = "#" + section.id;
 			}
 		});
 
 		tocItems.forEach(item => {
 			const target = item.getAttribute("data-target");
+			console.log(target, currentSection);
 			if (target === currentSection) {
 				item.classList.add("active");
 			} else {
@@ -103,6 +104,7 @@ const { content } = Astro.props;
 	.toc-item:hover .toc-indicator {
 		background: #aaa;
 		height: 24px;
+		width: 4px;
 	}
 
 	.toc-item:hover .toc-text {
@@ -111,8 +113,8 @@ const { content } = Astro.props;
 
 	.toc-item.active .toc-indicator {
 		background: var(--white);
-		height: 28px;
-		width: 4px;
+		height: 4px;
+		width: 30px;
 	}
 
 	.toc-item.active .toc-text {

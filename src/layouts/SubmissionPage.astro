@@ -94,14 +94,6 @@ const DescriptionContent = descriptionContent;
 				<Schedule schedule={schedule} calendarUrl="https://sitcon.org/2026/cfp/SITCON 2026 投稿重要時程.ics" />
 			</div>
 
-			{
-				description && (
-					<div id="description">
-						<Description>{description}</Description>
-					</div>
-				)
-			}
-
 			<slot name="after-schedule" />
 
 			<div id="paper-info">
