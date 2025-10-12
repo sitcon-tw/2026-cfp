@@ -21,7 +21,7 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 			<div class="field-item">
 				<div>
 					<h3 class="field-item-title">{ctx.title}</h3>
-					<p class="field-item-description">{ctx.detail}</p>
+					<p class="field-item-description" set:html={ctx.detail} />
 				</div>
 				<div class="field-icon-bar">
 					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
@@ -104,6 +104,11 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		margin-left: 0.8rem;
 		display: flex;
 		gap: 0.5rem;
+	}
+	.field-item-description :global(b) {
+		font-weight: 600;
+		font-size: 1.1rem;
+		color: #156ee9;
 	}
 
 	@media (max-width: 768px) {
