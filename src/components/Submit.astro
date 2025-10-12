@@ -4,244 +4,271 @@ import introBg from "@assets/intro_bg.svg";
 ---
 
 <section id="submit">
-    <div class="title-row">
-        <div class="title-card">
-            <h3>我要投稿</h3>
-        </div>
-        <div class="title-accent" aria-hidden="true"></div>
-    </div>
+	<div class="title-row">
+		<div class="title-card">
+			<h3>我要投稿</h3>
+		</div>
+		<div class="title-accent" aria-hidden="true"></div>
+	</div>
 
-    <div class="cards">
-        <a class="card" href="normal/" aria-label="一般議程投稿：40 分鐘深度分享或 10 分鐘精準傳達">
-            <div class="card-body">
-                <div class="card-title">一般議程</div>
-                <div class="card-desc">40 分鐘深度分享<br />又或是 10 分鐘精準傳達</div>
-            </div>
-            <div class="card-cta red" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
-        </a>
+	<div class="cards">
+		<a class="card" href="normal/" aria-label="一般議程投稿：40 分鐘深度分享或 10 分鐘精準傳達">
+			<div class="card-body">
+				<div class="card-title">一般議程</div>
+				<div class="card-desc">40 分鐘深度分享<br />又或是 10 分鐘精準傳達</div>
+			</div>
+			<div class="card-cta red" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+		</a>
 
-        <a class="card" href="open/" aria-label="開放式議程投稿：一起交流，共創議程">
-            <div class="card-body">
-                <div class="card-title">開放式議程</div>
-                <div class="card-desc">一起交流，共創議程</div>
-            </div>
-            <div class="card-cta blue" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
-        </a>
+		<a class="card" href="open/" aria-label="開放式議程投稿：一起交流，共創議程">
+			<div class="card-body">
+				<div class="card-title">開放式議程</div>
+				<div class="card-desc">一起交流，共創議程</div>
+			</div>
+			<div class="card-cta blue" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+		</a>
 
-        <a class="card demo-card" href="demo/" aria-label="Demo 徵稿：現場專案演示，汲取即時回饋，全新項目">
-            <div class="card-body">
-                <div class="card-title">Demo 徵稿</div>
-                <div class="card-desc">現場專案演示<br />汲取即時回饋</div>
-            </div>
-            <div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
-            <div class="marquee-bar" aria-hidden="true">
-                <div class="marquee-content">
-                    <span class="tag">NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW</span>
-                </div>
-            </div>
-        </a>
-    </div>
+		<a class="card demo-card" href="demo/" aria-label="Demo 徵稿：現場專案演示，汲取即時回饋，全新項目">
+			<div class="card-body">
+				<div class="card-title">Demo 徵稿</div>
+				<div class="card-desc">現場專案演示<br />汲取即時回饋</div>
+			</div>
+			<div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+			<div class="marquee-bar" aria-hidden="true">
+				<div class="marquee-content">
+					<span class="tag"
+						>NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW NEW
+						NEW</span
+					>
+				</div>
+			</div>
+		</a>
+	</div>
 
-    <a href="https://sitcon.org/2026/cfp/SITCON 2026 投稿重要時程.ics" class="calendar-hint" aria-label="將 SITCON 2026 投稿重要時程加入行事曆">將投稿重要時程加入行事曆</a>
+	<a href="https://sitcon.org/2026/cfp/SITCON 2026 投稿重要時程.ics" class="calendar-hint" aria-label="將 SITCON 2026 投稿重要時程加入行事曆">將投稿重要時程加入行事曆</a>
 
-    <div class="intro-bg-container" aria-hidden="true">
-        <img src={introBg.src} alt="" class="intro-bg" aria-hidden="true" />
-    </div>
+	<div class="intro-bg-container" aria-hidden="true">
+		<img src={introBg.src} alt="" class="intro-bg" aria-hidden="true" />
+	</div>
 </section>
 
 <style>
-    #submit {
-        padding: 4rem 2rem 2rem;
-        position: relative;
-        max-width: 1100px;
-        margin: 0 auto;
-    }
+	#submit {
+		padding: 4rem 2rem 2.5rem;
+		position: relative;
+		max-width: 1100px;
+		margin: 0 auto;
+	}
 
-    .title-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        margin-bottom: 1.5rem;
-    }
+	.title-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
 
-    .title-card {
-        background: #fff;
-        color: #000;
-        padding: 1.25rem 1.5rem;
-        box-shadow: 0 4px 0 0 rgba(255,255,255,0.2) inset;
-        clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
-    }
+	.title-card {
+		background: #fff;
+		color: #000;
+		padding: 1.25rem 1.5rem;
+		box-shadow: 0 4px 0 0 rgba(255, 255, 255, 0.2) inset;
+		clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
+	}
 
-    .title-card h3 {
-        font-size: 2rem;
-        font-weight: 800;
-        letter-spacing: 1px;
-    }
+	.title-card h3 {
+		font-size: 2rem;
+		font-weight: 800;
+		letter-spacing: 1px;
+	}
 
-    .title-accent {
-        height: 100%;
-        border: 4px solid #d6d6e8;
-        clip-path: polygon(2% 0, 100% 0, 100% 100%, 15% 100%);
-        opacity: 0.6;
-    }
+	.title-accent {
+		height: 100%;
+		border: 4px solid #d6d6e8;
+		clip-path: polygon(2% 0, 100% 0, 100% 100%, 15% 100%);
+		opacity: 0.6;
+	}
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1.5rem;
-        margin-top: 1rem;
-    }
+	.cards {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		margin-top: 1rem;
+	}
 
-    .card {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem;
-        background: #fff;
-        color: #000;
-        text-decoration: none;
-        transition: transform .15s ease, box-shadow .15s ease;
-        position: relative;
-    }
+	.card {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: center;
+		gap: 1rem;
+		padding: 1.5rem;
+		background: #fff;
+		color: #000;
+		text-decoration: none;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+		position: relative;
+	}
 
-    .card:hover { transform: translateY(-2px); }
+	.card:hover {
+		transform: translateY(-2px);
+	}
 
-    .demo-card {
-        padding-bottom: 2.5rem;
-    }
+	.demo-card {
+		padding-bottom: 2.5rem;
+	}
 
-    .card-body { min-width: 0; }
+	.card-body {
+		min-width: 0;
+	}
 
-    .card-title {
-        font-size: 1.6rem;
-        font-weight: 800;
-    }
+	.card-title {
+		font-size: 1.6rem;
+		font-weight: 800;
+	}
 
-    .card-desc { margin-top: .5rem; color: #555; }
+	.card-desc {
+		margin-top: 0.5rem;
+		color: #555;
+	}
 
-    .card-cta {
-        padding: 0.25rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #4A86E8;
-        border-radius: 50%;
-    }
+	.card-cta {
+		padding: 0.25rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: #4a86e8;
+		border-radius: 50%;
+	}
 
-    .card-cta.red {
-        background-color: #DC5456;
-    }
+	.card-cta.red {
+		background-color: #dc5456;
+	}
 
-    .card-cta.blue {
-        background-color: #2972C4;
-    }
+	.card-cta.blue {
+		background-color: #2972c4;
+	}
 
-    .card-cta.yellow {
-        background-color: #FF8400;
-    }
+	.card-cta.yellow {
+		background-color: #ff8400;
+	}
 
-    .card-cta .arrow {
-        width: 3.5rem;
-    }
+	.card-cta .arrow {
+		width: 3.5rem;
+	}
 
-    .marquee-bar {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 1.5rem;
-        background: #ff5f5f;
-        overflow: hidden;
-    }
+	.marquee-bar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1.5rem;
+		background: #ff5f5f;
+		overflow: hidden;
+	}
 
-    .marquee-content {
-        display: flex;
-        gap: .5rem;
-        animation: marquee 6s linear infinite;
-        white-space: nowrap;
-        width: max-content;
-    }
+	.marquee-content {
+		display: flex;
+		gap: 0.5rem;
+		animation: marquee 40s linear infinite;
+		white-space: nowrap;
+		width: max-content;
+	}
 
-    .tag {
-        display: inline-block;
-        font-size: .75rem;
-        background: #ff5f5f;
-        color: #fff;
-        padding: .2rem .45rem;
-        border-radius: 2px;
-        font-weight: 800;
-        flex-shrink: 0;
-    }
+	.tag {
+		display: inline-block;
+		font-size: 0.75rem;
+		background: #ff5f5f;
+		color: #fff;
+		padding: 0.2rem 0.45rem;
+		border-radius: 2px;
+		font-weight: 800;
+		flex-shrink: 0;
+	}
 
-    @keyframes marquee {
-        0% { transform: translateX(0%); }
-        100% { transform: translateX(-42%); }
-    }
+	@keyframes marquee {
+		0% {
+			transform: translateX(0%);
+		}
+		100% {
+			transform: translateX(-42%);
+		}
+	}
 
-    .calendar-hint {
-        display: block;
-        text-align: center;
-        margin-top: 2rem;
-        font-weight: 700;
-        letter-spacing: .5px;
-        color: #d9d9e6;
-        text-decoration: underline;
-    }
+	.calendar-hint {
+		display: block;
+		font-size: 1.2rem;
+		text-align: center;
+		margin-top: 2rem;
+		font-weight: bold;
+		letter-spacing: 0.5px;
+		color: #d9d9e6;
+		text-decoration: underline;
+		transition: color 0.3s ease;
+	}
 
-    @media (max-width: 980px) {
-        .cards { grid-template-columns: 1fr; }
-        .title-row { grid-template-columns: 1fr; }
-        .title-accent { display: none; }
-    }
+	.calendar-hint:hover {
+		color: #fff;
+	}
 
-    @media (max-width: 768px) {
-        .title-card h3 {
-            font-size: 1.7rem;
-        }
+	@media (max-width: 980px) {
+		.cards {
+			grid-template-columns: 1fr;
+		}
+		.title-row {
+			grid-template-columns: 1fr;
+		}
+		.title-accent {
+			display: none;
+		}
+	}
 
-        .card-title {
-            font-size: 1.5rem;
-        }
+	@media (max-width: 768px) {
+		.title-card h3 {
+			font-size: 1.7rem;
+		}
 
-        .card-desc {
-            font-size: 1.1rem;
-        }
+		.card-title {
+			font-size: 1.5rem;
+		}
 
-        .calendar-hint {
-            font-size: 1.2rem;
-        }
+		.card-desc {
+			font-size: 1.1rem;
+		}
 
-        .cards {
-            gap: 0.5rem;
-        }
+		.calendar-hint {
+			font-size: 1.2rem;
+		}
 
-        .card-cta .arrow {
-            width: 2.6rem;
-        }
-    }
+		.cards {
+			gap: 0.5rem;
+		}
 
-    .intro-bg-container {
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 100vw;
-        height: 150%;
-        z-index: -1;
-        transform: translateX(-50%);
-    }
+		.card-cta .arrow {
+			width: 2.6rem;
+		}
+	}
 
-    @media (max-width: 768px) {
-        .intro-bg-container {
-            bottom: 0;
-        }
-    }
+	.intro-bg-container {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		width: 100vw;
+		height: 150%;
+		z-index: -1;
+		transform: translateX(-50%);
+	}
 
-    .intro-bg {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center bottom;
-    }
+	@media (max-width: 768px) {
+		.intro-bg-container {
+			bottom: 0;
+		}
+	}
+
+	.intro-bg {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center bottom;
+	}
 </style>
-

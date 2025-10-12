@@ -10,17 +10,16 @@ import supportBtn from "@assets/hero/button/support.svg";
 	<canvas id="bg" aria-hidden="true"></canvas>
 	<h1>Jam the Chaos</h1>
 	<p class="location">2026/03/28 中央研究院人文社會科學館</p>
-	<nav class="button-container" aria-label="主要操作導覽">
+	<div class="button-container" aria-label="主要操作導覽">
 		<a href="#attend" class="button" aria-label="我要參與 SITCON 2026"><img src={attendBtn.src} alt="" role="presentation" /></a>
 		<a href="#submit" class="button" aria-label="我要投稿 SITCON 2026"><img src={submitBtn.src} alt="" role="presentation" /></a>
 		<a href="#support" class="button" aria-label="支持我們 SITCON 2026"><img src={supportBtn.src} alt="" role="presentation" /></a>
-	</nav>
+	</div>
 	<img src={sitconLeaf.src} alt="" aria-hidden="true" class="sitcon-leaf" />
 	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
-	<div class="sitcon-banner" aria-label="SITCON 2026 活動標誌">
-		<span class="sitcon-text">SITCON 2026</span>
-	</div>
+	<div class="sitcon-banner" aria-label="SITCON 2026">SITCON 2026</div>
 </header>
+
 <style>
 	header {
 		min-height: 100vh;
@@ -31,6 +30,7 @@ import supportBtn from "@assets/hero/button/support.svg";
 		text-align: center;
 		overflow: hidden;
 		width: 100%;
+		padding: 1rem;
 	}
 
 	header::after {
@@ -61,6 +61,7 @@ import supportBtn from "@assets/hero/button/support.svg";
 	.location {
 		font-size: 2rem;
 		margin-top: 1rem;
+		text-wrap: balance;
 	}
 
 	.sitcon-leaf {
@@ -69,8 +70,7 @@ import supportBtn from "@assets/hero/button/support.svg";
 		right: -10rem;
 		z-index: -1;
 		opacity: 0.9;
-		-webkit-mask-image: -webkit-gradient(linear, left bottom, right top, 
-		from(rgba(0,0,0,0)), to(rgba(0,0,0,1)));
+		-webkit-mask-image: -webkit-gradient(linear, left bottom, right top, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 1)));
 		width: 50%;
 		height: 50%;
 		max-width: 100%;
@@ -103,22 +103,20 @@ import supportBtn from "@assets/hero/button/support.svg";
 	.sitcon-banner {
 		position: absolute;
 		top: 4rem;
-		right: -4.5rem;
-		background-color: #4A4A4A;
-		border: 2px solid #E0E0E0;
-		border-radius: 10rem;
-		padding: 1rem 6rem 1rem 2rem;
+		right: 0;
+		background-color: #4a4a4a;
+		border: 2px solid #e0e0e0;
+		border-right: 0;
+		border-radius: 100rem 0 0 100rem;
+		padding: 1rem 1.5rem 1rem 2rem;
 		z-index: 10;
 		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-	}
-
-	.sitcon-text {
-		color: #4A4A4A;
+		color: #4a4a4a;
 		font-family: "Orbitron", sans-serif;
 		font-weight: bold;
 		font-size: 2.5rem;
-		-webkit-text-stroke: 1px #E0E0E0;
-		text-stroke: 1px #E0E0E0;
+		-webkit-text-stroke: 1px #e0e0e0;
+		text-stroke: 1px #e0e0e0;
 		text-transform: uppercase;
 	}
 
@@ -129,8 +127,8 @@ import supportBtn from "@assets/hero/button/support.svg";
 
 		.sitcon-banner {
 			top: 2rem;
-			right: -3rem;
-			padding: 1rem 4rem 1rem 2rem;
+			padding: 0.75rem 1rem 0.75rem 2rem;
+			font-size: 1.5rem;
 		}
 
 		.location {
@@ -140,22 +138,12 @@ import supportBtn from "@assets/hero/button/support.svg";
 		}
 
 		.button {
-			scale: 0.9;
+			scale: 0.8;
 		}
 
 		.button-container {
 			flex-direction: column;
 			gap: 0;
-		}
-
-		.sitcon-banner {
-			top: 1rem;
-			right: -3rem;
-			padding: 0.75rem 4rem 0.75rem 2rem;
-		}
-
-		.sitcon-text {
-			font-size: 1.2rem;
 		}
 
 		.sitcon-leaf {
