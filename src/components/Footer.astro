@@ -18,8 +18,8 @@ const links = [
 ];
 
 const support = [
-	{ name: "我要贊助", href: "/" },
-	{ name: "索取贊助徵求書", href: "/" }
+	{ name: "個人贊助", href: "https://sitcon.org/donate" },
+	{ name: "贊助徵求書", href: "https://sitcon.org/2026/cfs/" }
 ];
 
 const years = [
@@ -71,7 +71,9 @@ const socialMedia = [
 					{
 						support.map(item => (
 							<li>
-								<a href={`${import.meta.env.BASE_URL}${item.href.slice(1)}`}>{item.name}</a>
+								<a href={item.href} target="_blank" rel="noopener noreferrer" aria-label={`SITCON 2026 ${item.name}`}>
+									{item.name}
+								</a>
 							</li>
 						))
 					}
