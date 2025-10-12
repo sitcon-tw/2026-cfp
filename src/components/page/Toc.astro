@@ -59,7 +59,7 @@ const { content } = Astro.props;
 	}
 
 	.toc-title {
-		color: #fff;
+		color: var(--white);
 		font-size: 1rem;
 		margin-bottom: 0.5rem;
 		line-height: 2rem;
@@ -106,17 +106,17 @@ const { content } = Astro.props;
 	}
 
 	.toc-item:hover .toc-text {
-		color: #fff;
+		color: var(--white);
 	}
 
 	.toc-item.active .toc-indicator {
-		background: #fff;
+		background: var(--white);
 		height: 28px;
 		width: 4px;
 	}
 
 	.toc-item.active .toc-text {
-		color: #fff;
+		color: var(--white);
 		font-weight: 600;
 	}
 </style>

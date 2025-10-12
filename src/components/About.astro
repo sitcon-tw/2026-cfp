@@ -6,8 +6,8 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 ---
 
 <section aria-labelledby="about-heading">
-	<h2 id="about-heading" class="about-title">關於 SITCON</h2>
-	<p class="about-content">
+	<h2 id="about-heading">關於 SITCON</h2>
+	<p>
 		學生計算機年會（Students’ Information Technology Conference）自 2012
 		年發起，以學生為本、由學生自發舉辦，長期投身學生資訊教育與推廣開源精神，希望引領更多學子踏入資訊的殿堂，更冀望所有對資訊有興趣的學生，能夠在年會裏齊聚一堂，彼此激盪、傳承、啟發，達到「學以致用、教學相長」的實際展現。
 	</p>
@@ -15,9 +15,7 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
 	<div class="grid" aria-hidden="true"></div>
 	<img src={light.src} alt="" aria-hidden="true" class="light" />
-	<div class="image-container">
-		<img src={sitcon2025.src} alt="SITCON 2025 工人團體照" class="sitcon2025" />
-	</div>
+	<img src={sitcon2025.src} alt="SITCON 2025 工人團體照" class="sitcon2025" />
 </section>
 
 <style>
@@ -30,21 +28,19 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 		text-align: center;
 		overflow: hidden;
 		width: 100%;
+		color: var(--white);
 	}
 
-	.about-title {
-		color: #ffffff;
+	h2 {
 		font-size: 3.5rem;
-		font-weight: bold;
 		font-family: "Orbitron", sans-serif;
 	}
 
-	.about-content {
+	p {
 		max-width: 75%;
 		margin: 0 auto;
 		line-height: 2;
 		letter-spacing: 0.15rem;
-		color: #ffffff;
 	}
 
 	.sitcon-leaf {
@@ -75,14 +71,10 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 		height: 100%;
 		z-index: -1;
 		opacity: 0.4;
-		background-image: 
-			/* Horizontal lines */
-			linear-gradient(to right, rgba(255, 255, 255, 0.8) 1px, transparent 1px),
-			/* Vertical lines */ linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
-		background-size: 
-			/* Horizontal spacing: approximately 80px intervals */
+		background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8) 1px, transparent 1px), linear-gradient(to bottom, rgba(255, 255, 255, 0.8) 1px, transparent 1px);
+		background-size:
 			80px 80px,
-			/* Vertical spacing: approximately 80px intervals */ 80px 80px;
+			80px 80px;
 		background-position:
 			0 0,
 			0 0;
@@ -99,16 +91,13 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 		filter: blur(4rem);
 	}
 
-	.image-container {
-		width: 60%;
-		margin: 2rem auto 0 auto;
-	}
-
 	.sitcon2025 {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
 		border-radius: 3rem;
+		width: 60%;
+		display: block;
+		margin: 2rem auto 0 auto;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
 	}
 
 	@media (max-width: 768px) {
@@ -120,7 +109,7 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 			font-size: 2.6rem;
 		}
 
-		.about-content {
+		p {
 			margin-top: 1rem;
 			font-size: 1.05rem;
 		}

@@ -128,6 +128,12 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<style is:global>
 			@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&family=Orbitron:wght@400..900&display=swap");
 
+			:root {
+				--white: #f4f9ff;
+				--text-white: #dde8f6;
+				--light-blue: #86aee5;
+			}
+
 			* {
 				margin: 0;
 				padding: 0;
@@ -140,7 +146,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 
 			body {
 				background-color: #010121;
-				color: #ffffff;
+				color: var(--white);
 				font-family: "Noto Sans TC", sans-serif;
 				font-optical-sizing: auto;
 				font-size: 17px;
@@ -157,7 +163,7 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 				top: -40px;
 				left: 0;
 				background: #000;
-				color: #fff;
+				color: var(--white);
 				padding: 8px 16px;
 				text-decoration: none;
 				z-index: 10000;
@@ -171,6 +177,17 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 			p {
 				margin-bottom: 1.2em;
 				line-height: 1.5;
+			}
+
+			b {
+				font-weight: 600;
+				color: var(--light-blue);
+				font-size: 1.05em;
+			}
+
+			a {
+				font-weight: 500;
+				color: #4086e8;
 			}
 		</style>
 		<ClientRouter />

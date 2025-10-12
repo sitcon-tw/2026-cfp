@@ -48,7 +48,7 @@ const { schedule, calendarUrl } = Astro.props;
 		letter-spacing: 0.15rem;
 		border-radius: 0.625rem;
 		background: #345b92;
-		color: #ffffff;
+		color: var(--white);
 		padding: 0.8rem;
 		line-height: 1rem;
 		border: none;
@@ -58,7 +58,7 @@ const { schedule, calendarUrl } = Astro.props;
 	.divider {
 		height: 0.25rem;
 		width: 100%;
-		background: #ffffff;
+		background: var(--white);
 		margin-top: 0.8rem;
 		margin-bottom: 0.75rem;
 	}
@@ -77,7 +77,7 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event .event-col-date {
 		border-radius: 1rem 0 0 1rem;
-		background: #ffffff;
+		background: var(--white);
 		color: #010121;
 		flex: 1;
 		text-align: center;
@@ -86,7 +86,7 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event .event-col-event {
 		border-radius: 0 1rem 1rem 0;
-		background: #ffffff;
+		background: var(--white);
 		color: #010121;
 		flex: 1;
 		text-align: center;
@@ -95,8 +95,8 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event-before .event-col-date {
 		border-radius: 1rem 0 0 1rem;
-		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
-		color: #ffffff;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), var(--white);
+		color: var(--white);
 		flex: 1;
 		text-align: center;
 		align-content: center;
@@ -104,8 +104,8 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event-before .event-col-event {
 		border-radius: 0 1rem 1rem 0;
-		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), #fff;
-		color: #ffffff;
+		background: linear-gradient(0deg, rgba(146, 52, 54, 0.9) 0%, rgba(146, 52, 54, 0.9) 100%), var(--white);
+		color: var(--white);
 		flex: 1;
 		text-align: center;
 		align-content: center;

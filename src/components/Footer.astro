@@ -39,13 +39,13 @@ const years = [
 ];
 
 const socialMedia = [
-{ name: "Facebook", href: "https://sitcon.org/fb", icon: facebook },
-{ name: "Instagram", href: "https://sitcon.org/ig", icon: instagram },
-{ name: "Threads", href: "https://sitcon.org/threads", icon: threads },
-{ name: "YouTube", href: "https://sitcon.org/yt", icon: youtube },
+	{ name: "Facebook", href: "https://sitcon.org/fb", icon: facebook },
+	{ name: "Instagram", href: "https://sitcon.org/ig", icon: instagram },
+	{ name: "Threads", href: "https://sitcon.org/threads", icon: threads },
+	{ name: "YouTube", href: "https://sitcon.org/yt", icon: youtube },
 	{ name: "Flickr", href: "https://sitcon.org/flickr", icon: flickr },
-  { name: "Telegram", href: "https://sitcon.org/tg", icon: telegram },
-  { name: "Medium", href: "https://sitcon.org/medium", icon: medium }
+	{ name: "Telegram", href: "https://sitcon.org/tg", icon: telegram },
+	{ name: "Medium", href: "https://sitcon.org/medium", icon: medium }
 ];
 ---
 
@@ -89,14 +89,12 @@ const socialMedia = [
 						))
 					}
 				</div>
-			</nav>
-
+			</div>
 			<div class="footer-column">
 				<h3>聯絡我們</h3>
 				<a href="mailto:contact@sitcon.org" class="contact-email" aria-label="寄送電子郵件至 contact@sitcon.org">contact@sitcon.org</a>
 			</div>
 		</div>
-
 		<div class="footer-divider"></div>
 
 		<div class="footer-bottom">
@@ -127,7 +125,6 @@ const socialMedia = [
 		color: white;
 		padding: 4rem 2rem 2rem;
 		margin-top: auto;
-		font-family: "Noto Sans TC", sans-serif;
 	}
 
 	.footer-container {
@@ -236,7 +233,6 @@ const socialMedia = [
 		font-size: 0.85rem;
 		margin: 0;
 		opacity: 0.9;
-		font-family: "Inter", sans-serif;
 	}
 
 	.social-media {
@@ -247,7 +243,7 @@ const socialMedia = [
 	.social-icon {
 		width: 2.5rem;
 		height: 2.5rem;
-		border: 2px solid #ffffff;
+		border: 2px solid var(--white);
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
