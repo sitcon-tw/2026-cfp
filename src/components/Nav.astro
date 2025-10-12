@@ -181,55 +181,61 @@ const navLinks = [
 </style>
 
 <script>
-	const menuToggle = document.querySelector(".menu-toggle");
-	const menu = document.querySelector(".nav-links");
+	const initializeMenu = () => {
+		const menuToggle = document.querySelector(".menu-toggle");
+		const menu = document.querySelector(".nav-links");
 
-	if (menuToggle instanceof HTMLButtonElement && menu instanceof HTMLUListElement) {
-		const toggle = menuToggle;
-		const navMenu = menu;
+		if (menuToggle instanceof HTMLButtonElement && menu instanceof HTMLUListElement) {
+			const toggle = menuToggle;
+			const navMenu = menu;
 
-		toggle.setAttribute("aria-expanded", "false");
-		navMenu.setAttribute("aria-hidden", "true");
-
-		const closeMenu = () => {
-			if (!navMenu.classList.contains("active") || navMenu.classList.contains("closing")) {
-				return;
-			}
-
-			navMenu.classList.add("closing");
-			navMenu.classList.remove("active");
-			toggle.classList.remove("active");
 			toggle.setAttribute("aria-expanded", "false");
 			navMenu.setAttribute("aria-hidden", "true");
 
-			function handleTransitionEnd(event: Event) {
-				const transitionEvent = event as TransitionEvent;
-
-				if (transitionEvent.target !== navMenu || transitionEvent.propertyName !== "max-height") {
+			const closeMenu = () => {
+				if (!navMenu.classList.contains("active") || navMenu.classList.contains("closing")) {
 					return;
 				}
 
+				navMenu.classList.add("closing");
+				navMenu.classList.remove("active");
+				toggle.classList.remove("active");
+				toggle.setAttribute("aria-expanded", "false");
+				navMenu.setAttribute("aria-hidden", "true");
+
+				function handleTransitionEnd(event: Event) {
+					const transitionEvent = event as TransitionEvent;
+
+					if (transitionEvent.target !== navMenu || transitionEvent.propertyName !== "max-height") {
+						return;
+					}
+
+					navMenu.classList.remove("closing");
+					navMenu.removeEventListener("transitionend", handleTransitionEnd);
+				}
+
+				navMenu.addEventListener("transitionend", handleTransitionEnd);
+			};
+
+			const openMenu = () => {
 				navMenu.classList.remove("closing");
-				navMenu.removeEventListener("transitionend", handleTransitionEnd);
-			}
+				navMenu.classList.add("active");
+				toggle.classList.add("active");
+				navMenu.setAttribute("aria-hidden", "false");
+				toggle.setAttribute("aria-expanded", "true");
+			};
 
-			navMenu.addEventListener("transitionend", handleTransitionEnd);
-		};
+			toggle.addEventListener("click", () => {
+				if (navMenu.classList.contains("active")) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			});
+		}
+	};
 
-		const openMenu = () => {
-			navMenu.classList.remove("closing");
-			navMenu.classList.add("active");
-			toggle.classList.add("active");
-			navMenu.setAttribute("aria-hidden", "false");
-			toggle.setAttribute("aria-expanded", "true");
-		};
-
-		toggle.addEventListener("click", () => {
-			if (navMenu.classList.contains("active")) {
-				closeMenu();
-			} else {
-				openMenu();
-			}
-		});
-	}
+	document.addEventListener("astro:page-load", () => {
+		initializeMenu();
+	});
 </script>

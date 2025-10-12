@@ -21,25 +21,91 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 		}
 	</div>
 </div>
-
 <script>
-	const qaItems = document.querySelectorAll(".qa-item");
-	qaItems.forEach(item => {
-		item.addEventListener("click", () => {
-			const isOpen = item.getAttribute("data-open") === "true";
-			item.setAttribute("data-open", !isOpen ? "true" : "false");
-			item.querySelector(".qa-toggle")?.setAttribute("style", !isOpen ? "rotate: 180deg;" : "rotate: 0deg;");
-			const answer = item.nextElementSibling;
-			if (answer) {
-				answer.setAttribute("style", !isOpen ? "display: block;" : "display: none;");
-			}
+	const initializeQA = () => {
+		const qaItems = document.querySelectorAll(".qa-item");
+		qaItems.forEach(item => {
+			item.addEventListener("click", () => {
+				const isOpen = item.getAttribute("data-open") === "true";
+				item.setAttribute("data-open", !isOpen ? "true" : "false");
+
+				const toggle = item.querySelector(".qa-toggle");
+				if (toggle) {
+					toggle.classList.toggle("open");
+				}
+
+				const answer = item.nextElementSibling as HTMLElement;
+				if (answer) {
+					if (!isOpen) {
+						// Opening - show and start typing effect
+						answer.style.display = "block";
+						answer.style.height = "0";
+						answer.style.opacity = "0";
+						const fullText = answer.textContent || "";
+						answer.textContent = "";
+
+						// Get the natural height
+						const tempHeight = answer.scrollHeight;
+
+						// Fade in and expand
+						requestAnimationFrame(() => {
+							answer.style.opacity = "1";
+							answer.style.height = `${tempHeight}px`;
+						});
+
+						// Typing effect
+						let charIndex = 0;
+						const typingSpeed = 20;
+						const typeInterval = setInterval(() => {
+							answer.style.transition = "none";
+							if (charIndex < fullText.length) {
+								answer.textContent += fullText.charAt(charIndex);
+								charIndex++;
+								// Update height as text grows
+								answer.style.height = `${answer.scrollHeight}px`;
+							} else {
+								clearInterval(typeInterval);
+								answer.style.height = "auto";
+								answer.style.transition = "height 0.3s ease-in-out, opacity 0.3s ease-in-out";
+							}
+						}, typingSpeed);
+
+						(answer as any).typingInterval = typeInterval;
+					} else {
+						// Closing - clear typing and hide
+						if ((answer as any).typingInterval) {
+							clearInterval((answer as any).typingInterval);
+						}
+
+						// Set explicit height before collapsing
+						answer.style.height = `${answer.scrollHeight}px`;
+
+						// Force reflow to ensure height is applied before transition
+						answer.offsetHeight;
+
+						// Then collapse
+						requestAnimationFrame(() => {
+							answer.style.opacity = "0";
+							answer.style.height = "0";
+						});
+
+						setTimeout(() => {
+							answer.style.display = "none";
+						}, 300);
+					}
+				}
+			});
 		});
+	};
+
+	document.addEventListener("astro:page-load", () => {
+		initializeQA();
 	});
 </script>
-
 <style>
 	.qa {
 		margin-bottom: 2rem;
+		color: #c4c4c4;
 	}
 
 	h2 {
@@ -53,6 +119,7 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 		font-weight: 500;
 		line-height: 2;
 		letter-spacing: 0.05rem;
+		color: var(--white);
 	}
 
 	.qa-list {
@@ -64,9 +131,33 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		border-radius: 3.6875rem;
+		border-radius: 1.75rem;
 		background: #566d8d;
 		padding: 0.75rem 1.5rem;
 		margin: 1rem 0;
+	}
+
+	.qa-toggle {
+		transition: transform 0.3s ease-in-out;
+	}
+
+	.qa-toggle svg {
+		width: 1.5rem;
+		margin-top: 9px;
+	}
+
+	.qa-toggle.open {
+		transform: rotate(180deg);
+	}
+
+	p {
+		padding-inline: 1rem;
+		opacity: 0;
+		height: 0;
+		margin: 0;
+		overflow: hidden;
+		transition:
+			opacity 0.3s ease-in-out,
+			height 0.3s ease-in-out;
 	}
 </style>

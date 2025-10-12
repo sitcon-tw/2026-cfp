@@ -36,14 +36,16 @@ const { schedule, calendarUrl } = Astro.props;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		flex-wrap: wrap;
 		margin-bottom: 1rem;
+		gap: 1rem;
 	}
 
 	.btn-add-calendar {
 		text-decoration: none;
 		display: flex;
 		gap: 0.3rem;
-		font-weight: bold;
+		font-weight: 600;
 		font-size: 1.5rem;
 		letter-spacing: 0.15rem;
 		border-radius: 0.625rem;
@@ -67,15 +69,16 @@ const { schedule, calendarUrl } = Astro.props;
 		display: flex;
 		justify-content: space-between;
 		align-items: stretch;
-		margin-top: 1rem;
-		font-size: 1.5rem;
+		margin-top: 0.5rem;
+		font-size: clamp(1rem, 2.5vw, 1.5rem);
 		font-weight: 700;
-		line-height: 3;
+		line-height: 2.5;
 		letter-spacing: 0.075rem;
-		gap: 0.7rem;
+		gap: 0.5rem;
 	}
 
-	.event .event-col-date {
+	.event .event-col-date,
+	.event .event-col-event {
 		border-radius: 1rem 0 0 1rem;
 		background: var(--white);
 		color: #010121;
@@ -86,11 +89,6 @@ const { schedule, calendarUrl } = Astro.props;
 
 	.event .event-col-event {
 		border-radius: 0 1rem 1rem 0;
-		background: var(--white);
-		color: #010121;
-		flex: 1;
-		text-align: center;
-		align-content: center;
 	}
 
 	.event-before .event-col-date {

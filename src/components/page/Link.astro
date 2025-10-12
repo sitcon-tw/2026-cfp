@@ -43,24 +43,32 @@ const { presentation_content, espresso_content } = Astro.props;
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		gap: 1rem;
-		margin-top: 2rem;
-		margin-bottom: 2rem;
+		margin-top: 1rem;
+		margin-bottom: 3rem;
+	}
+
+	.link-section .links:last-child {
+		margin-bottom: 0;
 	}
 
 	.link-img {
 		width: 100%;
-		height: auto;
-		object-fit: contain;
+		aspect-ratio: 16 / 9;
+		object-fit: cover;
+		border-radius: 0.5rem;
+		display: block;
+		margin-bottom: 1rem;
 	}
 
 	.link-item {
 		max-height: 25rem;
 		text-decoration: none;
-		color: #c4c4c4;
+		color: #d6e0ff;
 		align-items: center;
 		border-radius: 1.25rem;
 		background: #394877;
 		padding: 1rem;
+		font-size: 0.9rem;
 	}
 
 	@media (max-width: 768px) {

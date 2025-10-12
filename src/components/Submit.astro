@@ -130,6 +130,7 @@ import introBg from "@assets/intro_bg.svg";
 	.card-desc {
 		margin-top: 0.5rem;
 		color: #555;
+		text-wrap: balance;
 	}
 
 	.card-cta {
@@ -220,7 +221,13 @@ import introBg from "@assets/intro_bg.svg";
 		transform: translateX(-50%) skewX(-10deg) translateY(-2px);
 	}
 
-	@media (max-width: 980px) {
+	@media (max-width: 62rem) {
+		.card-cta .arrow {
+			width: 3rem;
+		}
+	}
+
+	@media (max-width: 55rem) {
 		.cards {
 			grid-template-columns: 1fr;
 		}
@@ -230,9 +237,23 @@ import introBg from "@assets/intro_bg.svg";
 		.title-accent {
 			display: none;
 		}
-	}
 
-	@media (max-width: 768px) {
+		.title-row,
+		.cards {
+			max-width: 35rem;
+			margin: 0 auto;
+		}
+
+		.title-row {
+			margin-bottom: 0.5rem;
+		}
+
+		.card:hover {
+			transform: translateX(2px);
+		}
+
+		/* other */
+
 		.title-card h3 {
 			font-size: 1.7rem;
 		}

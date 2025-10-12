@@ -8,99 +8,114 @@ import BannerTransitionIcon from "@assets/desc_page/banner_tran.svg";
 ---
 
 <div class="banner-section">
-  <img src={BannerTransitionIcon.src} class="banner-transition" alt="banner transition" />
-  <div class="banner">
-    <div class="banner-container">
-      <div class="banner-text">{h3}</div>
-      <img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
-      <h2 class="banner-title">{h2}</h2>
-
-      <a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
-        <StarIcon height="2rem" />
-        <span> 立即投稿 </span>
-        <StarIcon height="2rem" />
-      </a>
-    </div>
-  </div>
+	<img src={BannerTransitionIcon.src} class="banner-transition" alt="banner transition" />
+	<div class="banner">
+		<div class="banner-container">
+			<div class="banner-text">{h3}</div>
+			<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
+			<h2 class="banner-title" set:html={h2}></h2>
+			<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
+				<StarIcon />
+				<span> 立即投稿 </span>
+				<StarIcon />
+			</a>
+		</div>
+	</div>
 </div>
 
 <style>
-  .banner-section {
-    position: relative;
-    width: 100%;
-    background: var(--white);
-  }
-  .banner {
-    position: relative;
-    padding: 4rem 4rem 4rem 4rem;
-    width: 100%;
-    background: var(--white);
-    font-weight: bold;
-  }
+	.banner-section {
+		position: relative;
+		width: 100%;
+		background: var(--white);
+	}
+	.banner {
+		position: relative;
+		padding: 4rem 4rem 4rem 4rem;
+		width: 100%;
+		background: var(--white);
+		font-weight: bold;
+	}
 
-  .banner-container {
-    max-width: 60rem;
-    margin: auto;
-  }
+	.banner-container {
+		max-width: 60rem;
+		margin: auto;
+	}
 
-  .banner-transition {
-    top: -1px;
-    left: 0;
-    width: 100%;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-touch-callout: none;
-    -webkit-context-menu: none;
-  }
+	.banner-transition {
+		top: -1px;
+		left: 0;
+		width: 100%;
+		pointer-events: none;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		-webkit-touch-callout: none;
+		-webkit-context-menu: none;
+	}
 
-  .banner-text,
-  .banner-title {
-    font-size: 2rem;
-    text-wrap: balance;
-    background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    width: fit-content;
-  }
+	.banner-text,
+	.banner-title {
+		font-size: 2rem;
+		background: linear-gradient(90deg, #2aa6ff, #009dff, #f8981d, #e84b1c);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+		color: red;
+		max-width: fit-content;
+	}
 
-  .banner-title {
-    font-size: 2.5rem;
-  }
+	.banner-title {
+		font-size: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
 
-  .banner-text {
-    margin-bottom: 2rem;
-  }
+	.banner-text {
+		margin-bottom: 2rem;
+	}
 
-  .banner-button {
-    display: flex;
-    border-radius: 1000px;
-    color: var(--white);
-    background: #010121;
-    font-size: 2rem;
-    align-items: center;
-    justify-content: center;
-    margin: 4.5rem 0;
-    padding: 1rem 1rem;
-    text-decoration: none;
-  }
+	.banner-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 1000px;
+		color: var(--white);
+		background: #1e2c7a;
+		font-size: 1.8rem;
+		padding: 1rem 3rem;
+		text-decoration: none;
+		width: fit-content;
+		gap: 1rem;
+		transition: background 0.3s ease;
+	}
 
-  .bg-icon {
-    position: absolute;
-    max-width: 20rem;
-    top: 17rem;
-    right: 3rem;
-    opacity: 0.1;
-    pointer-events: none;
-    z-index: 0;
-  }
+	.banner-button:hover {
+		background: #345b92;
+	}
 
-  @media (max-width: 768px) {
-    .banner-button {
-      font-size: 1.5rem;
-    }
-  }
+	.banner-button:active {
+		background: #274374;
+	}
+
+	.banner-button svg {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
+	.bg-icon {
+		position: absolute;
+		max-width: 20rem;
+		bottom: 0;
+		right: 3rem;
+		opacity: 0.1;
+		pointer-events: none;
+		z-index: 0;
+	}
+
+	@media (max-width: 768px) {
+		.banner-button {
+			font-size: 1.5rem;
+		}
+	}
 </style>

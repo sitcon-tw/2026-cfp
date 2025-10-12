@@ -6,7 +6,6 @@ import Schedule from "@components/page/Schedule.astro";
 import Banner from "@components/page/Banner.astro";
 import Description from "@components/page/Description.astro";
 import FieldDescription from "@components/page/FieldDescription.astro";
-import PersonalInfo from "@components/page/PersonalInfo.astro";
 import ContentFormat from "@components/page/ContentFormat.astro";
 import QA from "@components/page/QA.astro";
 import "@assets/description-page.css";
@@ -69,7 +68,7 @@ const DescriptionContent = descriptionContent;
 		<div class="toc">
 			<Toc content={tocContent} />
 		</div>
-		<div class="content">
+		<div class="main-content">
 			<h1>{title}</h1>
 
 			{
@@ -99,7 +98,7 @@ const DescriptionContent = descriptionContent;
 			<div id="paper-info">
 				<slot name="paper-info-header" />
 				<FieldDescription title={paperInfoTitle} content={paperInfoContent} />
-				<PersonalInfo title="個人資料" description={personalInfoDesc} content={personalInfoContent} />
+				<FieldDescription title="個人資料" description={personalInfoDesc} content={personalInfoContent} />
 			</div>
 
 			<ContentFormat>

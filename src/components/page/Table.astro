@@ -31,88 +31,50 @@ const content = [
 ---
 
 <div class="table">
-	<div id="table-head-1" class="table-header">{content[0].header}</div>
-	<div id="table-content-1" class="table-content">
-		{content[0].content}
+	<div>
+		<div class="table-header">{content[0].header}</div>
+		<div class="table-content">{content[0].content}</div>
 	</div>
-	<div id="table-head-2" class="table-header">{content[1].header}</div>
-	<div id="table-content-2" class="table-content">
-		{content[1].content}
+	<div>
+		<div class="table-header">{content[1].header}</div>
+		<div class="table-content">{content[1].content}</div>
 	</div>
-	<div id="table-head-3" class="table-header">{content[2].header}</div>
-	<div id="table-content-3" class="table-content">
-		{content[2].content}
+	<div>
+		<div class="table-header">{content[2].header}</div>
+		<div class="table-content">{content[2].content}</div>
 	</div>
-	<div id="table-head-4" class="table-header">{content[3].header}</div>
-	<div id="table-content-4" class="table-content">
-		{content[3].content}
+	<div>
+		<div class="table-header">{content[3].header}</div>
+		<div class="table-content">{content[3].content}</div>
 	</div>
+
+	<style>
+		.table {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 5px;
+			align-items: stretch;
+			padding: 1rem;
+		}
+
+		.table > div {
+			flex: 1 1 45%;
+			min-width: min(300px, 100%);
+			background-color: var(--white);
+			border-radius: 1rem;
+		}
+
+		.table-content {
+			color: #010121;
+			padding: 2rem;
+		}
+
+		.table-header {
+			background-color: #345b92;
+			color: var(--white);
+			font-size: 1.5rem;
+			padding: 1rem 2rem;
+			border-radius: 1rem 1rem 0 0;
+		}
+	</style>
 </div>
-
-<style>
-	.table {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-	}
-
-	.table-header {
-		border: 0.1rem #010121 solid;
-		background: #345b92;
-		color: white;
-		font-size: 2rem;
-		padding: 0.5rem 3rem;
-		align-content: center;
-	}
-	.table-content {
-		border: 0.1rem #010121 solid;
-		max-height: 15rem;
-		background: var(--white);
-		color: #000000;
-		text-align: justify;
-		font-size: 1rem;
-		font-weight: 500;
-		line-height: 1.6;
-		letter-spacing: 0.05rem;
-		padding: 1rem;
-		border-top: none;
-	}
-
-	#table-content-1,
-	#table-content-2,
-	#table-content-3,
-	#table-content-4 {
-		min-height: 100%;
-		overflow: auto;
-	}
-
-	#table-head-1,
-	#table-head-3,
-	#table-content-1,
-	#table-content-3 {
-		grid-column: 1;
-	}
-
-	#table-head-2,
-	#table-head-4,
-	#table-content-2,
-	#table-content-4 {
-		grid-column: 2;
-	}
-
-	#table-head-1,
-	#table-head-2 {
-		grid-row: 1;
-	}
-	#table-content-1,
-	#table-content-2 {
-		grid-row: 2;
-	}
-	#table-head-3,
-	#table-head-4 {
-		grid-row: 3;
-	}
-	#table-content-3,
-	#table-content-4 {
-		grid-row: 4;
-	}
-</style>

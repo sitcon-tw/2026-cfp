@@ -11,7 +11,7 @@ const { end1, end2, start, form_url } = Astro.props;
 		</div>
 		<span class="progress-number">99%</span>
 	</div>
-	<p class="text"></p>
+	<div class="text">距離早鳥投稿截止還有</div>
 	<div class="timer">
 		<div>
 			<div class="timer-number countdown-days">00</div>
@@ -40,7 +40,7 @@ const { end1, end2, start, form_url } = Astro.props;
 		</div>
 		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿">
 			立即投稿
-			<ArrowRight width="3rem" />
+			<ArrowRight width="3rem" height="3rem" />
 		</a>
 	</div>
 </div>
@@ -53,8 +53,8 @@ const { end1, end2, start, form_url } = Astro.props;
 	}
 
 	.text {
-		font-size: 1.5rem;
-		margin: 2rem 0 0 0;
+		font-size: 1.2rem;
+		margin-top: 1.5rem;
 	}
 
 	.footer {
@@ -63,59 +63,59 @@ const { end1, end2, start, form_url } = Astro.props;
 		justify-content: space-around;
 	}
 
+	.deadline,
+	.link {
+		border: 2px solid rgba(255, 255, 255, 0.8);
+		border-radius: 1.5rem;
+		text-align: center;
+		padding: 1rem 2rem;
+	}
+
 	.link {
 		display: flex;
-		color: #566d8d;
+		justify-content: center;
+		align-items: center;
+		letter-spacing: 0.2rem;
+		color: #345B92;
 		font-size: 2rem;
 		font-weight: bold;
 		text-decoration: none;
-		justify-content: center;
-		align-items: center;
-		line-height: 2rem;
-		letter-spacing: 1rem;
-		border-radius: 1.5rem;
-		border: 2px solid rgba(255, 255, 255, 0.8);
+		gap: 1rem;
 		background-color: rgba(255, 255, 255, 0.8);
-		gap: 0.2rem;
-		padding: 0.2rem 1rem;
-		flex-grow: 0.4;
 	}
 
 	.deadline {
-		padding: 0.2rem;
-		text-align: center;
-		font-size: 1.1rem;
-		line-height: 2.5rem;
-		letter-spacing: 0.2rem;
-		border-radius: 1.5rem;
 		align-content: center;
-		flex-grow: 0.4;
-		border: 2px solid rgba(255, 255, 255, 0.8);
-		min-width: 17.5rem;
+		letter-spacing: 0.5rem;
+		flex: 1;
 	}
 
 	.timer {
 		display: flex;
-		justify-content: space-around;
-		margin: 2rem 0;
+		justify-content: center;
+		flex-wrap: wrap;
+		margin: 1.2rem 0 2rem;
 		text-align: center;
-		gap: 0.7rem;
+		gap: min(3rem, 5vw);
+		line-height: 1;
+		font-size: clamp(0.8rem, 3.5vw, 1.2rem);
 	}
 
 	.timer-number {
-		font-size: 4.5rem;
+		font-size: min(4rem, 8vw);
 		font-weight: 500;
+		margin-bottom: 0.5rem;
 	}
 
 	.timer-text {
-		font-size: 1.5rem;
 		font-weight: 300;
 		line-height: 1.5;
 	}
 
 	.title {
 		letter-spacing: 1rem;
-		font-size: 2.5rem;
+		font-size: clamp(1.5rem, 5vw, 2.5rem);
+		line-height: 1;
 	}
 
 	.title-bar {
@@ -146,11 +146,7 @@ const { end1, end2, start, form_url } = Astro.props;
 
 	@media (max-width: 768px) {
 		.countdown {
-			padding: 2.5rem;
-		}
-
-		.timer {
-			display: block;
+			padding: 2.5rem 1.5rem;
 		}
 
 		.text {

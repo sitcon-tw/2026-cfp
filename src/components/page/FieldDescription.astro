@@ -11,9 +11,9 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 			{title}
 		</h3>
 		<div class="field-description">
-			<IconRequired width="1.5rem" height="1.5rem" /> 必填 &nbsp;
-			<IconOptional width="1.5rem" height="1.5rem" /> 選填 &nbsp;
-			<IconPublish width="1.5rem" height="1.5rem" /> 公開 &nbsp;
+			<div><IconRequired width="1.5rem" height="1.5rem" /> 必填</div>
+			<div><IconOptional width="1.5rem" height="1.5rem" /> 選填</div>
+			<div><IconPublish width="1.5rem" height="1.5rem" /> 公開</div>
 		</div>
 	</div>
 	{
@@ -24,8 +24,8 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 					<p class="field-item-description">{ctx.detail}</p>
 				</div>
 				<div class="field-icon-bar">
-					{ctx.publish ? <IconPublish width="2.5rem" /> : null}
 					{ctx.optional ? <IconOptional width="2.5rem" /> : <IconRequired width="2.5rem" />}
+					{ctx.publish ? <IconPublish width="2.5rem" /> : null}
 				</div>
 			</div>
 		))
@@ -33,13 +33,11 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 </div>
 
 <style>
-	.field {
-		margin: 3rem 0;
-		text-align: left;
-	}
 	.field-head {
 		display: flex;
-		padding: 1rem 2rem 1rem 2rem;
+		flex-wrap: wrap;
+		gap: 0.5rem 2rem;
+		padding: 1rem 2rem;
 		min-height: 5.6rem;
 		align-items: center;
 		justify-content: space-between;
@@ -50,17 +48,25 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 	}
 	.field-description {
 		display: flex;
-		gap: 0.5rem;
-		border-radius: 0.75rem;
 		align-items: center;
+		flex-wrap: wrap;
+		gap: 1rem;
+		border-radius: 0.75rem;
 		text-align: center;
 		color: #000000;
 		background-color: var(--white);
 		font-size: 1.25rem;
 		min-height: 1.5rem;
-		padding: 0.5rem 1rem;
+		padding: 0.6rem 1rem;
 		max-width: 30rem;
 		line-height: 1.8rem;
+	}
+	.field-description > div {
+		display: flex;
+		align-items: center;
+		white-space: nowrap;
+		gap: 0.25rem;
+		line-height: 1;
 	}
 	.field-title {
 		font-size: 2rem;
@@ -69,7 +75,7 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		letter-spacing: 0.1rem;
 	}
 	.field-item {
-		padding: 1rem 3rem;
+		padding: 1.5rem 3rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -78,20 +84,17 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 		margin-bottom: 0.4rem;
 	}
 	.field-item-title {
-		font-size: 2rem;
-		font-weight: 700;
-		line-height: 1.5;
+		font-size: 1.6rem;
 		letter-spacing: 0.1rem;
-		margin-top: 0;
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.3rem;
 		color: black;
 	}
 	.field-item-description {
 		font-size: 1rem;
 		word-break: break-word;
-		text-align: justify;
 		max-width: 40rem;
 		color: black;
+		margin-bottom: 0;
 	}
 	.field-icon-bar {
 		margin-left: 0.8rem;
@@ -100,16 +103,16 @@ import IconPublish from "@assets/desc_page/field_publish.svg";
 	}
 
 	@media (max-width: 768px) {
-		.field-head {
+		.field-item {
 			display: block;
+			padding: 1.5rem;
 		}
-
-		.field-title {
-			padding: 0 0 0.5rem 0;
+		.field-icon-bar {
+			margin: 1rem 0 0 0;
 		}
-
-		.field-description {
-			display: block;
+		.field-icon-bar svg {
+			width: 2rem;
+			height: 2rem;
 		}
 	}
 </style>

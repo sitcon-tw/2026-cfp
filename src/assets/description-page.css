@@ -1,13 +1,16 @@
 .main-container {
 	display: flex;
 	justify-content: center;
-	padding-block: 5rem 3rem;
+	padding-block: 5rem 0;
 }
 
-.content {
+.main-content {
 	max-width: 900px;
 	flex: 1;
 	padding: 0 2rem;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
 }
 
 .blocks {
@@ -21,33 +24,22 @@
 	display: block;
 	text-align: center;
 	border-radius: 1.5rem;
-	padding: 1rem;
-	border: 4px solid var(--light-blue);
+	padding: 1.5rem;
+	border: 4px solid #5a93e0;
 	background-color: var(--white);
-	color: var(--light-blue);
+	color: #5a93e0;
 	align-content: start;
 }
 
 .block-title {
-	font-size: 2rem;
 	margin-bottom: 0.5rem;
-	font-size: 2.5rem;
+	font-size: clamp(1.5rem, 4vw, 2rem);
 	letter-spacing: 0.125rem;
 	font-weight: 700;
 }
 
-.block-content {
-	word-wrap: break-word;
-	text-align: justify;
-	margin: 0.5rem 0;
-	font-weight: bold;
-	font-size: 1.5rem;
-	font-weight: 700;
-	letter-spacing: 0.075rem;
-}
-
 .block-time-spotlight {
-	font-size: 5rem;
+	font-size: clamp(1.5rem, 15vw, 5rem);
 	font-weight: bold;
 }
 
@@ -200,7 +192,11 @@ h1 {
 
 ul,
 ol {
-	padding-left: 2rem;
+	padding-left: 1.5rem;
+}
+
+li{
+	margin-bottom: 0.5rem;
 }
 
 @media (max-width: 768px) {
