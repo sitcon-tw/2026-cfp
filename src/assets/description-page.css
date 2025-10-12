@@ -192,12 +192,12 @@ h1 {
 	margin-bottom: 0.5rem;
 }
 
-ul,
-ol {
+main ul,
+main ol {
 	padding-left: 1.5rem;
 }
 
-li {
+main li {
 	margin-bottom: 0.5rem;
 }
 
