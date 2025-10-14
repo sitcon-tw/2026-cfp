@@ -6,29 +6,33 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 ---
 
 <section aria-labelledby="about-heading">
-	<h2 id="about-heading">關於 SITCON</h2>
-	<p>
-		學生計算機年會（Students’ Information Technology Conference）自 2012
-		年發起，以學生為本、由學生自發舉辦，長期投身學生資訊教育與推廣開源精神，希望引領更多學子踏入資訊的殿堂，更冀望所有對資訊有興趣的學生，能夠在年會裏齊聚一堂，彼此激盪、傳承、啟發，達到「學以致用、教學相長」的實際展現。
-	</p>
+	<div class="container">
+		<h2 id="about-heading">關於 SITCON</h2>
+		<p>
+			學生計算機年會（Students’ Information Technology Conference）自 2012
+			年發起，以學生為本、由學生自發舉辦，長期投身學生資訊教育與推廣開源精神，希望引領更多學子踏入資訊的殿堂，更冀望所有對資訊有興趣的學生，能夠在年會裏齊聚一堂，彼此激盪、傳承、啟發，達到「學以致用、教學相長」的實際展現。
+		</p>
+		<img src={sitcon2025.src} alt="SITCON 2025 工人團體照" class="sitcon2025" />
+	</div>
 	<img src={sitconLeaf.src} alt="" aria-hidden="true" class="sitcon-leaf" />
 	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
 	<div class="grid" aria-hidden="true"></div>
 	<img src={light.src} alt="" aria-hidden="true" class="light" />
-	<img src={sitcon2025.src} alt="SITCON 2025 工人團體照" class="sitcon2025" />
 </section>
 
 <style>
 	section {
-		min-height: 130vh;
 		position: relative;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		text-align: center;
-		overflow: hidden;
-		width: 100%;
 		color: var(--white);
+		overflow: hidden;
+	}
+
+	.container {
+		max-width: 900px;
+		margin: 0 auto;
+		padding: 4rem 2rem 8rem;
+		position: relative;
+		z-index: 1;
 	}
 
 	h2 {
@@ -37,8 +41,7 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 	}
 
 	p {
-		max-width: 75%;
-		margin: 0.5rem auto 1rem;
+		margin-block: 0.5rem 1rem;
 		line-height: 2;
 		letter-spacing: 0.15rem;
 	}
@@ -93,18 +96,14 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 
 	.sitcon2025 {
 		border-radius: 3rem;
-		width: 60%;
+		width: 90%;
 		display: block;
-		margin: 2rem auto 0 auto;
+		margin: 3rem auto 0;
 		aspect-ratio: 16 / 9;
 		object-fit: cover;
 	}
 
 	@media (max-width: 768px) {
-		section {
-			min-height: 110vh;
-		}
-
 		.about-title {
 			font-size: 2.6rem;
 		}
@@ -114,18 +113,8 @@ import sitcon2025 from "@assets/sitcon-2025.webp";
 			font-size: 1.05rem;
 		}
 
-		.image-container {
-			width: 90%;
-		}
-
 		.sitcon-leaf {
 			right: 0;
-		}
-	}
-
-	@media (max-width: 330px) {
-		section {
-			min-height: 150vh;
 		}
 	}
 </style>

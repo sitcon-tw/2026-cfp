@@ -203,6 +203,32 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 			a:hover {
 				color: #71aeff;
 			}
+
+			.sitcon-circle {
+				animation: spin 5s linear infinite;
+			}
+
+			.sitcon-leaf {
+				animation: vibe 6s ease-in-out infinite alternate;
+			}
+
+			@keyframes spin {
+				from {
+					transform: rotate(0deg);
+				}
+				to {
+					transform: rotate(90deg);
+				}
+			}
+
+			@keyframes vibe {
+				from {
+					transform: rotate(10deg);
+				}
+				to {
+					transform: rotate(-30deg);
+				}
+			}
 		</style>
 		<ClientRouter />
 		<!-- Google Tag Manager (noscript) -->

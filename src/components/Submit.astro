@@ -22,7 +22,7 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 					<div class="card-title">一般議程</div>
 					<div class="card-desc">40 分鐘深度分享 or<br />10 分鐘精準傳達</div>
 				</div>
-				<div class="card-cta red" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+				<div class="card-cta red" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
 			</a>
 
 			<a class="card" href="open/" aria-label="開放式議程投稿：一起交流，共創議程">
@@ -30,7 +30,7 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 					<div class="card-title">開放式議程</div>
 					<div class="card-desc">不設框架的 40 或 90 分鐘<br />由你來定義</div>
 				</div>
-				<div class="card-cta blue" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+				<div class="card-cta blue" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
 			</a>
 
 			<a class="card demo-card" href="demo/" aria-label="Demo 徵稿：現場專案展示，汲取即時回饋，全新項目">
@@ -38,7 +38,7 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 					<div class="card-title">Demo 徵稿</div>
 					<div class="card-desc">現場專案展示<br />汲取即時回饋</div>
 				</div>
-				<div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
+				<div class="card-cta yellow" aria-hidden="true"><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /><img src={arrow.src} alt="" class="arrow" aria-hidden="true" /></div>
 				<div class="marquee-bar" aria-hidden="true">
 					<div class="marquee-content">
 						<span class="tag"
@@ -181,10 +181,12 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 	.card-cta {
 		padding: 0.25rem;
 		display: flex;
-		align-items: center;
-		justify-content: center;
+		justify-content: end;
 		background-color: #4a86e8;
 		border-radius: 50%;
+		width: 4rem;
+		height: 4rem;
+		overflow: hidden;
 	}
 
 	.card-cta.red {
@@ -201,6 +203,11 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 
 	.card-cta .arrow {
 		width: 3.5rem;
+		transition: transform 0.3s ease;
+	}
+
+	.card:hover .arrow {
+		transform: translateX(3.5rem);
 	}
 
 	.marquee-bar {

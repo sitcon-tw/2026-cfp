@@ -33,7 +33,7 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 	}
 	.banner {
 		position: relative;
-		padding: 4rem 4rem 4rem 4rem;
+		padding: 4rem 4rem 7rem 4rem;
 		width: 100%;
 		background: var(--white);
 		font-weight: bold;
@@ -185,7 +185,19 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 	}
 
 	.banner-button:hover {
-		background: #345b92;
+		background: rgb(63, 107, 170);
+	}
+
+	.banner-button svg {
+		transition: transform 0.2s ease;
+	}
+
+	.banner-button:hover svg {
+		transform: rotate(180deg);
+	}
+
+	.banner-button:hover svg:last-child {
+		transform: rotate(-180deg);
 	}
 
 	.banner-button:active {
@@ -205,6 +217,7 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 		opacity: 0.1;
 		pointer-events: none;
 		z-index: 0;
+		animation: vibe 6s ease-in-out infinite;
 	}
 
 	@media (max-width: 768px) {
@@ -213,12 +226,22 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 			padding: 0.75rem 2rem;
 		}
 
-		.banner{
+		.banner {
 			padding: 3rem 2rem 3rem 2rem;
 		}
 
-		.banner-title{
+		.banner-title {
 			font-size: 2rem;
+		}
+	}
+
+	@keyframes vibe {
+		0%,
+		100% {
+			transform: translateY(5%);
+		}
+		50% {
+			transform: translateY(-5%);
 		}
 	}
 </style>
