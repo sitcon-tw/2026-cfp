@@ -29,6 +29,7 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 	.banner-section {
 		position: relative;
 		width: 100%;
+		overflow: hidden;
 	}
 	.banner {
 		position: relative;
@@ -46,15 +47,106 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 
 	.banner-transition {
 		display: block;
-		width: 100%;
+		width: 140%;
+		height: auto;
 		pointer-events: none;
+		animation: wave-flow-left 18s linear infinite;
+		will-change: transform;
+		margin-left: -20%;
+		filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.12));
+		transform-origin: center center;
 	}
 
 	.banner2 {
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 0.6rem;
+		left: -20%;
 		z-index: 10;
+		width: 140%;
+		height: auto;
+		animation: wave-flow-right 10s linear infinite;
+		will-change: transform;
+		filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.18));
+		animation-delay: -4s;
+		transform-origin: center center;
+	}
+
+	@keyframes wave-flow-left {
+		0% {
+			transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
+		}
+		8% {
+			transform: translateX(-15px) translateY(-2px) scaleX(1.01) scaleY(1.005);
+		}
+		16% {
+			transform: translateX(-30px) translateY(-4px) scaleX(1.02) scaleY(1.008);
+		}
+		24% {
+			transform: translateX(-45px) translateY(-6px) scaleX(1.03) scaleY(1.01);
+		}
+		32% {
+			transform: translateX(-60px) translateY(-8px) scaleX(1.05) scaleY(1.012);
+		}
+		40% {
+			transform: translateX(-75px) translateY(-10px) scaleX(1.07) scaleY(1.014);
+		}
+		48% {
+			transform: translateX(-90px) translateY(-12px) scaleX(1.08) scaleY(1.015);
+		}
+		56% {
+			transform: translateX(-75px) translateY(-10px) scaleX(1.07) scaleY(1.014);
+		}
+		64% {
+			transform: translateX(-60px) translateY(-8px) scaleX(1.05) scaleY(1.012);
+		}
+		72% {
+			transform: translateX(-45px) translateY(-6px) scaleX(1.03) scaleY(1.01);
+		}
+		80% {
+			transform: translateX(-30px) translateY(-4px) scaleX(1.02) scaleY(1.008);
+		}
+		88% {
+			transform: translateX(-15px) translateY(-2px) scaleX(1.01) scaleY(1.005);
+		}
+		100% {
+			transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
+		}
+	}
+
+	@keyframes wave-flow-right {
+		0% {
+			transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
+		}
+		10% {
+			transform: translateX(18px) translateY(2px) scaleX(0.99) scaleY(0.997);
+		}
+		20% {
+			transform: translateX(36px) translateY(4px) scaleX(0.98) scaleY(0.994);
+		}
+		30% {
+			transform: translateX(54px) translateY(6px) scaleX(0.97) scaleY(0.992);
+		}
+		40% {
+			transform: translateX(72px) translateY(8px) scaleX(0.96) scaleY(0.99);
+		}
+		50% {
+			transform: translateX(90px) translateY(10px) scaleX(0.95) scaleY(0.988);
+		}
+		60% {
+			transform: translateX(110px) translateY(12px) scaleX(0.94) scaleY(0.986);
+		}
+		70% {
+			transform: translateX(90px) translateY(10px) scaleX(0.95) scaleY(0.988);
+		}
+		80% {
+			transform: translateX(72px) translateY(8px) scaleX(0.96) scaleY(0.99);
+		}
+		90% {
+			transform: translateX(36px) translateY(4px) scaleX(0.98) scaleY(0.994);
+		}
+		100% {
+			transform: translateX(0) translateY(0) scaleX(1) scaleY(1);
+		}
 	}
 
 	.banner-text,
