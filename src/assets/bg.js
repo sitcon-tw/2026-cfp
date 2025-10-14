@@ -4,7 +4,8 @@ document.addEventListener("astro:page-load", () => {
 	const canvas = document.getElementById("bg");
 	const gl = canvas.getContext("webgl");
 	if (!gl) {
-		alert("WebGL not supported");
+		console.log("WebGL not supported");
+		return;
 	}
 	const vert = `
 attribute vec2 a_pos;
