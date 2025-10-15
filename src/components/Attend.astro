@@ -98,7 +98,7 @@ const timeline = [
 	.white-card {
 		background-color: var(--white);
 		padding: 3rem;
-		max-width: 65%;
+		max-width: min(1200px, 65%);
 		width: 100%;
 		position: relative;
 	}
@@ -106,7 +106,7 @@ const timeline = [
 	.white-card.left {
 		background-color: var(--white);
 		padding: 1.5rem;
-		max-width: 65%;
+		max-width: min(1200px, 65%);
 		border-radius: 10rem 0;
 		width: 100%;
 		position: relative;
@@ -115,7 +115,7 @@ const timeline = [
 	.white-card.right {
 		background-color: var(--white);
 		padding: 1.5rem;
-		max-width: 65%;
+		max-width: min(1200px, 65%);
 		border-radius: 0 10rem;
 		width: 100%;
 		position: relative;
@@ -130,7 +130,8 @@ const timeline = [
 	}
 
 	.round-end-container {
-		width: 65%;
+		width: 100%;
+		max-width: min(1200px, 65%);
 		height: 0.5rem;
 		background-color: var(--white);
 	}
@@ -138,8 +139,7 @@ const timeline = [
 	.round-end {
 		background-color: #010121;
 		height: 0.5rem;
-		width: 40rem;
-		max-width: calc(100% + 1rem);
+		width: calc(100% - 5rem);
 		border-radius: 0 10rem 10rem 0;
 	}
 
@@ -281,6 +281,10 @@ const timeline = [
 		width: 100%;
 		align-items: center;
 		gap: 0.5rem;
+		color: #010121;
+		font-size: 2rem;
+		font-weight: bold;
+		font-family: "Orbitron", "Noto Sans TC", sans-serif;
 	}
 
 	.timeline-item {
@@ -288,19 +292,6 @@ const timeline = [
 		justify-content: center;
 		gap: 1.5rem;
 		align-items: center;
-	}
-
-	.timeline-date {
-		color: #010121;
-		font-size: 2rem;
-		font-weight: bold;
-		font-family: "Orbitron", sans-serif;
-	}
-
-	.timeline-event {
-		color: #010121;
-		font-size: 2rem;
-		font-weight: bold;
 	}
 
 	/* Vector Graphics from Design */
@@ -321,26 +312,24 @@ const timeline = [
 	}
 
 	/* Responsive Design */
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		.attend-section {
-			padding: 2rem 0;
+			padding: 2rem;
 		}
 
 		.quotation-mark {
 			right: 2rem;
 		}
 
-		.white-card {
-			padding: 2rem;
-			max-width: 85%;
-		}
-
-		.white-card.left {
-			max-width: 85%;
-		}
-
+		.white-card,
+		.white-card.left,
 		.white-card.right {
-			max-width: 85%;
+			padding: 2rem;
+			max-width: unset;
+		}
+
+		.round-end-container {
+			max-width: unset;
 		}
 
 		h2 {
@@ -387,17 +376,13 @@ const timeline = [
 			font-size: 0.9rem;
 		}
 
+		.timeline {
+			font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+		}
+
 		.timeline-item {
 			gap: 0.5rem;
 			text-align: center;
-		}
-
-		.timeline-date {
-			font-size: 1.1rem;
-		}
-
-		.timeline-event {
-			font-size: 1.1rem;
 		}
 	}
 </style>
