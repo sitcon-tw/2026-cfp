@@ -344,12 +344,6 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 		font-size: 1rem;
 	}
 
-	@media (max-width: 62rem) {
-		.card-cta .arrow {
-			width: 3rem;
-		}
-	}
-
 	@media (max-width: 55rem) {
 		.cards {
 			grid-template-columns: 1fr;
@@ -415,6 +409,15 @@ import Yahoo from "@assets/calendar/Yahoo.svg";
 
 		.card-cta .arrow {
 			width: 2.6rem;
+		}
+
+		.card-cta {
+			width: 3.2rem;
+			height: 3.2rem;
+		}
+
+		.card:hover .arrow {
+			transform: translateX(2.6rem);
 		}
 	}
 
