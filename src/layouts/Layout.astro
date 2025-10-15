@@ -3,6 +3,7 @@ import Nav from "@components/Nav.astro";
 import Footer from "@components/Footer.astro";
 import { ClientRouter } from "astro:transitions";
 import { fade } from "astro:transitions";
+import "lenis/dist/lenis.css";
 
 interface Props {
 	title?: string;
@@ -234,5 +235,16 @@ const fullOgImage = new URL(ogImage, siteUrl).toString();
 		<!-- Google Tag Manager (noscript) -->
 		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NPVBCDZ" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<!-- End Google Tag Manager (noscript) -->
+		<script>
+			import Lenis from "lenis";
+			const lenis = new Lenis({
+				autoRaf: true,
+				anchors: true
+			});
+
+			document.addEventListener("astro:page-load", () => {
+				if (!window.location.href.includes("#")) lenis.scrollTo(0, { immediate: true });
+			});
+		</script>
 	</body>
 </html>
