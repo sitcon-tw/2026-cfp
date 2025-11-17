@@ -1,8 +1,15 @@
 document.addEventListener("astro:page-load", () => {
-	if (!(window.location.pathname == "/2026/cfp/")) return;
+	// 只在 /2026/cfp/ 啟動
+	if (window.location.pathname !== "/2026/cfp/") return;
+
+	// 避免 Astro 多次觸發時重複初始化
+	if (window.__cfpBgInited) return;
+	window.__cfpBgInited = true;
 
 	const canvas = document.getElementById("bg");
-	const gl = canvas.getContext("webgl");
+	if (!canvas) return;
+
+	const gl = canvas.getContext("webgl", { antialias: false, preserveDrawingBuffer: false });
 	if (!gl) {
 		console.log("WebGL not supported");
 		return;
@@ -58,34 +65,34 @@ float trapezoidLight(vec2 uv){
   
   // 計算當前點到光束起點的向量
   vec2 toPoint = uv - start;
-  
+
   // 計算點在光束方向上的投影距離
   float projDistance = dot(toPoint, direction);
   
   // 計算點到光束中心線的垂直距離
   vec2 projPoint = start + direction * projDistance;
   float perpDistance = length(uv - projPoint);
-  
+
   // 光束寬度隨距離增加而擴散
   float beamWidth = 0.1 + projDistance * 0.3;
-  
+
   // 檢查是否在光束範圍內
   float inBeam = smoothstep(beamWidth, beamWidth * 0.7, perpDistance);
-  
+
   // 確保只在正確方向上發光（從起點到終點）
   float validRange = smoothstep(-0.1, 0.0, projDistance) * 
                      smoothstep(1.6, 1.4, projDistance);
-  
+
   // 距離衰減：從起點開始衰減
   float distanceFromStart = length(toPoint);
   float decay = exp(-distanceFromStart * 1.2); // 指數衰減
   
   // 額外的柔和衰減
   float softDecay = smoothstep(1.8, 0.2, distanceFromStart);
-  
+
   // 時間變化的強度波動（可選）
   float pulse = 0.8 + 0.2 * sin(u_time * 2.0);
-  
+
   return inBeam * validRange * decay * softDecay * pulse;
 }
 
@@ -110,7 +117,7 @@ void main(){
   pinkPos.x *= aspectRatio; // aspect ratio correction
   float pinkSize = 0.3 * aspectRatio; // 50vw equivalent
   float pinkBlob = softCircle(uv, pinkPos, pinkSize, pinkSize * 0.5);
-  
+
   // Yellow DD8D3E: big width 60vw, static at left 0, bottom 0, shine brightness 60% to 100%
   vec2 yellowPos = vec2(0.32, 0.0); // left 0, bottom 0
   float yellowSize = 1.1; // 60vw equivalent
@@ -124,7 +131,7 @@ void main(){
   vec2 bluePos = vec2(blueCurveX * aspectRatio, blueCurveY);
   float blueSize = 0.22 * aspectRatio; // 30vw equivalent
   float blueBlob = softCircle(uv, bluePos, blueSize, blueSize * 0.5);
-  
+
   // Red C45D3F: width 30vw, left 60%, bottom 0%, shine brightness 60% to 100%
   vec2 redPos = vec2(0.6 * aspectRatio, 0.0); // left 60%, bottom 0%
   float redSize = 0.3 * aspectRatio; // 30vw equivalent
@@ -143,15 +150,15 @@ void main(){
 
   // Layer blobs (z-index consideration: pink is z-index 1, others on top)
   vec3 blob = vec3(0.0);
-  
+
   // Pink first (z-index 1, bottom layer)
   blob += pinkColor * pinkBlob;
-  
+
   // Then others on top
   blob = mix(blob, yellowColor, yellowBlob);
   blob = mix(blob, blueColor, blueBlob);
   blob = mix(blob, redColor, redBlob);
-  
+
   // Total alpha for blending with background
   float totalAlpha = clamp(pinkBlob + yellowBlob + blueBlob + redBlob, 0.0, 1.0);
   col=mix(col, blob, totalAlpha);
@@ -169,8 +176,8 @@ void main(){
   col=mix(col, vec3(0.9,0.95,1.0), beam*0.4);
 
   // ===== Noise =====
-  float g=noise(gl_FragCoord.xy*0.6+u_time*60.0);
-  col+= (g-0.5)*0.04;
+  float n = noise(floor(gl_FragCoord.xy * 0.6) + u_time * 30.0);
+  col += (n - 0.5) * 0.04;
 
   gl_FragColor=vec4(clamp(col,0.0,1.0),1.0);
 }
@@ -180,7 +187,7 @@ void main(){
 		const s = gl.createShader(type);
 		gl.shaderSource(s, src);
 		gl.compileShader(s);
-		if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+		if (!gl.getShaderParameter(s, gl.COMPLETE_STATUS) && !gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
 			console.error(gl.getShaderInfoLog(s));
 		}
 		return s;
@@ -192,35 +199,67 @@ void main(){
 	gl.attachShader(prog, vs);
 	gl.attachShader(prog, fs);
 	gl.linkProgram(prog);
+	if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+		console.error(gl.getProgramInfoLog(prog));
+	}
 	gl.useProgram(prog);
 
 	const buf = gl.createBuffer();
 	gl.bindBuffer(gl.ARRAY_BUFFER, buf);
 	gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
 	const loc = gl.getAttribLocation(prog, "a_pos");
 	gl.enableVertexAttribArray(loc);
 	gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
-	let isRendering = false;
-	let animationId = null;
-
 	const uRes = gl.getUniformLocation(prog, "u_res");
 	const uTime = gl.getUniformLocation(prog, "u_time");
 
-	function resize() {
-		canvas.width = innerWidth * window.devicePixelRatio;
-		canvas.height = innerHeight * window.devicePixelRatio;
-		gl.viewport(0, 0, canvas.width, canvas.height);
-		gl.uniform2f(uRes, canvas.width, canvas.height);
-	}
-	resize();
-	addEventListener("resize", resize);
+	let isRendering = false;
+	let animationId = null;
 
+	// ---------------------------
+	// Resize + 解析度縮放（降解析度）
+	// ---------------------------
+	function resize() {
+		const cssWidth = canvas.clientWidth || window.innerWidth;
+		const cssHeight = canvas.clientHeight || window.innerHeight;
+
+		// 降解析度：scale < 1 越小越省
+		const scale = 0.7;
+		const dpr = 1; // 你也可以 Math.min(1.5, window.devicePixelRatio);
+
+		const width = Math.floor(cssWidth * scale * dpr);
+		const height = Math.floor(cssHeight * scale * dpr);
+
+		canvas.width = width;
+		canvas.height = height;
+		gl.viewport(0, 0, width, height);
+		gl.uniform2f(uRes, width, height);
+	}
+
+	// ---------------------------
+	// 2D Static：grid + gradient
+	// ---------------------------
+
+	resize();
+	window.addEventListener("resize", resize);
+
+	// ---------------------------
+	// rAF loop with 正確 cancel
+	// ---------------------------
 	function draw(t) {
+		if (!isRendering) return; // 防止停用後繼續畫
+
 		gl.uniform1f(uTime, t * 0.001);
 		gl.drawArrays(gl.TRIANGLES, 0, 6);
-		requestAnimationFrame(draw);
+
+		animationId = requestAnimationFrame(draw);
 	}
+
+	// ---------------------------
+	// IntersectionObserver 控制啟停
+	// ---------------------------
 	const windowHeight = window.innerHeight;
 	const observer = new IntersectionObserver(
 		entries => {
@@ -228,13 +267,15 @@ void main(){
 				if (entry.isIntersecting) {
 					if (!isRendering) {
 						isRendering = true;
-						requestAnimationFrame(draw);
+						animationId = requestAnimationFrame(draw);
 					}
 				} else {
-					isRendering = false;
-					if (animationId) {
-						cancelAnimationFrame(animationId);
-						animationId = null;
+					if (isRendering) {
+						isRendering = false;
+						if (animationId != null) {
+							cancelAnimationFrame(animationId);
+							animationId = null;
+						}
 					}
 				}
 			});
@@ -247,11 +288,13 @@ void main(){
 
 	observer.observe(canvas);
 
+	// Astro 離開頁面時清理
 	document.addEventListener("astro:before-preparation", () => {
 		observer.disconnect();
 		isRendering = false;
-		if (animationId) {
+		if (animationId != null) {
 			cancelAnimationFrame(animationId);
+			animationId = null;
 		}
 	});
 });
