@@ -3,7 +3,7 @@
 # SITCON 2026 徵稿
 
 ![Astro](https://img.shields.io/badge/Astro-5f3cbe?logo=astro)  
-<https://sitcon.org/2026/cfs>
+<https://sitcon.org/2026/cfp>
 
 ![](public/og-image.webp)
 
