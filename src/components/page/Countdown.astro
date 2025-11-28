@@ -5,7 +5,7 @@ const { end1, end2, start, form_url } = Astro.props;
 
 <div class="countdown" data-date-end1={end1} data-date-end2={end2} data-date-start={start}>
 	<div class="title-bar">
-		<h2 class="title">投稿截止</h2>
+		{new Date() < new Date(end1) ? <h2 class="title">早鳥投稿截止</h2> : <h2 class="title">投稿截止</h2>}
 		<div class="bar-container">
 			<div class="progress-bar">
 				<div class="progress" style="width: 99%;"></div>
