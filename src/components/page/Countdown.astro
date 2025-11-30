@@ -5,7 +5,7 @@ const { end1, end2, start, form_url } = Astro.props;
 
 <div class="countdown" data-date-end1={end1} data-date-end2={end2} data-date-start={start}>
 	<div class="title-bar">
-		{new Date() < new Date(end1) ? <h2 class="title">早鳥投稿截止</h2> : <h2 class="title">投稿截止</h2>}
+		<h2 class="title">投稿截止</h2>
 		<div class="bar-container">
 			<div class="progress-bar">
 				<div class="progress" style="width: 99%;"></div>
@@ -203,16 +203,19 @@ const { end1, end2, start, form_url } = Astro.props;
 <script>
 	let end: string | null;
 	let intervalId: number | undefined;
+	let countdownElement: Element | null = null;
 
 	const initCountdown = () => {
-		const countdownElement = document.querySelector(".countdown");
+		countdownElement = document.querySelector(".countdown");
 		if (!countdownElement) return;
 		if (new Date() < new Date(countdownElement.getAttribute("data-date-end1") || "")) {
 			end = countdownElement.getAttribute("data-date-end1");
 			document.querySelector(".text")!.textContent = "距離早鳥投稿截止還有";
+			document.querySelector(".title")!.textContent = "早鳥投稿截止";
 		} else {
 			end = countdownElement.getAttribute("data-date-end2");
 			document.querySelector(".text")!.textContent = "距離投稿截止還有";
+			document.querySelector(".title")!.textContent = "投稿截止";
 		}
 
 		const deadlineText = new Date(end || "").toLocaleString("zh-TW", {
@@ -267,6 +270,15 @@ const { end1, end2, start, form_url } = Astro.props;
 				el.querySelector(".progress-number")!.textContent = `${Math.floor(progress)}%`;
 			});
 		};
+
+		countdownElement = document.querySelector(".countdown");
+		const isEarlyBird = new Date() < new Date(countdownElement?.getAttribute("data-date-end1") || "");
+
+		if (isEarlyBird) {
+			document.querySelector(".title")!.textContent = "早鳥投稿截止";
+		} else {
+			document.querySelector(".title")!.textContent = "投稿截止";
+		}
 
 		if (new Date() > new Date(end || "")) {
 			document.querySelectorAll(".countdown").forEach(el => {
