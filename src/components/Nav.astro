@@ -19,31 +19,30 @@ const navLinks = [
 			<div class="banner-button-group">
 				<button onclick="window.open('http://sitcon.org/podcast', '_blank')" class="banner-main-button" aria-label="學生戰鬥機 Podcast">
 					<span class="banner-btn-text">學生戰鬥機 Podcast</span>
-					</div>
 				</button>
 			</div>
 		</div>
 	</div>
-	<div class="navbar-container">
-		<a href={import.meta.env.BASE_URL} class="logo" aria-label="SITCON 首頁">
-			<img src={sitcon.src} alt="SITCON Logo" />
-		</a>
-		<ul class="nav-links" role="list">
-			{
-				navLinks.map((link, index) => (
-					<li style={`--index: ${index}; --open-delay: ${index * 80}ms; --close-delay: ${(navLinks.length - index - 1) * 60}ms;`}>
-						<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
-					</li>
-				))
-			}
-		</ul>
-		<button class="menu-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-links">
-			<span></span>
-			<span></span>
-			<span></span>
-		</button>
-	</div>
 </nav>
+<div class="navbar-container">
+	<a href={import.meta.env.BASE_URL} class="logo" aria-label="SITCON 首頁">
+		<img src={sitcon.src} alt="SITCON Logo" />
+	</a>
+	<ul class="nav-links" role="list">
+		{
+			navLinks.map((link, index) => (
+				<li style={`--index: ${index}; --open-delay: ${index * 80}ms; --close-delay: ${(navLinks.length - index - 1) * 60}ms;`}>
+					<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
+				</li>
+			))
+		}
+	</ul>
+	<button class="menu-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-links">
+		<span></span>
+		<span></span>
+		<span></span>
+	</button>
+</div>
 
 <style>
 	.navbar {
@@ -125,15 +124,13 @@ const navLinks = [
 	}
 
 	.banner {
-		background: linear-gradient(
-			135deg,
-			#79e3e5 0%,
-			#d98fb8 50%,
-			#a43bee 100%
-		);
+		background: linear-gradient(135deg, #79e3e5 0%, #d98fb8 50%, #a43bee 100%);
 		padding: 0.4rem 1rem;
 		transform: translateY(0);
-		transition: transform 0.2s ease-in-out, max-height 0.2s ease-in-out, padding 0.2s ease-in-out;
+		transition:
+			transform 0.2s ease-in-out,
+			max-height 0.2s ease-in-out,
+			padding 0.2s ease-in-out;
 		max-height: 100px;
 		overflow: hidden;
 	}
@@ -348,15 +345,15 @@ const navLinks = [
 		const SCROLL_THRESHOLD = 5;
 		const HIDE_THRESHOLD = 50;
 
-		const getScrollDirection = (current: number, history: number[]): 'down' | 'up' | 'none' => {
-			if (history.length < 2) return 'none';
-			
+		const getScrollDirection = (current: number, history: number[]): "down" | "up" | "none" => {
+			if (history.length < 2) return "none";
+
 			const oldest = history[0];
 			const newest = history[history.length - 1];
 			const diff = newest - oldest;
-			
-			if (Math.abs(diff) < SCROLL_THRESHOLD) return 'none';
-			return diff > 0 ? 'down' : 'up';
+
+			if (Math.abs(diff) < SCROLL_THRESHOLD) return "none";
+			return diff > 0 ? "down" : "up";
 		};
 
 		const updateBanner = () => {
@@ -384,9 +381,9 @@ const navLinks = [
 
 			// Determine scroll direction using history (more stable)
 			const scrollDirection = getScrollDirection(currentScrollY, scrollHistory);
-			
+
 			// Hide banner when scrolling down (after threshold)
-			if (currentScrollY > HIDE_THRESHOLD && scrollDirection === 'down' && !isBannerHidden) {
+			if (currentScrollY > HIDE_THRESHOLD && scrollDirection === "down" && !isBannerHidden) {
 				isTransitioning = true;
 				banner.classList.add("hidden");
 				// Reset transition flag after animation completes
@@ -398,7 +395,7 @@ const navLinks = [
 				}, 250); // Slightly longer than CSS transition (200ms)
 			}
 			// Show banner when scrolling up
-			else if (scrollDirection === 'up' && isBannerHidden) {
+			else if (scrollDirection === "up" && isBannerHidden) {
 				isTransitioning = true;
 				banner.classList.remove("hidden");
 				// Reset transition flag after animation completes
@@ -421,7 +418,7 @@ const navLinks = [
 			} else {
 				lastScrollY = currentScrollY;
 			}
-			
+
 			ticking = false;
 		};
 

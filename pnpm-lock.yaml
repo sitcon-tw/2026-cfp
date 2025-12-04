@@ -29,6 +29,12 @@ importers:
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
+      prettier-plugin-organize-imports:
+        specifier: ^4.3.0
+        version: 4.3.0(prettier@3.6.2)(typescript@5.9.2)
+      prettier-plugin-packagejson:
+        specifier: ^2.5.20
+        version: 2.5.20(prettier@3.6.2)
 
 packages:
   "@astrojs/check@0.9.5":
@@ -429,6 +435,10 @@ packages:
   "@oslojs/encoding@1.1.0":
     resolution: { integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ== }
 
+  "@pkgr/core@0.2.9":
+    resolution: { integrity: sha512-QNqXyfVS2wm9hweSYD2O7F0G06uurj9kZ96TRQE5Y9hU7+tgdZwIkbAKc5Ocy1HxEY2kuDQa6cQ1WRs/O5LFKA== }
+    engines: { node: ^12.20.0 || ^14.18.0 || >=16.0.0 }
+
   "@rollup/pluginutils@5.3.0":
     resolution: { integrity: sha512-5EdhGZtnu3V88ces7s53hhfK5KSASnJZv8Lulpc04cWO3REESroJXg73DFsOmgbU2BhwV0E20bu2IDZb3VKW4Q== }
     engines: { node: ">=14.0.0" }
@@ -813,9 +823,17 @@ packages:
   destr@2.0.5:
     resolution: { integrity: sha512-ugFTXCtDZunbzasqBxrK93Ik/DRYsO6S/fedkWEMKqt04xZ4csmnmwGDBAb07QWNaGMAmnTIemsYZCksjATwsA== }
 
+  detect-indent@7.0.2:
+    resolution: { integrity: sha512-y+8xyqdGLL+6sh0tVeHcfP/QDd8gUgbasolJJpY7NgeQGSZ739bDtSiaiDgtoicy+mtYB81dKLxO9xRhCyIB3A== }
+    engines: { node: ">=12.20" }
+
   detect-libc@2.1.2:
     resolution: { integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ== }
     engines: { node: ">=8" }
+
+  detect-newline@4.0.1:
+    resolution: { integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog== }
+    engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
 
   deterministic-object-hash@2.0.2:
     resolution: { integrity: sha512-KxektNH63SrbfUyDiwXqRb1rLwKt33AmMv+5Nhsw1kqZ13SJBRTgZHtGbE+hH3a1mVW1cz+4pqSWVPAtLVXTzQ== }
@@ -930,6 +948,9 @@ packages:
   get-east-asian-width@1.4.0:
     resolution: { integrity: sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q== }
     engines: { node: ">=18" }
+
+  git-hooks-list@4.1.1:
+    resolution: { integrity: sha512-cmP497iLq54AZnv4YRAEMnEyQ1eIn4tGKbmswqwmFV4GBnAqE8NLtWxxdXa++AalfgL5EBH4IxTPyquEuGY/jA== }
 
   github-slugger@2.0.0:
     resolution: { integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw== }
@@ -1297,6 +1318,24 @@ packages:
     resolution: { integrity: sha512-RiBETaaP9veVstE4vUwSIcdATj6dKmXljouXc/DDNwBSPTp8FRkLGDSGFClKsAFeeg+13SB0Z1JZvbD76bigJw== }
     engines: { node: ^14.15.0 || >=16.0.0 }
 
+  prettier-plugin-organize-imports@4.3.0:
+    resolution: { integrity: sha512-FxFz0qFhyBsGdIsb697f/EkvHzi5SZOhWAjxcx2dLt+Q532bAlhswcXGYB1yzjZ69kW8UoadFBw7TyNwlq96Iw== }
+    peerDependencies:
+      prettier: ">=2.0"
+      typescript: ">=2.9"
+      vue-tsc: ^2.1.0 || 3
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
+  prettier-plugin-packagejson@2.5.20:
+    resolution: { integrity: sha512-G8cowPh+QmJJECTZlrPDKWkVVcwrFjF2rGcw546w3N8blLoc4szSs8UUPfFVxHUNLUjiru71Ah83g1lZkeK9Bw== }
+    peerDependencies:
+      prettier: ">= 1.16.0"
+    peerDependenciesMeta:
+      prettier:
+        optional: true
+
   prettier@3.6.2:
     resolution: { integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ== }
     engines: { node: ">=14" }
@@ -1437,6 +1476,14 @@ packages:
     resolution: { integrity: sha512-QlaZEqcAH3/RtNyet1IPIYPsEWAaYyXXv1Krsi+1L/QHppjX4Ifm8MQsBISz9vE8cHicIq3clogsheili5vhaQ== }
     engines: { node: ">= 18" }
 
+  sort-object-keys@2.0.1:
+    resolution: { integrity: sha512-R89fO+z3x7hiKPXX5P0qim+ge6Y60AjtlW+QQpRozrrNcR1lw9Pkpm5MLB56HoNvdcLHL4wbpq16OcvGpEDJIg== }
+
+  sort-package-json@3.5.0:
+    resolution: { integrity: sha512-moY4UtptUuP5sPuu9H9dp8xHNel7eP5/Kz/7+90jTvC0IOiPH2LigtRM/aSFSxreaWoToHUVUpEV4a2tAs2oKQ== }
+    engines: { node: ">=20" }
+    hasBin: true
+
   source-map-js@1.2.1:
     resolution: { integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA== }
     engines: { node: ">=0.10.0" }
@@ -1468,6 +1515,10 @@ packages:
 
   suf-log@2.5.3:
     resolution: { integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow== }
+
+  synckit@0.11.11:
+    resolution: { integrity: sha512-MeQTA1r0litLUf0Rp/iisCaL8761lKAZHaimlbGK4j0HysC4PLfqygQj9srcs0m2RdtDYnF8UuYyKpbjHYp7Jw== }
+    engines: { node: ^14.18.0 || >=16.0.0 }
 
   tiny-inflate@1.0.3:
     resolution: { integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw== }
@@ -2186,6 +2237,8 @@ snapshots:
 
   "@oslojs/encoding@1.1.0": {}
 
+  "@pkgr/core@0.2.9": {}
+
   "@rollup/pluginutils@5.3.0(rollup@4.53.2)":
     dependencies:
       "@types/estree": 1.0.8
@@ -2622,7 +2675,11 @@ snapshots:
 
   destr@2.0.5: {}
 
+  detect-indent@7.0.2: {}
+
   detect-libc@2.1.2: {}
+
+  detect-newline@4.0.1: {}
 
   deterministic-object-hash@2.0.2:
     dependencies:
@@ -2747,6 +2804,8 @@ snapshots:
   get-caller-file@2.0.5: {}
 
   get-east-asian-width@1.4.0: {}
+
+  git-hooks-list@4.1.1: {}
 
   github-slugger@2.0.0: {}
 
@@ -3323,6 +3382,18 @@ snapshots:
       prettier: 3.6.2
       sass-formatter: 0.7.9
 
+  prettier-plugin-organize-imports@4.3.0(prettier@3.6.2)(typescript@5.9.2):
+    dependencies:
+      prettier: 3.6.2
+      typescript: 5.9.2
+
+  prettier-plugin-packagejson@2.5.20(prettier@3.6.2):
+    dependencies:
+      sort-package-json: 3.5.0
+      synckit: 0.11.11
+    optionalDependencies:
+      prettier: 3.6.2
+
   prettier@3.6.2: {}
 
   prismjs@1.30.0: {}
@@ -3550,6 +3621,18 @@ snapshots:
 
   smol-toml@1.5.2: {}
 
+  sort-object-keys@2.0.1: {}
+
+  sort-package-json@3.5.0:
+    dependencies:
+      detect-indent: 7.0.2
+      detect-newline: 4.0.1
+      git-hooks-list: 4.1.1
+      is-plain-obj: 4.1.0
+      semver: 7.7.3
+      sort-object-keys: 2.0.1
+      tinyglobby: 0.2.15
+
   source-map-js@1.2.1: {}
 
   space-separated-tokens@2.0.2: {}
@@ -3584,6 +3667,10 @@ snapshots:
   suf-log@2.5.3:
     dependencies:
       s.color: 0.0.15
+
+  synckit@0.11.11:
+    dependencies:
+      "@pkgr/core": 0.2.9
 
   tiny-inflate@1.0.3: {}
 

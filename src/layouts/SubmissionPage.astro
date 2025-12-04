@@ -59,7 +59,7 @@ const {
 	seoTitle,
 	seoDescription,
 	picture1,
-	picture2,
+	picture2
 } = Astro.props;
 
 const MdContent = mdContent;
@@ -76,7 +76,9 @@ const MdContent = mdContent;
 			{
 				description && (
 					<div id="description">
-						<Description pic1={picture1} pic2={picture2}>{description}</Description>
+						<Description pic1={picture1} pic2={picture2}>
+							{description}
+						</Description>
 					</div>
 				)
 			}
