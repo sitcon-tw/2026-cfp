@@ -23,26 +23,26 @@ const navLinks = [
 			</div>
 		</div>
 	</div>
+	<div class="navbar-container">
+		<a href={import.meta.env.BASE_URL} class="logo" aria-label="SITCON 首頁">
+			<img src={sitcon.src} alt="SITCON Logo" />
+		</a>
+		<ul class="nav-links" role="list">
+			{
+				navLinks.map((link, index) => (
+					<li style={`--index: ${index}; --open-delay: ${index * 80}ms; --close-delay: ${(navLinks.length - index - 1) * 60}ms;`}>
+						<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
+					</li>
+				))
+			}
+		</ul>
+		<button class="menu-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-links">
+			<span></span>
+			<span></span>
+			<span></span>
+		</button>
+	</div>
 </nav>
-<div class="navbar-container">
-	<a href={import.meta.env.BASE_URL} class="logo" aria-label="SITCON 首頁">
-		<img src={sitcon.src} alt="SITCON Logo" />
-	</a>
-	<ul class="nav-links" role="list">
-		{
-			navLinks.map((link, index) => (
-				<li style={`--index: ${index}; --open-delay: ${index * 80}ms; --close-delay: ${(navLinks.length - index - 1) * 60}ms;`}>
-					<a href={`${import.meta.env.BASE_URL}${link.href.slice(1)}`}>{link.name}</a>
-				</li>
-			))
-		}
-	</ul>
-	<button class="menu-toggle" aria-label="開啟選單" aria-expanded="false" aria-controls="nav-links">
-		<span></span>
-		<span></span>
-		<span></span>
-	</button>
-</div>
 
 <style>
 	.navbar {

@@ -296,5 +296,6 @@ void main(){
 			cancelAnimationFrame(animationId);
 			animationId = null;
 		}
+		window.__cfpBgInited = false;
 	});
 });
