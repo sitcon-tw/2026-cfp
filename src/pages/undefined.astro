@@ -3,6 +3,9 @@ import SubmissionPage from "@layouts/SubmissionPage.astro";
 import Content from "@components/page/Content.astro";
 import Table from "@components/page/Table.astro";
 
+import undefinedPicture1 from "@assets/desc_page/undefined_1.webp";
+import undefinedPicture2 from "@assets/desc_page/undefined_2.webp";
+
 import MdContent from "@assets/doc/undefined/Content.md";
 
 const page_info = {
@@ -168,6 +171,8 @@ const toc_content = [
 	mdContent={MdContent}
 	seoTitle={page_info.seo_title}
 	seoDescription={page_info.description}
+	picture1={undefinedPicture1}
+	picture2={undefinedPicture2}
 >
 	<div slot="after-schedule" id="what">
 		<Content title="什麼是開放式議程？" id="about">

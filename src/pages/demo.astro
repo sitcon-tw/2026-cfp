@@ -3,6 +3,9 @@ import SubmissionPage from "@layouts/SubmissionPage.astro";
 import Content from "@components/page/Content.astro";
 import MdContent from "@assets/doc/demo/Content.md";
 
+import demoPicture1 from "@assets/desc_page/demo_1.webp";
+import demoPicture2 from "@assets/desc_page/demo_2.webp";
+
 const page_info = {
 	title: "Demo 展徵稿",
 	description: "透過專案展示與現場互動，展出成果、交流回饋，讓靈感在即時對談中誕生與延伸。",
@@ -136,6 +139,8 @@ const toc_content = [
 	paperInfoTitle="稿件資訊"
 	seoTitle={page_info.seo_title}
 	seoDescription={page_info.seo_description}
+	picture1={demoPicture1}
+	picture2={demoPicture2}
 >
 	<Content slot="paper-info-header" title="投稿格式">除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。</Content>
 

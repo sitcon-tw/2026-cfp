@@ -11,6 +11,19 @@ const navLinks = [
 ---
 
 <nav class="navbar" aria-label="主導覽選單">
+	<div class="banner">
+		<div class="banner-container">
+			<div class="banner-text">
+				<h2>還不確定要不要投稿嗎？來聽聽以往講者怎麼說</h2>
+			</div>
+			<div class="banner-button-group">
+				<button onclick="window.open('http://sitcon.org/podcast', '_blank')" class="banner-main-button" aria-label="學生戰鬥機 Podcast">
+					<span class="banner-btn-text">學生戰鬥機 Podcast</span>
+					</div>
+				</button>
+			</div>
+		</div>
+	</div>
 	<div class="navbar-container">
 		<a href={import.meta.env.BASE_URL} class="logo" aria-label="SITCON 首頁">
 			<img src={sitcon.src} alt="SITCON Logo" />
@@ -111,8 +124,96 @@ const navLinks = [
 		transform: translateY(-8px) rotate(-45deg);
 	}
 
+	.banner {
+		background: linear-gradient(
+			135deg,
+			#79e3e5 0%,
+			#d98fb8 50%,
+			#a43bee 100%
+		);
+		padding: 0.4rem 1rem;
+		transform: translateY(0);
+		transition: transform 0.2s ease-in-out, max-height 0.2s ease-in-out, padding 0.2s ease-in-out;
+		max-height: 100px;
+		overflow: hidden;
+	}
+
+	.banner.hidden {
+		transform: translateY(-100%);
+		max-height: 0;
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+
+	.banner-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.banner-text {
+		font-size: 0.8rem;
+		font-weight: bold;
+		color: #000000;
+		transition: transform 0.3s ease;
+		flex-shrink: 0;
+	}
+
+	.banner-button-group {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		transition: transform 0.3s ease;
+		background: rgba(255, 255, 255, 0.34);
+		border-radius: 12px;
+		padding: 0.5rem 1rem;
+		gap: 0.5rem;
+		flex-shrink: 0;
+		transition: all 0.3s ease;
+	}
+
+	.banner-button-group:hover {
+		background: rgba(255, 255, 255, 0.75);
+		scale: 1.05;
+	}
+
+	.banner-button-group:active {
+		scale: 0.95;
+	}
+
+	.banner-main-button {
+		background: transparent;
+		border: none;
+		font-weight: 600;
+		color: #333;
+		font-size: 1rem;
+		cursor: pointer;
+		transition: all 0.3s ease;
+		white-space: nowrap;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		line-height: 1;
+	}
+
 	/* mobile */
 	@media (max-width: 768px) {
+		.banner-container {
+			flex-direction: column;
+			gap: 0.5rem;
+		}
+
+		.banner-text {
+			font-size: 0.75rem;
+		}
+
+		.banner-main-button {
+			margin: 0;
+			font-size: 1.25rem;
+		}
+
 		.menu-toggle {
 			display: flex;
 		}
@@ -235,7 +336,107 @@ const navLinks = [
 		}
 	};
 
+	const initializeBannerScroll = () => {
+		const banner = document.querySelector(".banner");
+		if (!banner) return;
+
+		let lastScrollY = window.scrollY;
+		let scrollHistory: number[] = [];
+		const HISTORY_SIZE = 3;
+		let ticking = false;
+		let isTransitioning = false;
+		const SCROLL_THRESHOLD = 5;
+		const HIDE_THRESHOLD = 50;
+
+		const getScrollDirection = (current: number, history: number[]): 'down' | 'up' | 'none' => {
+			if (history.length < 2) return 'none';
+			
+			const oldest = history[0];
+			const newest = history[history.length - 1];
+			const diff = newest - oldest;
+			
+			if (Math.abs(diff) < SCROLL_THRESHOLD) return 'none';
+			return diff > 0 ? 'down' : 'up';
+		};
+
+		const updateBanner = () => {
+			if (isTransitioning) {
+				ticking = false;
+				return;
+			}
+
+			const currentScrollY = window.scrollY;
+			const scrollDifference = Math.abs(currentScrollY - lastScrollY);
+			const isBannerHidden = banner.classList.contains("hidden");
+
+			// Add current position to history
+			scrollHistory.push(currentScrollY);
+			if (scrollHistory.length > HISTORY_SIZE) {
+				scrollHistory.shift();
+			}
+
+			// Only update if scroll difference is significant enough
+			if (scrollDifference < SCROLL_THRESHOLD) {
+				lastScrollY = currentScrollY;
+				ticking = false;
+				return;
+			}
+
+			// Determine scroll direction using history (more stable)
+			const scrollDirection = getScrollDirection(currentScrollY, scrollHistory);
+			
+			// Hide banner when scrolling down (after threshold)
+			if (currentScrollY > HIDE_THRESHOLD && scrollDirection === 'down' && !isBannerHidden) {
+				isTransitioning = true;
+				banner.classList.add("hidden");
+				// Reset transition flag after animation completes
+				setTimeout(() => {
+					isTransitioning = false;
+					// Update lastScrollY after transition to account for position change
+					lastScrollY = window.scrollY;
+					scrollHistory = [window.scrollY];
+				}, 250); // Slightly longer than CSS transition (200ms)
+			}
+			// Show banner when scrolling up
+			else if (scrollDirection === 'up' && isBannerHidden) {
+				isTransitioning = true;
+				banner.classList.remove("hidden");
+				// Reset transition flag after animation completes
+				setTimeout(() => {
+					isTransitioning = false;
+					// Update lastScrollY after transition to account for position change
+					lastScrollY = window.scrollY;
+					scrollHistory = [window.scrollY];
+				}, 250);
+			}
+			// Show banner if at top of page
+			else if (currentScrollY <= HIDE_THRESHOLD && isBannerHidden) {
+				isTransitioning = true;
+				banner.classList.remove("hidden");
+				setTimeout(() => {
+					isTransitioning = false;
+					lastScrollY = window.scrollY;
+					scrollHistory = [window.scrollY];
+				}, 250);
+			} else {
+				lastScrollY = currentScrollY;
+			}
+			
+			ticking = false;
+		};
+
+		const onScroll = () => {
+			if (!ticking && !isTransitioning) {
+				window.requestAnimationFrame(updateBanner);
+				ticking = true;
+			}
+		};
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+	};
+
 	document.addEventListener("astro:page-load", () => {
 		initializeMenu();
+		initializeBannerScroll();
 	});
 </script>
