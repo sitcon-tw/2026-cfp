@@ -1,8 +1,31 @@
+---
+interface Props {
+	pic1?: ImageMetadata;
+	pic2?: ImageMetadata;
+}
+
+const { pic1, pic2 } = Astro.props as Props;
+---
+
 <div class="description">
+	<h2>議程說明</h2>
 	<slot />
+	<div class="description-picture">
+		{pic1 && <img src={pic1.src} alt="description" loading="lazy" />}
+		{pic2 && <img src={pic2.src} alt="description" loading="lazy" />}
+	</div>
 </div>
 
 <style>
+
+	.description h2 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1.5;
+		letter-spacing: 0.1rem;
+		padding-bottom: 1rem;
+	}
+
 	.description {
 		text-align: center;
 		border-radius: 2rem;
@@ -12,9 +35,36 @@
 		padding: 2rem 3.5rem;
 	}
 
+	.description-picture {
+		padding-top: 2rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.description-picture img {
+		max-width: 20rem;
+		object-fit: cover;
+	}
+
 	@media (max-width: 600px) {
 		.description {
 			padding: 1.5rem 2rem;
+		}
+
+		.description h2 {
+			font-size: 2.25rem;
+		}
+
+		.description-picture {
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.description-picture img {
+			max-width: 15rem;
 		}
 	}
 </style>

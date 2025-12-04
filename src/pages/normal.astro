@@ -6,6 +6,9 @@ import Link from "@components/page/Link.astro";
 import SubjectSampleContent from "@assets/doc/normal/SubjectSample.md";
 import MdContent from "@assets/doc/normal/Content.md";
 
+import normalPicture1 from "@assets/desc_page/normal_1.webp";
+import normalPicture2 from "@assets/desc_page/normal_2.webp";
+
 const submit_url = "https://sitcon.org/cfp-form-normal";
 
 const page_info = {
@@ -306,6 +309,8 @@ const toc_content = [
 	personalInfoDesc="除了暱稱、自我介紹將被使用於宣傳外，其餘資訊僅需提供一人作為代表（當稿件同時有多位講者時），以利議程組聯絡使用。"
 	seoTitle={page_info.seo_title}
 	seoDescription={page_info.seo_description}
+	picture1={normalPicture1}
+	picture2={normalPicture2}
 >
 	<Content slot="paper-info-header" title="投稿格式"> Presentation 與 Espresso 的投稿格式相同，除標示為公開之資訊會對外公布外，其餘僅供審稿委員於審稿時閱讀。 </Content>
 

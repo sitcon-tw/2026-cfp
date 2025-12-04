@@ -36,6 +36,8 @@ interface Props {
 	countdownStart?: string;
 	seoTitle?: string;
 	seoDescription?: string;
+	picture1?: ImageMetadata;
+	picture2?: ImageMetadata;
 }
 
 const {
@@ -55,7 +57,9 @@ const {
 	countdownEnd2 = "2026-01-23T23:59:00",
 	countdownStart = "2025-10-12T00:00:00",
 	seoTitle,
-	seoDescription
+	seoDescription,
+	picture1,
+	picture2,
 } = Astro.props;
 
 const MdContent = mdContent;
@@ -72,7 +76,7 @@ const MdContent = mdContent;
 			{
 				description && (
 					<div id="description">
-						<Description>{description}</Description>
+						<Description pic1={picture1} pic2={picture2}>{description}</Description>
 					</div>
 				)
 			}
