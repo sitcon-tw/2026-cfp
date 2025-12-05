@@ -10,11 +10,9 @@ const navLinks = [
 ];
 ---
 
-<nav aria-label="主導覽選單">
+<nav aria-label="主導覽選單" transition:persist>
 	<div class="banner">
-		<div class="banner-text">
-			<h2>還不確定要不要投稿嗎？來聽聽以往講者怎麼說</h2>
-		</div>
+		<div class="banner-text">還不確定要不要投稿嗎？來聽聽以往講者怎麼說</div>
 		<div class="banner-button-group">
 			<button onclick="window.open('http://sitcon.org/podcast', '_blank')" class="banner-main-button" aria-label="學生戰鬥機 Podcast">
 				<span class="banner-btn-text">學生戰鬥機 Podcast</span>
@@ -149,8 +147,8 @@ const navLinks = [
 	}
 
 	.banner-text {
-		font-size: 0.8rem;
-		font-weight: bold;
+		font-size: 1rem;
+		font-weight: 600;
 		color: #000000;
 		transition: transform 0.3s ease;
 		flex-shrink: 0;
@@ -200,10 +198,6 @@ const navLinks = [
 		.banner {
 			flex-direction: column;
 			gap: 0.5rem;
-		}
-
-		.banner-text {
-			font-size: 0.7rem;
 		}
 
 		.banner-main-button {
