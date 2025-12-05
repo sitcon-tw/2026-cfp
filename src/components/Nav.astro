@@ -10,17 +10,15 @@ const navLinks = [
 ];
 ---
 
-<nav class="navbar" aria-label="主導覽選單">
+<nav aria-label="主導覽選單">
 	<div class="banner">
-		<div class="banner-container">
-			<div class="banner-text">
-				<h2>還不確定要不要投稿嗎？來聽聽以往講者怎麼說</h2>
-			</div>
-			<div class="banner-button-group">
-				<button onclick="window.open('http://sitcon.org/podcast', '_blank')" class="banner-main-button" aria-label="學生戰鬥機 Podcast">
-					<span class="banner-btn-text">學生戰鬥機 Podcast</span>
-				</button>
-			</div>
+		<div class="banner-text">
+			<h2>還不確定要不要投稿嗎？來聽聽以往講者怎麼說</h2>
+		</div>
+		<div class="banner-button-group">
+			<button onclick="window.open('http://sitcon.org/podcast', '_blank')" class="banner-main-button" aria-label="學生戰鬥機 Podcast">
+				<span class="banner-btn-text">學生戰鬥機 Podcast</span>
+			</button>
 		</div>
 	</div>
 	<div class="navbar-container">
@@ -45,12 +43,17 @@ const navLinks = [
 </nav>
 
 <style>
-	.navbar {
+	nav {
 		background-color: var(--white);
 		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 		position: sticky;
 		top: 0;
 		z-index: 1000;
+		view-transition-name: nav;
+	}
+
+	::view-transition-group(nav) {
+		z-index: 100;
 	}
 
 	.navbar-container {
@@ -131,8 +134,11 @@ const navLinks = [
 			transform 0.2s ease-in-out,
 			max-height 0.2s ease-in-out,
 			padding 0.2s ease-in-out;
-		max-height: 100px;
 		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.75rem;
 	}
 
 	.banner.hidden {
@@ -142,19 +148,13 @@ const navLinks = [
 		padding-bottom: 0;
 	}
 
-	.banner-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		gap: 0.75rem;
-	}
-
 	.banner-text {
 		font-size: 0.8rem;
 		font-weight: bold;
 		color: #000000;
 		transition: transform 0.3s ease;
 		flex-shrink: 0;
+		text-align: center;
 	}
 
 	.banner-button-group {
@@ -197,18 +197,18 @@ const navLinks = [
 
 	/* mobile */
 	@media (max-width: 768px) {
-		.banner-container {
+		.banner {
 			flex-direction: column;
 			gap: 0.5rem;
 		}
 
 		.banner-text {
-			font-size: 0.75rem;
+			font-size: 0.7rem;
 		}
 
 		.banner-main-button {
 			margin: 0;
-			font-size: 1.25rem;
+			font-size: 1rem;
 		}
 
 		.menu-toggle {
