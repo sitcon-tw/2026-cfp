@@ -345,7 +345,7 @@ const navLinks = [
 		const SCROLL_THRESHOLD = 5;
 		const HIDE_THRESHOLD = 50;
 
-		const getScrollDirection = (current: number, history: number[]): "down" | "up" | "none" => {
+		const getScrollDirection = (history: number[]): "down" | "up" | "none" => {
 			if (history.length < 2) return "none";
 
 			const oldest = history[0];
@@ -380,7 +380,7 @@ const navLinks = [
 			}
 
 			// Determine scroll direction using history (more stable)
-			const scrollDirection = getScrollDirection(currentScrollY, scrollHistory);
+			const scrollDirection = getScrollDirection(scrollHistory);
 
 			// Hide banner when scrolling down (after threshold)
 			if (currentScrollY > HIDE_THRESHOLD && scrollDirection === "down" && !isBannerHidden) {
