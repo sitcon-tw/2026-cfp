@@ -11,6 +11,7 @@ import youratorNews from "@assets/about/youratorNews.webp";
 import moneyUdnNews from "@assets/about/moneyUdnNews.webp";
 import ettodayNews from "@assets/about/ettodayNews.webp";
 import camp from "@assets/about/camp.webp";
+import sitcon2025 from "@assets/sitcon-2025.webp";
 ---
 
 <Layout title="關於 SITCON - SITCON 2026 徵稿" description="SITCON 是由學生組成、投身資訊教育與推廣開源精神的社群。13 年來全東亞最大的學生社群，14000 名參與者，500 名學生講者。">
@@ -21,6 +22,7 @@ import camp from "@assets/about/camp.webp";
 			SITCON 是由學生組成、投身資訊教育與推廣開源精神的社群。<br />
 			也是一個由學生主辦的資訊研討會，給學生們一個發表交流技術的舞台。
 		</p>
+		<img src={sitcon2025.src} alt="SITCON 2025 活動照片" class="hero-image" />
 	</section>
 	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
 
@@ -185,6 +187,17 @@ import camp from "@assets/about/camp.webp";
 	.tagline {
 		font-size: 1.4rem;
 		line-height: 2;
+	}
+
+	.hero-image {
+		width: 100%;
+		max-width: 800px;
+		margin-top: 2rem;
+		border-radius: 1rem;
+		box-shadow: 0 10px 30px rgba(141, 182, 239, 0.2);
+		height: 30vh;
+		object-fit: cover;
+		object-position: center 60%;
 	}
 
 	.sitcon-circle {
