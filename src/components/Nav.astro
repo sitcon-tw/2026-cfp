@@ -231,7 +231,7 @@ const navLinks = [
 		}
 
 		.nav-links.active {
-			max-height: 400px;
+			max-height: 1000px;
 			opacity: 1;
 			transform: translateY(0);
 			padding: 1rem 2rem 2rem;
@@ -267,6 +267,8 @@ const navLinks = [
 </style>
 
 <script>
+	let menuClickHandler: (() => void) | null = null;
+
 	const initializeMenu = () => {
 		const menuToggle = document.querySelector(".menu-toggle");
 		const menu = document.querySelector(".nav-links");
@@ -275,8 +277,16 @@ const navLinks = [
 			const toggle = menuToggle;
 			const navMenu = menu;
 
+			// Reset menu state on initialization
+			navMenu.classList.remove("active", "closing");
+			toggle.classList.remove("active");
 			toggle.setAttribute("aria-expanded", "false");
 			navMenu.setAttribute("aria-hidden", "true");
+
+			// Remove previous event listener if it exists
+			if (menuClickHandler) {
+				toggle.removeEventListener("click", menuClickHandler);
+			}
 
 			const closeMenu = () => {
 				if (!navMenu.classList.contains("active") || navMenu.classList.contains("closing")) {
@@ -311,12 +321,25 @@ const navLinks = [
 				toggle.setAttribute("aria-expanded", "true");
 			};
 
-			toggle.addEventListener("click", () => {
+			// Store the handler so we can remove it later
+			menuClickHandler = () => {
 				if (navMenu.classList.contains("active")) {
 					closeMenu();
 				} else {
 					openMenu();
 				}
+			};
+
+			toggle.addEventListener("click", menuClickHandler);
+
+			// Close menu when navigating to a different page
+			const navLinks = navMenu.querySelectorAll("a");
+			navLinks.forEach((link) => {
+				link.addEventListener("click", () => {
+					if (navMenu.classList.contains("active")) {
+						closeMenu();
+					}
+				});
 			});
 		}
 	};
