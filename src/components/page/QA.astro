@@ -72,12 +72,11 @@ import ArrowIcon from "@assets/desc_page/arrow.svg";
 								// Update height as text grows
 								answer.style.height = `${answer.scrollHeight}px`;
 							} else {
-								clearInterval(typeInterval);
+								clearInterval(typeInterval as unknown as number);
 								answer.style.height = "auto";
 								answer.style.transition = "height 0.3s ease-in-out, opacity 0.3s ease-in-out";
 							}
 						}, typingSpeed);
-
 						(answer as any).typingInterval = typeInterval;
 					} else {
 						// Closing - clear typing and hide
