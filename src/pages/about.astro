@@ -1,0 +1,587 @@
+---
+import Layout from "@layouts/Layout.astro";
+import sitconCircle from "@assets/img/sitcon_circle.svg";
+import light from "@assets/light.svg";
+import sitconHK from "@assets/about/sitcon_hk.webp";
+import groups from "@assets/about/groups.webp";
+import edu from "@assets/about/edu.webp";
+import hackathon from "@assets/about/hackathon.webp";
+import yahooNews from "@assets/about/yahooNews.webp";
+import youratorNews from "@assets/about/youratorNews.webp";
+import moneyUdnNews from "@assets/about/moneyUdnNews.webp";
+import ettodayNews from "@assets/about/ettodayNews.webp";
+import camp from "@assets/about/camp.webp";
+---
+
+<Layout title="關於 SITCON - SITCON 2026 徵稿" description="SITCON 是由學生組成、投身資訊教育與推廣開源精神的社群。13 年來全東亞最大的學生社群，14000 名參與者，500 名學生講者。">
+	<!-- Hero Section -->
+	<section class="container hero">
+		<h1>關於 SITCON</h1>
+		<p class="tagline">
+			SITCON 是由學生組成、投身資訊教育與推廣開源精神的社群。<br />
+			也是一個由學生主辦的資訊研討會，給學生們一個發表交流技術的舞台。
+		</p>
+	</section>
+	<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle" />
+
+	<!-- Stats Overview -->
+	<section class="stats-overview">
+		<div class="container">
+			<h2 class="section-title">13 年來全東亞最大的學生社群</h2>
+			<div class="stats-grid">
+				<div class="stat-card">
+					<div class="stat-number">500</div>
+					<div class="stat-label">名學生講者</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">500</div>
+					<div class="stat-label">場聚會和講座</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">10</div>
+					<div class="stat-label">場夏令營</div>
+				</div><div class="stat-card">
+					<div class="stat-number">14000</div>
+					<div class="stat-label">名參與者</div>
+				</div>
+				<div class="stat-card">
+					<div class="stat-number">1400</div>
+					<div class="stat-label">名熱愛資訊的志工</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- 2025 Review -->
+	<section class="container">
+		<h2 class="section-title">回顧 2025 年</h2>
+		<div class="review-stats">
+			<div class="review-stat">
+				<span class="review-number">1300</span>
+				<span class="review-label">人次會場參與</span>
+			</div>
+			<div class="review-stat">
+				<span class="review-number">200</span>
+				<span class="review-label">所海內外學校</span>
+			</div>
+			<div class="review-stat">
+				<span class="review-number">70%</span>
+				<span class="review-label">大專院校或研究所背景</span>
+			</div>
+			<div class="review-stat">
+				<span class="review-number">1/3</span>
+				<span class="review-label">活躍於資訊社群</span>
+			</div>
+		</div>
+
+		<!-- Charts -->
+		<div class="charts-container">
+			<div class="chart-wrapper">
+				<h3>與會者身份分佈</h3>
+				<div id="attender-role-chart" class="chart"></div>
+			</div>
+			<div class="chart-wrapper">
+				<h3>軟體開發程度分佈</h3>
+				<div id="programming-level-chart" class="chart"></div>
+			</div>
+		</div>
+		<img src={sitconCircle.src} alt="" aria-hidden="true" class="sitcon-circle review-circle" />
+	</section>
+
+	<!-- Activities Section -->
+	<section class="container">
+		<h2 class="section-title">我們做過的事</h2>
+
+		<div class="activity-card">
+			<div class="activity-content">
+				<h3>東亞最大學生資訊年會</h3>
+				<p>啟發香港 SITCON x HK、重慶學生開源年會的成立，並向各地學生社團與資訊團體提供支援；每年皆有一半以上新參與者加入，參與者畢業後遍佈臺、美、日、荷各國資訊業界，且常態回流支持。</p>
+			</div>
+			<div class="activity-image">
+				<img src={sitconHK.src} alt="SITCON 年會現場照片" />
+			</div>
+		</div>
+
+		<div class="activity-card reverse">
+			<div class="activity-content">
+				<h3>北中南聚會</h3>
+				<p>持續與各地方社團聯手舉辦聚會，提供學生們資訊交流的管道。其中也不乏與臺灣大學、淡江大學等學校合作，而匯聚了來自各處的資訊領域佼佼者。</p>
+			</div>
+			<div class="activity-image">
+				<img src={groups.src} alt="北中南聚會活動照片" />
+			</div>
+		</div>
+
+		<div class="activity-card">
+			<div class="activity-content">
+				<h3>SITCON Hour of Code</h3>
+				<p>自 2014 年起與教育部合作，於全臺各地定期舉辦「Hour of Code」，促使數百名 4 ~ 16 歲兒童與學子萌生了對資訊領域的好奇心。</p>
+			</div>
+			<div class="activity-image">
+				<img src={edu.src} alt="SITCON Hour of Code 活動照片" />
+			</div>
+		</div>
+
+		<div class="activity-card reverse">
+			<div class="activity-content">
+				<h3>SITCON 黑客松</h3>
+				<p>我們在 2014、2015 年舉辦 HackGen，並在 2024 年將活動規模全面升級，舉辦 SITCON 黑客松，期待參與者們能於黑客松中學習發想、規劃並最終實作，讓社會與企業看見具有潛能的學生團隊。</p>
+			</div>
+			<div class="activity-image">
+				<img src={hackathon.src} alt="SITCON 黑客松活動照片" />
+			</div>
+		</div>
+
+		<div class="activity-card">
+			<div class="activity-content">
+				<h3>SITCON 夏令營</h3>
+				<p>
+					自 2014 年開始，SITCON 每年 7
+					月皆會舉辦夏令營，讓有志於資訊領域的學生能夠輕鬆入門並激發對開源精神的熱情。學員與志工皆由學生組成，不僅僅是主線課程，還有開源演講、社群博覽會以及視界咖啡館，讓學生不只是學習，更有許多交流、激盪想法的機會。
+				</p>
+			</div>
+			<div class="activity-image">
+				<img src={camp.src} alt="SITCON 夏令營活動照片" />
+			</div>
+		</div>
+		<img src={light.src} alt="" aria-hidden="true" class="light" />
+	</section>
+
+	<!-- Media Coverage (Placeholder for news images) -->
+	<section class="media-coverage">
+		<div class="container">
+			<h2 class="section-title">媒體報導</h2>
+			<div class="media-grid">
+				<a
+					href="https://tw.news.yahoo.com/%E5%A4%A7%E8%AB%87ai%E8%88%87%E7%A7%91%E6%8A%80%E6%95%99%E8%82%B2%E7%99%BC%E5%B1%95-sitcon-2024%E5%B9%B4%E6%9C%83%E5%9C%93%E6%BB%BF%E8%90%BD%E5%B9%95-134127533.html"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="media-item"
+				>
+					<img src={yahooNews.src} alt="Yahoo 新聞報導：大談AI與科技教育發展 SITCON 2024年會圓滿落幕" />
+				</a>
+				<a href="https://www.yourator.co/articles/215" target="_blank" rel="noopener noreferrer" class="media-item">
+					<img src={youratorNews.src} alt="Yourator 報導：SITCON 學生計算機年會" />
+				</a>
+				<a href="https://money.udn.com/money/story/5723/9018057" target="_blank" rel="noopener noreferrer" class="media-item">
+					<img src={moneyUdnNews.src} alt="經濟日報報導：SITCON 2025" />
+				</a>
+				<a href="https://newstaiwan.net/2024/03/09/155739/" target="_blank" rel="noopener noreferrer" class="media-item">
+					<img src={ettodayNews.src} alt="新頭殼報導：SITCON 學生計算機年會" />
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	h1 {
+		font-size: 4rem;
+		font-family: "Orbitron", sans-serif;
+		margin-bottom: 1.5rem;
+		margin: 0 auto;
+	}
+
+	.tagline {
+		font-size: 1.4rem;
+		line-height: 2;
+	}
+
+	.sitcon-circle {
+		position: absolute;
+		top: -5rem;
+		left: -10rem;
+		z-index: -1;
+		opacity: 0.6;
+	}
+
+	/* Container */
+	.container {
+		padding: 4rem 2rem;
+		text-align: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+	.hero {
+		padding-block: 5rem 0;
+	}
+
+	/* Section Title */
+	.section-title {
+		font-size: 2.5rem;
+		font-family: "Orbitron", sans-serif;
+		text-align: center;
+		margin-bottom: 3rem;
+		color: var(--white);
+	}
+
+	/* Stats Overview */
+	.stats-overview {
+		position: relative;
+		padding: 1rem 0;
+		overflow: hidden;
+	}
+
+	.stats-grid {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 2rem;
+		margin: 3rem auto 0;
+		max-width: 900px;
+	}
+
+	.stat-card {
+		flex: 1 1;
+		background: rgba(141, 182, 239, 0.1);
+		border: 2px solid rgba(141, 182, 239, 0.3);
+		border-radius: 1rem;
+		padding: 2rem;
+		text-align: center;
+		transition: all 0.3s ease;
+	}
+
+	.stat-card:hover {
+		transform: translateY(-5px);
+		border-color: var(--light-blue);
+		box-shadow: 0 10px 30px rgba(141, 182, 239, 0.2);
+	}
+
+	.stat-number {
+		font-size: clamp(2.5rem, 5vw, 3.5rem);
+		font-family: "Orbitron", sans-serif;
+		font-weight: 700;
+		color: var(--light-blue);
+		margin-bottom: 0.5rem;
+		word-break: keep-all;
+	}
+
+	.stat-label {
+		font-size: 1.1rem;
+		color: var(--text-white);
+	}
+
+	.review-stats {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-bottom: 4rem;
+	}
+
+	.review-stat {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 1.5rem;
+		background: linear-gradient(135deg, rgba(121, 227, 229, 0.1) 0%, rgba(217, 143, 184, 0.1) 50%, rgba(164, 59, 238, 0.1) 100%);
+		border-radius: 1rem;
+	}
+
+	.review-number {
+		font-size: 3rem;
+		font-family: "Orbitron", sans-serif;
+		font-weight: 700;
+		background: linear-gradient(135deg, #79e3e5 0%, #d98fb8 50%, #a43bee 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.review-label {
+		font-size: 1.1rem;
+		color: var(--text-white);
+		text-align: center;
+	}
+
+	.review-circle {
+		top: -20%;
+		right: -8rem;
+		left: unset;
+	}
+
+	/* Charts */
+	.charts-container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+		gap: 3rem;
+		margin-top: 4rem;
+	}
+
+	.chart-wrapper {
+		background: rgba(141, 182, 239, 0.05);
+		border: 1px solid rgba(141, 182, 239, 0.2);
+		border-radius: 1rem;
+		padding: 2rem;
+	}
+
+	.chart-wrapper h3 {
+		font-size: 1.5rem;
+		margin-bottom: 1.5rem;
+		text-align: center;
+		color: var(--light-blue);
+	}
+
+	.chart {
+		width: 100%;
+		height: 400px;
+	}
+
+	.activity-card {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		margin-bottom: 4rem;
+		align-items: center;
+	}
+
+	.activity-card.reverse {
+		direction: rtl;
+	}
+
+	.activity-card.reverse > * {
+		direction: ltr;
+	}
+
+	.activity-content h3 {
+		font-size: 2rem;
+		font-family: "Orbitron", sans-serif;
+		color: var(--light-blue);
+		margin-bottom: 1rem;
+	}
+
+	.activity-content p {
+		font-size: 1.1rem;
+		line-height: 1.8;
+		color: var(--text-white);
+	}
+
+	.activity-image {
+		border-radius: 1rem;
+		overflow: hidden;
+		aspect-ratio: 16/9;
+	}
+
+	.activity-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.placeholder-image {
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(135deg, rgba(121, 227, 229, 0.2) 0%, rgba(217, 143, 184, 0.2) 50%, rgba(164, 59, 238, 0.2) 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		color: var(--light-blue);
+		border: 2px dashed rgba(141, 182, 239, 0.3);
+	}
+
+	.light {
+		position: absolute;
+		top: 20%;
+		right: 0;
+		z-index: -1;
+		opacity: 0.5;
+		filter: blur(8rem);
+		width: 50%;
+	}
+
+	/* Media Coverage */
+	.media-coverage {
+		padding: 4rem 0;
+		background: rgba(141, 182, 239, 0.05);
+	}
+
+	.media-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+	}
+
+	.media-item {
+		aspect-ratio: 16/9;
+		border-radius: 1rem;
+		overflow: hidden;
+		transition: transform 0.3s ease;
+		display: block;
+		text-decoration: none;
+	}
+
+	.media-item img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	.media-item:hover {
+		transform: scale(1.05);
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2.5rem;
+		}
+
+		.tagline {
+			font-size: 1.1rem;
+		}
+
+		.section-title {
+			font-size: 2rem;
+		}
+
+		.review-number {
+			font-size: 2rem;
+		}
+
+		.charts-container {
+			grid-template-columns: 1fr;
+		}
+
+		.activity-card,
+		.activity-card.reverse {
+			grid-template-columns: 1fr;
+			direction: ltr;
+		}
+
+		.activity-content h3 {
+			font-size: 1.5rem;
+		}
+
+		.sitcon-circle {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	// @ts-ignore
+	import * as echarts from "echarts";
+
+	// Chart data
+	const attenderRoleData = [
+		{ value: 679, name: "大學生" },
+		{ value: 291, name: "高中 / 職生" },
+		{ value: 117, name: "研究生" },
+		{ value: 87, name: "社會人士" },
+		{ value: 25, name: "國中生" },
+		{ value: 15, name: "五專生" },
+		{ value: 6, name: "其他" },
+		{ value: 3, name: "老師 / 教授" },
+		{ value: 1, name: "國小生" }
+	];
+
+	const programmingLevelData = [
+		{ value: 476, name: "中等" },
+		{ value: 276, name: "初學" },
+		{ value: 185, name: "熟練" },
+		{ value: 182, name: "入門" },
+		{ value: 54, name: "我沒有接觸過程式" },
+		{ value: 51, name: "進階" }
+	];
+
+	// Initialize charts after DOM is ready
+	let attenderRoleChart: any = null;
+	let programmingLevelChart: any = null;
+
+	function initCharts() {
+		const attenderElement = document.getElementById("attender-role-chart");
+		const programmingElement = document.getElementById("programming-level-chart");
+
+		if (!attenderElement || !programmingElement) return;
+
+		attenderRoleChart = echarts.init(attenderElement);
+		programmingLevelChart = echarts.init(programmingElement);
+
+		const isMobile = window.innerWidth <= 768;
+
+		const chartOption: any = {
+			tooltip: {
+				trigger: "item",
+				backgroundColor: "rgba(1, 1, 33, 0.95)",
+				borderColor: "#8db6ef",
+				borderWidth: 1,
+				textStyle: {
+					color: "#f4f9ff"
+				},
+				formatter: "{b}: {c} ({d}%)"
+			},
+			legend: {
+				orient: isMobile ? "horizontal" : "vertical",
+				left: isMobile ? "center" : "auto",
+				right: isMobile ? "auto" : "5%",
+				top: isMobile ? "bottom" : "center",
+				textStyle: {
+					color: "#dde8f6",
+					fontSize: isMobile ? 10 : 12
+				},
+				itemWidth: isMobile ? 15 : 25,
+				itemHeight: isMobile ? 10 : 14
+			},
+			series: [
+				{
+					type: "pie",
+					radius: ["40%", "70%"],
+					center: isMobile ? ["50%", "35%"] : ["35%", "50%"],
+					avoidLabelOverlap: true,
+					itemStyle: {
+						borderRadius: 10,
+						borderColor: "#010121",
+						borderWidth: 2
+					},
+					label: {
+						show: false
+					},
+					emphasis: {
+						label: {
+							show: false
+						}
+					},
+					labelLine: {
+						show: false
+					},
+					data: []
+				}
+			],
+			color: ["#79e3e5", "#8db6ef", "#d98fb8", "#a43bee", "#4896ff", "#71aeff", "#5a7fb8", "#3d5a8c", "#2d4570"]
+		};
+
+		// Attender Role Chart
+		const attenderOption = { ...chartOption };
+		attenderOption.series[0].data = attenderRoleData;
+		attenderRoleChart.setOption(attenderOption);
+
+		// Programming Level Chart
+		const programmingOption = { ...chartOption };
+		programmingOption.series[0].data = programmingLevelData;
+		programmingLevelChart.setOption(programmingOption);
+	}
+
+	// Initialize on load
+	if (document.readyState === "loading") {
+		document.addEventListener("DOMContentLoaded", initCharts);
+	} else {
+		initCharts();
+	}
+
+	// Responsive resize with debounce
+	let resizeTimeout: ReturnType<typeof setTimeout>;
+	window.addEventListener("resize", () => {
+		clearTimeout(resizeTimeout);
+		resizeTimeout = setTimeout(() => {
+			if (attenderRoleChart && programmingLevelChart) {
+				attenderRoleChart.dispose();
+				programmingLevelChart.dispose();
+				initCharts();
+			}
+		}, 250);
+	});
+</script>
