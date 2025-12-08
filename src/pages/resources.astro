@@ -1,0 +1,419 @@
+---
+import Layout from "@layouts/Layout.astro";
+import arrow from "@assets/img/arrow.svg";
+---
+
+<Layout title="資源下載 - SITCON 2026 徵稿" description="下載 SITCON 2026 活動相關資源，包含活動頭像、Logo、封面圖等素材。">
+	<main class="resources-page">
+		<div class="container">
+			<section class="page-header">
+				<h1>資源下載</h1>
+				<p class="subtitle">下載 SITCON 2026 活動相關資源素材</p>
+			</section>
+
+			<section class="resources-grid">
+				<!-- 主視覺 -->
+				<div class="resource-card">
+					<div class="preview-image">
+						<img src="/2026/cfp/resources/主視覺.png" alt="SITCON 2026 主視覺" />
+					</div>
+					<div class="card-body">
+						<h2>主視覺</h2>
+						<p>適用於一般社群媒體貼文與網站使用</p>
+						<div class="download-buttons">
+							<a href="/2026/cfp/resources/主視覺.png" download="SITCON_2026_主視覺.png" class="download-btn">
+								<span>PNG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- Facebook 封面 -->
+				<div class="resource-card">
+					<div class="preview-image">
+						<img src="/2026/cfp/resources/Facebook 封面.png" alt="SITCON 2026 Facebook 封面" />
+					</div>
+					<div class="card-body">
+						<h2>Facebook 封面</h2>
+						<p>Facebook 粉絲專頁封面圖片</p>
+						<div class="download-buttons">
+							<a href="/2026/cfp/resources/Facebook 封面.png" download="SITCON_2026_Facebook封面.png" class="download-btn">
+								<span>PNG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- YouTube 封面 -->
+				<div class="resource-card">
+					<div class="preview-image">
+						<img src="/2026/cfp/resources/YouTube 封面.png" alt="SITCON 2026 YouTube 封面" />
+					</div>
+					<div class="card-body">
+						<h2>YouTube 封面</h2>
+						<p>YouTube 頻道橫幅圖片</p>
+						<div class="download-buttons">
+							<a href="/2026/cfp/resources/YouTube 封面.png" download="SITCON_2026_YouTube封面.png" class="download-btn">
+								<span>PNG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- 活動頭像 -->
+				<div class="resource-card">
+					<div class="preview-image">
+						<img src="/2026/cfp/resources/頭像.png" alt="SITCON 2026 活動頭像" />
+					</div>
+					<div class="card-body">
+						<h2>活動頭像</h2>
+						<p>適用於個人社群媒體頭像</p>
+						<div class="download-buttons">
+							<a href="/2026/cfp/resources/頭像.png" download="SITCON_2026_頭像.png" class="download-btn">
+								<span>PNG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- SITCON Logo -->
+				<div class="resource-card">
+					<div class="preview-image logo-preview">
+						<img src="/2026/cfp/resources/SITCON Logo.svg" alt="SITCON Logo" />
+					</div>
+					<div class="card-body">
+						<h2>SITCON Logo</h2>
+						<p>SITCON 品牌標誌</p>
+						<div class="download-buttons">
+							<a href="/2026/cfp/resources/SITCON Logo.svg" download="SITCON_Logo.svg" class="download-btn">
+								<span>SVG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+							<a href="/2026/cfp/resources/SITCON Logo.png" download="SITCON_Logo.png" class="download-btn">
+								<span>PNG</span>
+								<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<!-- SITCON 品牌識別 -->
+				<div class="resource-card">
+					<div class="card-body full-height">
+						<h2>SITCON 品牌識別</h2>
+						<p>完整的 Logo 使用規範與更多格式</p>
+						<a href="https://sitcon.org/branding/" target="_blank" rel="noopener noreferrer" class="external-link">
+							<span>前往品牌識別頁面</span>
+							<img src={arrow.src} alt="" class="arrow" aria-hidden="true" />
+						</a>
+					</div>
+				</div>
+			</section>
+
+			<section class="usage-guidelines">
+				<h2>使用規範</h2>
+				<div class="guidelines-content">
+					<div class="guideline-item allow">
+						<span class="icon">✓</span>
+						<p>歡迎使用這些素材宣傳 SITCON 2026 活動</p>
+					</div>
+					<div class="guideline-item allow">
+						<span class="icon">✓</span>
+						<p>可用於個人社群媒體、文章、部落格等非商業用途</p>
+					</div>
+					<div class="guideline-item deny">
+						<span class="icon">✗</span>
+						<p>請勿修改 Logo 或主視覺的核心設計元素</p>
+					</div>
+					<div class="guideline-item deny">
+						<span class="icon">✗</span>
+						<p>請勿用於商業目的或任何可能損害 SITCON 形象的用途</p>
+					</div>
+				</div>
+				<p class="contact-info">
+					如有其他使用需求或疑問，請聯絡 <a href="mailto:contact@sitcon.org">contact@sitcon.org</a>
+				</p>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	.resources-page {
+		min-height: 100vh;
+		background: linear-gradient(180deg, #010121 0%, #1a0b2e 100%);
+		color: white;
+		padding: 5rem 2rem 4rem;
+	}
+
+	.container {
+		max-width: 1100px;
+		margin: 0 auto;
+	}
+
+	.page-header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.page-header h1 {
+		margin-bottom: 1rem;
+		font-size: 3.5rem;
+		font-family: "Orbitron", sans-serif;
+	}
+
+	.subtitle {
+		font-size: 1.25rem;
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.resources-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 1.5rem;
+		margin-bottom: 4rem;
+	}
+
+	.resource-card {
+		background: var(--white);
+		color: #000;
+		border-radius: 1rem;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		transition:
+			transform 0.15s ease,
+			box-shadow 0.15s ease;
+	}
+
+	.resource-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	}
+
+	.preview-image {
+		width: 100%;
+		aspect-ratio: 16 / 9;
+		background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.preview-image img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.preview-image.logo-preview {
+		background: linear-gradient(135deg, #010121 0%, #1a0b2e 100%);
+		padding: 2rem;
+	}
+
+	.preview-image.logo-preview img {
+		object-fit: contain;
+	}
+
+	.card-body {
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		flex: 1;
+	}
+
+	.card-body.full-height {
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		min-height: 300px;
+	}
+
+	.resource-card h2 {
+		font-size: 1.6rem;
+		font-weight: 800;
+		margin: 0;
+	}
+
+	.resource-card p {
+		color: #555;
+		line-height: 1.6;
+		margin: 0;
+	}
+
+	.download-buttons {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+		margin-top: auto;
+	}
+
+	.download-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.25rem;
+		background: linear-gradient(135deg, #2972c4 0%, #4a86e8 100%);
+		color: white;
+		border-radius: 2rem;
+		text-decoration: none;
+		font-weight: 600;
+		font-size: 0.9rem;
+		transition: all 0.3s ease;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.download-btn:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(41, 114, 196, 0.4);
+	}
+
+	.download-btn .arrow {
+		width: 1.25rem;
+		height: 1.25rem;
+		transition: transform 0.3s ease;
+	}
+
+	.download-btn:hover .arrow {
+		transform: translateX(0.25rem);
+	}
+
+	.external-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 1rem 1.5rem;
+		background: linear-gradient(135deg, #dc5456 0%, #ff6b6b 100%);
+		color: white;
+		border-radius: 2rem;
+		text-decoration: none;
+		font-weight: 700;
+		font-size: 1.1rem;
+		transition: all 0.3s ease;
+		margin-top: 1rem;
+	}
+
+	.external-link:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(220, 84, 86, 0.4);
+	}
+
+	.external-link .arrow {
+		width: 1.5rem;
+		height: 1.5rem;
+		transition: transform 0.3s ease;
+	}
+
+	.external-link:hover .arrow {
+		transform: translateX(0.5rem);
+	}
+
+	.usage-guidelines {
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 1rem;
+		padding: 2rem;
+	}
+
+	.usage-guidelines h2 {
+		font-size: 2rem;
+		margin-bottom: 1.5rem;
+		background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.guidelines-content {
+		display: grid;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.guideline-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 1rem;
+		padding: 1rem;
+		background: rgba(255, 255, 255, 0.03);
+		border-radius: 0.5rem;
+	}
+
+	.guideline-item .icon {
+		font-size: 1.5rem;
+		font-weight: bold;
+		flex-shrink: 0;
+	}
+
+	.guideline-item.allow .icon {
+		color: #4ade80;
+	}
+
+	.guideline-item.deny .icon {
+		color: #f87171;
+	}
+
+	.guideline-item p {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.8);
+		line-height: 1.6;
+	}
+
+	.contact-info {
+		color: rgba(255, 255, 255, 0.7);
+		text-align: center;
+		margin: 0;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.contact-info a {
+		color: #60a5fa;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.contact-info a:hover {
+		color: #a78bfa;
+		text-decoration: underline;
+	}
+
+	@media (max-width: 768px) {
+
+		.page-header h1 {
+			font-size: 2rem;
+		}
+
+		.subtitle {
+			font-size: 1rem;
+		}
+
+		.resources-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.usage-guidelines {
+			padding: 1.5rem;
+		}
+
+		.usage-guidelines h2 {
+			font-size: 1.5rem;
+		}
+
+		.card-cta .arrow {
+			width: 3rem;
+		}
+
+		.resource-card:hover .card-cta .arrow {
+			transform: translateX(3rem);
+		}
+	}
+</style>
