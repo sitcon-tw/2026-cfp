@@ -16,9 +16,14 @@ import BannerTransitionIcon2 from "@assets/desc_page/banner_tran2.svg";
 			<div class="banner-text">{h3}</div>
 			<img src={BannerBgIcon.src} class="bg-icon" alt="banner background" />
 			<h2 class="banner-title" set:html={h2} />
-			<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿">
+			<!-- <a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="立即投稿"> -->
+			<!-- 	<StarIcon /> -->
+			<!-- 	<span>立即投稿</span> -->
+			<!-- 	<StarIcon /> -->
+			<!-- </a> -->
+			<a class="banner-button" href={btn_url} target="_blank" rel="noopener" aria-label="投稿已截止">
 				<StarIcon />
-				<span>立即投稿</span>
+				<span>投稿已截止</span>
 				<StarIcon />
 			</a>
 		</div>

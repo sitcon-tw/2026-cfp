@@ -40,8 +40,12 @@ const { end1, end2, start, form_url } = Astro.props;
 			截止時間<br />
 			<span class="deadline-text"></span>
 		</div>
-		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿">
-			<span>立即投稿</span>
+		<!-- <a class="link" href={form_url} target="_blank" rel="noopener" aria-label="立即投稿"> -->
+		<!-- 	<span>立即投稿</span> -->
+		<!-- 	<ArrowRight width="3rem" height="3rem" /> -->
+		<!-- </a> -->
+		<a class="link" href={form_url} target="_blank" rel="noopener" aria-label="投稿已截止">
+			<span>投稿已截止</span>
 			<ArrowRight width="3rem" height="3rem" />
 		</a>
 	</div>
